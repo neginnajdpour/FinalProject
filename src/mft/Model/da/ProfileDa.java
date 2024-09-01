@@ -39,12 +39,12 @@ public class ProfileDa implements AutoCloseable {
 
         if (resultSet.next()) {
             Profile profile = new Profile();
-
             profile.setUsername(resultSet.getString("username"));
             profile.setPassword(resultSet.getString("password"));
             profile.setName(resultSet.getString("name"));
             profile.setFamily(resultSet.getString("family"));
             profile.setActive(resultSet.getInt("active"));
+            System.out.println("DA : " + profile);
             optionalProfile = Optional.of(profile);
         }
         return optionalProfile;

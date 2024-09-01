@@ -2,7 +2,6 @@ package mft.Controller;
 
 import javafx.scene.control.*;
 import mft.Model.bl.ProfileBl;
-import mft.Model.entity.Category;
 import mft.Model.entity.Profile;
 import mft.View.dto.FormState;
 import javafx.fxml.FXML;
@@ -12,11 +11,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
-
-
     @FXML
     private TextField usernameTxt;
 
@@ -29,23 +27,19 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
-
         loginBtn.setOnAction(event -> {
 
             try{
-
-                Profile profile = new Profile();
-                profile = ProfileBl.getProfile(usernameTxt.getText(), passwordTxt.getText());
+                Profile profile =  ProfileBl.getProfile(usernameTxt.getText(), passwordTxt.getText());
                 FormState.profile = profile;
                 System.out.println(profile.toString());
 
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION,"user found" + profile.toString() );
-                alert.showAndWait();
+                alert.show();
 
                 Stage stage = new Stage();
-                Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/mft/View/Profile.fxml")));
+                Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/View/Profile.fxml"))));
                 stage.setTitle("Panel");
                 stage.setScene(scene);
                 stage.show();
@@ -53,7 +47,6 @@ public class LoginController implements Initializable {
                 loginBtn.getScene().getWindow().hide();
 
             } catch (Exception e) {
-                e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR,e.getMessage());
                 alert.showAndWait();
             }

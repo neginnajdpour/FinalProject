@@ -1,4 +1,4 @@
-package mft.View;
+package mft;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Login.fxml")));
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("view/Login.fxml")));
         primaryStage.setScene(scene);
         primaryStage.setTitle("Login");
         primaryStage.show();

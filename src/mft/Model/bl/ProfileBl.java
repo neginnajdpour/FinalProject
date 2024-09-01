@@ -16,9 +16,12 @@ public class ProfileBl {
     }
 
     public static Profile getProfile(String username , String password){
+        System.out.println("SERVICE :" +username+":"+password);
+
         try (ProfileDa profileDa = new ProfileDa()) {
             Optional<Profile> profile =  profileDa.getProfile(username , password);
             if(profile.isPresent()){
+                System.out.println("SERVICE :" +profile);
                 return profile.get();
             }
             else
