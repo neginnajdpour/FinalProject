@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="lib">
-    <CLASSES>
-      <root url="file://$PROJECT_DIR$/src/mft/lib" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
