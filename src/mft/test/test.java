@@ -8,6 +8,7 @@ import mft.Model.tools.JdbcProvider;
 
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 public class test {
@@ -41,21 +42,8 @@ public class test {
 //        System.out.println(book.toString());
 //        BookBl.update(book);
 
-        List optionalList = (List) BookBl.getAllBooks();
-        System.out.println(optionalList.toString());
-
-
-
-
-
-
-
-
-
-
-
-
-
+        java.util.List<Optional<Book>> optionalList = BookBl.getAllBooks();
+        for(Optional<Book> leave : optionalList) System.out.println(leave);
 
     }
 }

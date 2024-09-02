@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 public class BookController implements Initializable {
     @FXML
-    private AnchorPane root;
+    private TextField titleTxt,editionTxt ,authorTxt,publisherTxt,publicationyearTxt,availablecopiesTxt;
 
     @FXML
     private Label title;

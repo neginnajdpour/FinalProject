@@ -50,21 +50,21 @@
             <Label text="Author" GridPane.rowIndex="2" />
             <TextField fx:id="authorTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Publication Year" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <TextField fx:id="yearTxt" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <TextField fx:id="publicationyearTxt" GridPane.columnIndex="4" GridPane.rowIndex="1" />
             <Label text="Edition" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="editionTxt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Description" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets top="-50.0" />
                </GridPane.margin>
             </Label>
-            <TextArea prefHeight="67.0" prefWidth="263.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+            <TextArea fx:id="descriptionTxt" prefHeight="67.0" prefWidth="263.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets top="10.0" />
                </GridPane.margin>
             </TextArea>
             <Label text="Available Copies" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <TextField fx:id="availablecopiesTxt" GridPane.columnIndex="4" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <HBox layoutX="55.0" layoutY="430.0" prefHeight="31.0" prefWidth="271.0" />
