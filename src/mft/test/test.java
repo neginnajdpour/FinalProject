@@ -1,4 +1,4 @@
-package mft.Model.test;
+package mft.test;
 
 import mft.Model.bl.ProfileBl;
 import mft.Model.entity.Profile;

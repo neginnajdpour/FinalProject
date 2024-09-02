@@ -1,6 +1,6 @@
 package mft.Model.entity;
 
-public enum Category {
+public enum Genre {
     Fiction,
     Nonfiction,
     Action_and_Adventure,

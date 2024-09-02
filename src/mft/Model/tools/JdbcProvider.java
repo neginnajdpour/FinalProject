@@ -24,7 +24,7 @@ public class JdbcProvider {
         basicDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         basicDataSource.setUrl("jdbc:mysql://localhost:3306/mft");
         basicDataSource.setUsername("root");
-        basicDataSource.setPassword("root123");
+        basicDataSource.setPassword("Negin@09143148516");
         basicDataSource.setInitialSize(5);
         basicDataSource.setMinIdle(5);
         basicDataSource.setMaxIdle(10);

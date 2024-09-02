@@ -30,7 +30,7 @@ public class ProfileDa implements AutoCloseable {
 
     public Optional<Profile> getProfile(String username , String password) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
-        String sql = "SELECT * FROM profile_tbl WHERE username = ? and password = ?";
+        String sql = "SELECT * FROM PROFILE_TBL WHERE USERNAME = ? AND PASSWORD = ? AND ACTIVE = 1";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, username);
         preparedStatement.setString(2, password);

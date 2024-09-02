@@ -32,19 +32,25 @@ public class LoginController implements Initializable {
             try{
                 Profile profile =  ProfileBl.getProfile(usernameTxt.getText(), passwordTxt.getText());
                 FormState.profile = profile;
-                System.out.println(profile.toString());
+                if (profile != null) {
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information");
+                    alert.setHeaderText(null);
+                    alert.setContentText("You have successfully logged in!");
+                    alert.showAndWait();
+
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/View/Profile.fxml"))));
+                    stage.setTitle("Panel");
+                    stage.setScene(scene);
+                    stage.show();
+
+                    loginBtn.getScene().getWindow().hide();
+
+                }
 
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION,"user found" + profile.toString() );
-                alert.show();
-
-                Stage stage = new Stage();
-                Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/View/Profile.fxml"))));
-                stage.setTitle("Panel");
-                stage.setScene(scene);
-                stage.show();
-
-                loginBtn.getScene().getWindow().hide();
 
             } catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR,e.getMessage());
