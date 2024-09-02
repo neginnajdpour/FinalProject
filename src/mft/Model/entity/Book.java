@@ -1,0 +1,28 @@
+package mft.Model.entity;
+
+import com.google.gson.Gson;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@SuperBuilder
+@ToString
+
+public class Book {
+    private String TITLE;
+    private String EDITION;
+    private String AUTHOR;
+    private String GENRE;
+    private String PUBLISHER;
+    private String PUBLSHED_YEAR;
+    private int AVAILABLE_COPIES;
+    private String DESCRIPTION;
+
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
+    }
+}
