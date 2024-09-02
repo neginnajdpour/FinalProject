@@ -32,9 +32,15 @@ public class test {
 //        System.out.println(book.toString());
 //        BookBl.save(book);
 
-          Book book = Book.builder().TITLE("prgramming with java").build();
-          System.out.println(book.toString());
-          BookBl.delete(book);
+//          Book book = Book.builder().TITLE("prgramming with java").build();
+//          System.out.println(book.toString());
+//          BookBl.delete(book);
+
+        Book book = Book.builder().TITLE("prgramming with c++").AUTHOR("deitel & deitel").AVAILABLE_COPIES(1).EDITION("forth").GENRE("educational").BOOK_ID(2).build();
+        System.out.println(book.toString());
+        BookBl.update(book);
+
+
 
 
 

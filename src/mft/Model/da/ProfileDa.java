@@ -50,24 +50,8 @@ public class ProfileDa implements AutoCloseable {
         return optionalProfile;
     }
 
-    public Profile getProfile2(String username , String password) throws SQLException {
-        connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("SELECT * FROM profile_tbl WHERE username = ? and password = ?");
-        preparedStatement.setString(1, username);
-        preparedStatement.setString(2, password);
-        resultSet = preparedStatement.executeQuery();
-        Profile profile = new Profile();
 
-        if (resultSet.next()) {
 
-            profile.setUsername(username);
-            profile.setPassword(password);
-            profile.setName(resultSet.getString("name"));
-            profile.setFamily(resultSet.getString("family"));
-
-        }
-        return profile;
-    }
 
 
     @Override

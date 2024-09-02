@@ -12,6 +12,7 @@ import lombok.experimental.SuperBuilder;
 @ToString
 
 public class Book {
+    private int BOOK_ID;
     private String TITLE;
     private String EDITION;
     private String AUTHOR;
