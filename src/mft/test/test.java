@@ -8,9 +8,10 @@ import mft.Model.tools.JdbcProvider;
 
 
 import java.sql.SQLException;
+import java.util.Optional;
 
 public class test {
-    public static void main(String[] args) throws Exception {
+    public static <List> void main(String[] args) throws Exception {
         JdbcProvider jdbcProvider = new JdbcProvider();
 //        System.out.println("Connecting to database...");
 //        Connection connection = jdbcProvider.getConnection();
@@ -36,9 +37,16 @@ public class test {
 //          System.out.println(book.toString());
 //          BookBl.delete(book);
 
-        Book book = Book.builder().TITLE("prgramming with c++").AUTHOR("deitel & deitel").AVAILABLE_COPIES(1).EDITION("forth").GENRE("educational").BOOK_ID(2).build();
-        System.out.println(book.toString());
-        BookBl.update(book);
+//        Book book = Book.builder().TITLE("prgramming with c++").AUTHOR("deitel & deitel").AVAILABLE_COPIES(1).EDITION("forth").GENRE("educational").BOOK_ID(2).build();
+//        System.out.println(book.toString());
+//        BookBl.update(book);
+
+        List optionalList = (List) BookBl.getAllBooks();
+        System.out.println(optionalList.toString());
+
+
+
+
 
 
 

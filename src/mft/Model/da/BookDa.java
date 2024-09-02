@@ -30,9 +30,9 @@ public class BookDa implements AutoCloseable {
         preparedStatement.setString(3,book.getAUTHOR());
         preparedStatement.setString(4, book.getGENRE());
         preparedStatement.setString(5, book.getPUBLISHER());
-        preparedStatement.setString(6, book.getPUBLSHED_YEAR());
+        preparedStatement.setString(6, book.getPUBLISHED_YEAR());
         preparedStatement.setInt(7,book.getAVAILABLE_COPIES());
-        preparedStatement.setString(8, book.getDESCRIPTION());
+        preparedStatement.setString(8, book.getBDESCRIPTION());
         preparedStatement.executeUpdate();
     }
 
@@ -45,15 +45,15 @@ public class BookDa implements AutoCloseable {
 
     public void update(Book book) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("UPDATE BOOK SET TITLE = ? , EDITION = ? , AUTHOR = ? , GENRE = ? , PUBLISHER = ? , PUBLSHED_YEAR = ? , AVAILABLE_COPIES = ? , BDESCRIPTION = ? WHERE Book_Id = ?");
+        preparedStatement = connection.prepareStatement("UPDATE BOOK SET TITLE = ? , EDITION = ? , AUTHOR = ? , GENRE = ? , PUBLISHER = ? , PUBLISHED_YEAR = ? , AVAILABLE_COPIES = ? , BDESCRIPTION = ? WHERE Book_Id = ?");
         preparedStatement.setString(1,book.getTITLE());
         preparedStatement.setString(2, book.getEDITION());
         preparedStatement.setString(3,book.getAUTHOR());
         preparedStatement.setString(4, book.getGENRE());
         preparedStatement.setString(5, book.getPUBLISHER());
-        preparedStatement.setString(6, book.getPUBLSHED_YEAR());
+        preparedStatement.setString(6, book.getPUBLISHED_YEAR());
         preparedStatement.setInt(7,book.getAVAILABLE_COPIES());
-        preparedStatement.setString(8, book.getDESCRIPTION());
+        preparedStatement.setString(8, book.getBDESCRIPTION());
         preparedStatement.setInt(9,book.getBOOK_ID());
         preparedStatement.executeUpdate();
     }
@@ -71,9 +71,9 @@ public class BookDa implements AutoCloseable {
                     .EDITION(resultSet.getString("EDITION"))
                     .AUTHOR(resultSet.getString("AUTHOR"))
                     .GENRE(resultSet.getString("PUBLISHER"))
-                    .PUBLSHED_YEAR(resultSet.getString("PUBLISHED_YEAR"))
+                    .PUBLISHED_YEAR(resultSet.getString("PUBLISHED_YEAR"))
                     .AVAILABLE_COPIES((resultSet.getInt("AVAILABLE_COPIES")))
-                    .DESCRIPTION(resultSet.getString("BDESCRIPTION"))
+                    .BDESCRIPTION(resultSet.getString("BDESCRIPTION"))
                     .build();
 
             books.add(book);

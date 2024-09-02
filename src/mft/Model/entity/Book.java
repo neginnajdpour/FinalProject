@@ -18,9 +18,9 @@ public class Book {
     private String AUTHOR;
     private String GENRE;
     private String PUBLISHER;
-    private String PUBLSHED_YEAR;
+    private String PUBLISHED_YEAR;
     private int AVAILABLE_COPIES;
-    private String DESCRIPTION;
+    private String BDESCRIPTION;
 
     @Override
     public String toString() {

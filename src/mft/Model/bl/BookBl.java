@@ -4,6 +4,9 @@ import mft.Model.da.BookDa;
 import mft.Model.entity.Book;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class BookBl {
 
@@ -32,9 +35,17 @@ public class BookBl {
         }
         return null;
     }
-    public static ArrayList<Book> getAllBooks() throws Exception {
+
+    public static List<Optional<Book>>  getAllBooks() throws Exception {
+        List<Book> books = new ArrayList<>();
+
         try(BookDa bookDa = new BookDa()){
-            return (ArrayList<Book>) bookDa.getAllBooks();
+            books = bookDa.getAllBooks();
         }
+        List<Optional<Book>> optionalBooks  = books.stream()
+                .map((o) -> Optional.of(o)).collect(Collectors.toList());
+
+        return optionalBooks;
+
     }
 }
