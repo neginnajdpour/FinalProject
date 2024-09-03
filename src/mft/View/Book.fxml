@@ -69,10 +69,10 @@
       <TableView fx:id="bookTbl" layoutX="62.0" layoutY="338.0" prefHeight="190.0" prefWidth="755.0">
         <columns>
           <TableColumn fx:id="titleCol" minWidth="200.0" prefWidth="150.0" text="Title" />
-          <TableColumn minWidth="150.0" prefWidth="75.0" text="Author" />
-            <TableColumn minWidth="100.0" prefWidth="75.0" text="Genre" />
-            <TableColumn minWidth="150.0" prefWidth="75.0" text="Publisher" />
-            <TableColumn minWidth="150.0" prefWidth="75.0" text="Publication Year" />
+          <TableColumn fx:id="authorCol" minWidth="150.0" prefWidth="75.0" text="Author" />
+            <TableColumn fx:id="genreCol" minWidth="100.0" prefWidth="75.0" text="Genre" />
+            <TableColumn fx:id="publisherCol" minWidth="150.0" prefWidth="75.0" text="Publisher" />
+            <TableColumn fx:id="publishedyearCol" minWidth="150.0" prefWidth="75.0" text="Publication Year" />
         </columns>
       </TableView>
    </children>

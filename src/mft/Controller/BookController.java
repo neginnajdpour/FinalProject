@@ -47,7 +47,7 @@ public class BookController implements Initializable {
     private TableView<Book> bookTbl;
 
     @FXML
-    private TableColumn<Book, String> titleCol;
+    private TableColumn<Book, String> titleCol, authorCol, genreCol, publisherCol, publishedyearCol, editionCol,    copiesCol;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -59,7 +59,7 @@ public class BookController implements Initializable {
 
 
         try {
-            refreshTbl(BookBl.getAllBooks());
+            refreshTbl();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -67,11 +67,23 @@ public class BookController implements Initializable {
 
     }
 
-    public void refreshTbl(List<Book> bookList){
-
+    public void refreshTbl() throws Exception {
+        List<Book> bookList = BookBl.getAllBooks();
         ObservableList<Book> books = FXCollections.observableList(bookList);
-
         titleCol.setCellValueFactory(new PropertyValueFactory<>("TITLE"));
+        authorCol.setCellValueFactory(new PropertyValueFactory<>("AUTHOR"));
+        genreCol.setCellValueFactory(new PropertyValueFactory<>("GENRE"));
+        publisherCol.setCellValueFactory(new PropertyValueFactory<>("PUBLISHER"));
+        publishedyearCol.setCellValueFactory(new PropertyValueFactory<>("PUBLISHED_YEAR"));
+
+
+        //editionCol.setCellValueFactory(new PropertyValueFactory<>("EDITION"));
+
+//
+//        publisherCol.setCellValueFactory(new PropertyValueFactory<>("PUBLISHER"));
+//        yearCol.setCellValueFactory(new PropertyValueFactory<>("YEAR"));
+//        copiesCol.setCellValueFactory(new PropertyValueFactory<>("COPIES"));
+
 
         bookTbl.setItems(books);
     }
