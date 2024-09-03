@@ -66,13 +66,14 @@
             <Button fx:id="deleteBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="104.0" text="Remove" />
          </children>
       </VBox>
-      <TableView fx:id="bookTbl" layoutX="62.0" layoutY="338.0" prefHeight="190.0" prefWidth="755.0">
+      <TableView fx:id="bookTbl" layoutX="62.0" layoutY="338.0" prefHeight="190.0" prefWidth="945.0">
         <columns>
-          <TableColumn fx:id="titleCol" minWidth="200.0" prefWidth="150.0" text="Title" />
-          <TableColumn fx:id="authorCol" minWidth="150.0" prefWidth="75.0" text="Author" />
-            <TableColumn fx:id="genreCol" minWidth="100.0" prefWidth="75.0" text="Genre" />
-            <TableColumn fx:id="publisherCol" minWidth="150.0" prefWidth="75.0" text="Publisher" />
-            <TableColumn fx:id="publishedyearCol" minWidth="150.0" prefWidth="75.0" text="Publication Year" />
+          <TableColumn fx:id="titleCol" minWidth="200.0" prefWidth="266.0" text="Title" />
+          <TableColumn fx:id="authorCol" minWidth="84.0" prefWidth="106.0" text="Author" />
+            <TableColumn fx:id="genreCol" minWidth="73.0" prefWidth="161.0" text="Genre" />
+            <TableColumn fx:id="editionCol" prefWidth="83.0" text="Edition" />
+            <TableColumn fx:id="publisherCol" minWidth="106.0" prefWidth="142.0" text="Publisher" />
+            <TableColumn fx:id="publishedyearCol" minWidth="101.0" prefWidth="131.0" text="Publication Year" />
         </columns>
       </TableView>
    </children>

@@ -8,6 +8,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lombok.SneakyThrows;
 import mft.Model.bl.BookBl;
 import mft.Model.entity.Genre;
 import mft.Model.entity.Book;
@@ -49,42 +50,42 @@ public class BookController implements Initializable {
     @FXML
     private TableColumn<Book, String> titleCol, authorCol, genreCol, publisherCol, publishedyearCol, editionCol,    copiesCol;
 
+    @SneakyThrows
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
 
         for (Genre genre : Genre.values()) {
             genreCmb.getItems().add(genre);
         }
 
-
-        try {
-            refreshTbl();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
+        refreshTbl();
 
     }
 
     public void refreshTbl() throws Exception {
+
         List<Book> bookList = BookBl.getAllBooks();
-        ObservableList<Book> books = FXCollections.observableList(bookList);
-        titleCol.setCellValueFactory(new PropertyValueFactory<>("TITLE"));
-        authorCol.setCellValueFactory(new PropertyValueFactory<>("AUTHOR"));
-        genreCol.setCellValueFactory(new PropertyValueFactory<>("GENRE"));
-        publisherCol.setCellValueFactory(new PropertyValueFactory<>("PUBLISHER"));
-        publishedyearCol.setCellValueFactory(new PropertyValueFactory<>("PUBLISHED_YEAR"));
+        ObservableList<Book> observableList = FXCollections.observableList(bookList);
+
+        bookTbl.setItems(observableList);
 
 
-        //editionCol.setCellValueFactory(new PropertyValueFactory<>("EDITION"));
 
-//
+
+
+
+
+
+
+
+//        List<Book> bookList = BookBl.getAllBooks();
+//        ObservableList<Book> books = FXCollections.observableList(bookList);
+//        titleCol.setCellValueFactory(new PropertyValueFactory<>("TITLE"));
+//        authorCol.setCellValueFactory(new PropertyValueFactory<>("AUTHOR"));
+//        genreCol.setCellValueFactory(new PropertyValueFactory<>("GENRE"));
 //        publisherCol.setCellValueFactory(new PropertyValueFactory<>("PUBLISHER"));
-//        yearCol.setCellValueFactory(new PropertyValueFactory<>("YEAR"));
-//        copiesCol.setCellValueFactory(new PropertyValueFactory<>("COPIES"));
+//        publishedyearCol.setCellValueFactory(new PropertyValueFactory<>("PUBLISHED_YEAR"));
+//        bookTbl.setItems(books);
 
-
-        bookTbl.setItems(books);
     }
 }
