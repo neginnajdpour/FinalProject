@@ -36,16 +36,16 @@ public class BookBl {
         return null;
     }
 
-    public static List<Optional<Book>>  getAllBooks() throws Exception {
+    public static List<Book>  getAllBooks() throws Exception {
         List<Book> books = new ArrayList<>();
 
         try(BookDa bookDa = new BookDa()){
             books = bookDa.getAllBooks();
         }
-        List<Optional<Book>> optionalBooks  = books.stream()
-                .map((o) -> Optional.of(o)).collect(Collectors.toList());
+//        List<Optional<Book>> optionalBooks  = books.stream()
+//                .map((o) -> Optional.of(o)).collect(Collectors.toList());
 
-        return optionalBooks;
+        return books;
 
     }
 }

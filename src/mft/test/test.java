@@ -42,8 +42,8 @@ public class test {
 //        System.out.println(book.toString());
 //        BookBl.update(book);
 
-        java.util.List<Optional<Book>> optionalList = BookBl.getAllBooks();
-        for(Optional<Book> leave : optionalList) System.out.println(leave);
+//        java.util.List<Optional<Book>> optionalList = BookBl.getAllBooks();
+//        for(Optional<Book> leave : optionalList) System.out.println(leave);
 
     }
 }
