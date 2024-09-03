@@ -66,26 +66,13 @@ public class BookController implements Initializable {
 
         List<Book> bookList = BookBl.getAllBooks();
         ObservableList<Book> observableList = FXCollections.observableList(bookList);
-
+        titleCol.setCellValueFactory(new PropertyValueFactory<>("TITLE"));
+        authorCol.setCellValueFactory(new PropertyValueFactory<>("AUTHOR"));
+        genreCol.setCellValueFactory(new PropertyValueFactory<>("GENRE"));
+        publisherCol.setCellValueFactory(new PropertyValueFactory<>("PUBLISHER"));
+        publishedyearCol.setCellValueFactory(new PropertyValueFactory<>("PUBLISHED_YEAR"));
+        editionCol.setCellValueFactory(new PropertyValueFactory<>("EDITION"));
         bookTbl.setItems(observableList);
-
-
-
-
-
-
-
-
-
-
-//        List<Book> bookList = BookBl.getAllBooks();
-//        ObservableList<Book> books = FXCollections.observableList(bookList);
-//        titleCol.setCellValueFactory(new PropertyValueFactory<>("TITLE"));
-//        authorCol.setCellValueFactory(new PropertyValueFactory<>("AUTHOR"));
-//        genreCol.setCellValueFactory(new PropertyValueFactory<>("GENRE"));
-//        publisherCol.setCellValueFactory(new PropertyValueFactory<>("PUBLISHER"));
-//        publishedyearCol.setCellValueFactory(new PropertyValueFactory<>("PUBLISHED_YEAR"));
-//        bookTbl.setItems(books);
 
     }
 }
