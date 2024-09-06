@@ -27,6 +27,7 @@ public class MemberController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         saveBtn.setOnAction(event -> {
+            try {
             Member member = Member
                     .builder()
                     .FirstName(firstnameTxt.getText())
@@ -42,7 +43,7 @@ public class MemberController implements Initializable {
                     .Photo(photoTxt.getText())
                     .build();
 
-            try {
+
                 MemberBl.save(member);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");

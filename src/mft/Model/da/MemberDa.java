@@ -39,6 +39,7 @@ public class MemberDa implements AutoCloseable {
         preparedStatement.setString(9, member.getCountry());
         preparedStatement.setString(10, member.getPostalcode());
         preparedStatement.setString(11, member.getPhoto());
+        preparedStatement.executeUpdate();
     }
 
     public void delete(Member member) throws SQLException {

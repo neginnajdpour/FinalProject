@@ -30,7 +30,7 @@ insert into(TITLE , EDITION , AUTHOR , GENRE , PUBLISHER , PUBLSHED_YEAR , AVAIL
 DROP TABLE member;
 create table member (
                         memberID INT PRIMARY KEY AUTO_INCREMENT,
-                        FirstName NVARCHAR(50),
+                        FIRSTNAME NVARCHAR(50),
                         LastName NVARCHAR(50),
                         PhoneNumber NVARCHAR(50),
                         Email NVARCHAR(50),

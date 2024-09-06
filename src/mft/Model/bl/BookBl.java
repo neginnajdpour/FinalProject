@@ -29,11 +29,12 @@ public class BookBl {
         }
     }
 
-    public static Book findById(int id) throws Exception {
+    public static Book getBook(int bookId) throws Exception {
+        Book book = new Book();
         try(BookDa bookDa = new BookDa()){
-
+            book = bookDa.getBook(bookId).get();
         }
-        return null;
+        return book;
     }
 
     public static List<Book>  getAllBooks() throws Exception {
@@ -46,6 +47,5 @@ public class BookBl {
 //                .map((o) -> Optional.of(o)).collect(Collectors.toList());
 
         return books;
-
     }
 }

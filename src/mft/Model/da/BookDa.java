@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class BookDa implements AutoCloseable {
 
@@ -56,6 +57,27 @@ public class BookDa implements AutoCloseable {
         preparedStatement.setString(8, book.getBDESCRIPTION());
         preparedStatement.setInt(9,book.getBOOK_ID());
         preparedStatement.executeUpdate();
+    }
+
+    public Optional<Book> getBook(int bookId) throws SQLException {
+        connection = JdbcProvider.getInstance().getConnection();
+        preparedStatement = connection.prepareStatement("SELECT * FROM BOOK WHERE Book_Id = ?");
+        preparedStatement.setInt(1,bookId);
+        resultSet = preparedStatement.executeQuery();
+        Book book = new Book();
+        if(resultSet.next()) {
+
+            book.setTITLE(resultSet.getString("TITLE"));
+            book.setEDITION(resultSet.getString("EDITION"));
+            book.setAUTHOR(resultSet.getString("AUTHOR"));
+            book.setGENRE(resultSet.getString("GENRE"));
+            book.setPUBLISHER(resultSet.getString("PUBLISHER"));
+            book.setPUBLISHED_YEAR(resultSet.getString("PUBLISHED_YEAR"));
+            book.setAVAILABLE_COPIES(resultSet.getInt("AVAILABLE_COPIES"));
+            book.setBDESCRIPTION(resultSet.getString("BDESCRIPTION"));
+            book.setBOOK_ID(resultSet.getInt("Book_Id"));
+        }
+        return Optional.of(book);
     }
 
     public List<Book> getAllBooks() throws SQLException {
