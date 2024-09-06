@@ -10,7 +10,7 @@
         <columns>
           <TableColumn fx:id="firstnameCol" prefWidth="111.0" text="First Name" />
           <TableColumn prefWidth="114.0" text="Last Name" />
-            <TableColumn prefWidth="120.0" text="Phone Number" />
+            <TableColumn fx:id="memberTbl" prefWidth="120.0" text="Phone Number" />
             <TableColumn minWidth="150.0" prefWidth="75.0" text="Email" />
             <TableColumn prefWidth="250.0" text="Address" />
         </columns>

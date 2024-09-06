@@ -9,6 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lombok.SneakyThrows;
 import mft.Model.bl.MemberBl;
+import mft.Model.entity.Book;
 import mft.Model.entity.Member;
 
 import java.net.URL;
@@ -21,24 +22,26 @@ public class MemberListController implements Initializable {
     private TableColumn<Member, String> firstnameCol;
      //       ,phonenumberCol, emailCol, addressCol;
 
+
+
     @FXML
-    private TableView<Member> memberTable;
+    private TableView<Member> memberTbl;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        refreshTbl();
+        //refreshTbl();
 
     }
     @SneakyThrows
     public void refreshTbl() {
         List<Member> memberList = MemberBl.getAllMembers();
         ObservableList<Member> observableList = FXCollections.observableList(memberList);
-        firstnameCol.setCellValueFactory(new PropertyValueFactory<>("FIRSTNAME"));
+        //firstnameCol.setCellValueFactory(new PropertyValueFactory<>("FIRSTNAME"));
         //lastnameCol.setCellValueFactory(new PropertyValueFactory<>("lastname"));
 //        phonenumberCol.setCellValueFactory(new PropertyValueFactory<>("phonenumber"));
 //        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
 //        addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
-        memberTable.setItems(observableList);
+        memberTbl.setItems(observableList);
 
     }
 }
