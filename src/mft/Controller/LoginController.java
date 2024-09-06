@@ -41,7 +41,7 @@ public class LoginController implements Initializable {
                     alert.showAndWait();
 
                     Stage stage = new Stage();
-                    Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/View/Book.fxml"))));
+                    Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/View/Member.fxml"))));
                     stage.setTitle("Panel");
                     stage.setScene(scene);
                     stage.show();
