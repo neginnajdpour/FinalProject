@@ -12,7 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class MemberDa {
+public class MemberDa implements AutoCloseable {
+
 
     private Connection connection;
     private PreparedStatement preparedStatement;
@@ -111,5 +112,11 @@ public class MemberDa {
         }
 
         return members;
+    }
+
+    @Override
+    public void close() throws Exception {
+        preparedStatement.close();
+        connection.close();
     }
 }
