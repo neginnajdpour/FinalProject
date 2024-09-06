@@ -1,8 +1,10 @@
 package mft.test;
 
 import mft.Model.bl.BookBl;
+import mft.Model.bl.MemberBl;
 import mft.Model.bl.ProfileBl;
 import mft.Model.entity.Book;
+import mft.Model.entity.Member;
 import mft.Model.entity.Profile;
 import mft.Model.tools.JdbcProvider;
 
@@ -44,6 +46,11 @@ public class test {
 
 //        java.util.List<Optional<Book>> optionalList = BookBl.getAllBooks();
 //        for(Optional<Book> leave : optionalList) System.out.println(leave);
+
+          List optionalList = (List) MemberBl.getAllMembers();
+          for(Member leave : optionalList)
+              System.out.println(leave);
+
 
     }
 }
