@@ -3,6 +3,7 @@ package mft.test;
 import mft.Model.bl.BookBl;
 import mft.Model.bl.MemberBl;
 import mft.Model.bl.ProfileBl;
+import mft.Model.da.MemberDa;
 import mft.Model.entity.Book;
 import mft.Model.entity.Member;
 import mft.Model.entity.Profile;
@@ -10,8 +11,11 @@ import mft.Model.tools.JdbcProvider;
 
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import static java.util.Arrays.stream;
 
 public class test {
     public static <List> void main(String[] args) throws Exception {
@@ -44,12 +48,16 @@ public class test {
 //        System.out.println(book.toString());
 //        BookBl.update(book);
 
-//        java.util.List<Optional<Book>> optionalList = BookBl.getAllBooks();
-//        for(Optional<Book> leave : optionalList) System.out.println(leave);
+//        java.util.List<Book> optionalList = BookBl.getAllBooks();
+//        for(Book leave : optionalList) System.out.println(leave);
 
-          List optionalList = (List) MemberBl.getAllMembers();
-          for(Member leave : optionalList)
-              System.out.println(leave);
+//        Member member = new Member();
+//        member = MemberBl.getMember(1);
+//        System.out.println(member.toString());
+
+        java.util.List<Member> optionalList = MemberBl.getAllMembers();
+        for(Member leave : optionalList) System.out.println(leave);
+
 
 
     }

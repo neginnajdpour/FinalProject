@@ -110,6 +110,7 @@ public class MemberDa implements AutoCloseable {
             member.setState(resultSet.getString("State"));
             member.setCountry(resultSet.getString("Country"));
             member.setPostalcode(resultSet.getString("Postalcode"));
+            members.add(member);
         }
 
         return members;
