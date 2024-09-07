@@ -19,8 +19,8 @@ import java.util.ResourceBundle;
 public class MemberListController implements Initializable {
 
     @FXML
-    private TableColumn<Member, String> firstnameCol;
-     //       ,phonenumberCol, emailCol, addressCol;
+    private TableColumn<Member, String> firstnameCol , lastnameCol , phonenumberCol, emailCol, addressCol;
+     //       , emailCol;
 
 
 
@@ -29,19 +29,25 @@ public class MemberListController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //refreshTbl();
+
+        refreshTbl();
 
     }
     @SneakyThrows
     public void refreshTbl() {
-        List<Member> memberList = MemberBl.getAllMembers();
-        ObservableList<Member> observableList = FXCollections.observableList(memberList);
-        //firstnameCol.setCellValueFactory(new PropertyValueFactory<>("FIRSTNAME"));
-        //lastnameCol.setCellValueFactory(new PropertyValueFactory<>("lastname"));
-//        phonenumberCol.setCellValueFactory(new PropertyValueFactory<>("phonenumber"));
-//        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
-//        addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
-        memberTbl.setItems(observableList);
+       List<Member> memberList = MemberBl.getAllMembers();
+       ObservableList<Member> observableList = FXCollections.observableList(memberList);
+       firstnameCol.setCellValueFactory(new PropertyValueFactory<>("FirstName"));
+       lastnameCol.setCellValueFactory(new PropertyValueFactory<>("LastName"));
+       phonenumberCol.setCellValueFactory(new PropertyValueFactory<>("PhoneNumber"));
+       emailCol.setCellValueFactory(new PropertyValueFactory<>("Email"));
+       addressCol.setCellValueFactory(new PropertyValueFactory<>("AddressLine1"));
+       //addressCol.setCellValueFactory("hello");
+
+
+       memberTbl.setItems(observableList);
+
+
 
     }
 }
