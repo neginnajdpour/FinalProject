@@ -37,6 +37,15 @@ public class BookBl {
         return book;
     }
 
+    public static Book getBookByTitle(String bookTitle) throws Exception {
+        Book book = new Book();
+        try(BookDa bookDa = new BookDa()){
+            book = bookDa.getBookByTitle(bookTitle).get();
+        }
+        return book;
+    }
+
+
     public static List<Book>  getAllBooks() throws Exception {
         List<Book> books = new ArrayList<>();
 
