@@ -6,9 +6,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mft.Controller.BookSearchController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mft.Controller.BookSearchController">
    <children>
-      <TableView fx:id="memberTbl" layoutX="29.0" layoutY="124.0" prefHeight="318.0" prefWidth="737.0">
+      <TableView fx:id="bookTbl" layoutX="29.0" layoutY="124.0" prefHeight="318.0" prefWidth="737.0">
         <columns>
           <TableColumn fx:id="titleCol" prefWidth="111.0" text="Title" />
           <TableColumn fx:id="editionCol" prefWidth="114.0" text="Edition" />

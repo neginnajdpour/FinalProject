@@ -82,8 +82,8 @@ public class BookDa implements AutoCloseable {
 
     public List<Book> getBooksByTitle(String bookTitle) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("SELECT * FROM BOOK WHERE title = ?");
-        preparedStatement.setString(1,bookTitle);
+        preparedStatement = connection.prepareStatement("SELECT * FROM BOOK WHERE title like ? ");
+        preparedStatement.setString(1, "%" + bookTitle + "%");
         resultSet = preparedStatement.executeQuery();
         List<Book> books = new ArrayList<>();
         if(resultSet.next()) {
