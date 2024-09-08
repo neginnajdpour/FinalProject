@@ -12,13 +12,15 @@ public class MainPageController implements Initializable {
 
     
     @FXML
-    private MenuItem addresourceMenu;
+    private MenuItem addResourceMenu , resourceListMenu;
 
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+
 
     }
 }

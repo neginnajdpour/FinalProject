@@ -21,7 +21,7 @@
                <children>
                   <MenuButton mnemonicParsing="false" prefHeight="31.0" prefWidth="170.0" text="Resources">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Add Resource" />
+                      <MenuItem fx:id="addResourceMenu" mnemonicParsing="false" text="Add Resource" />
                       <MenuItem mnemonicParsing="false" text="Resource List" />
                     </items>
                   </MenuButton>
