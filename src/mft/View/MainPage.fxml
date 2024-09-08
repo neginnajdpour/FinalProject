@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mft.Controller.MainPageController">
   <children>
     <AnchorPane fx:id="MainPage" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
@@ -17,28 +17,26 @@
             <Font size="18.0" />
           </font>
         </Label>
-            <HBox layoutY="-1.0" prefHeight="27.0" prefWidth="489.0">
-               <children>
-                  <MenuButton mnemonicParsing="false" prefHeight="31.0" prefWidth="170.0" text="Resources">
-                    <items>
-                      <MenuItem fx:id="addResourceMenu" mnemonicParsing="false" text="Add Resource" />
-                      <MenuItem mnemonicParsing="false" text="Resource List" />
-                    </items>
-                  </MenuButton>
-                  <MenuButton mnemonicParsing="false" prefHeight="31.0" prefWidth="170.0" text="Members">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Add Member" />
-                        <MenuItem mnemonicParsing="false" text="Members" />
-                     </items>
-                  </MenuButton>
-                  <MenuButton mnemonicParsing="false" prefHeight="31.0" prefWidth="170.0" text="Requests">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
-               </children>
-            </HBox>
+            <MenuBar layoutY="-2.0" prefHeight="27.0" prefWidth="646.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Resources">
+                  <items>
+                        <MenuItem fx:id="AddResourceMenu" mnemonicParsing="false" onAction="#handleAddResourceAction" text="AddResource" />
+                    <MenuItem fx:id="MiClose" mnemonicParsing="false" onAction="#handleMiClose" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Members">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#handleMiDelete" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Requests">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#handleMIAbout" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
       </children>
     </AnchorPane>
   </children>
