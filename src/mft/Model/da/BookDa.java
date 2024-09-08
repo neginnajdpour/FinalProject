@@ -25,15 +25,17 @@ public class BookDa implements AutoCloseable {
     }
     public void save(Book book) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("INSERT INTO BOOK(TITLE , EDITION , AUTHOR , GENRE , PUBLISHER , PUBLSHED_YEAR , AVAILABLE_COPIES, BDESCRIPTION) VALUES (?,?,?,?,?,?,?,?)");
-        preparedStatement.setString(1,book.getTITLE());
-        preparedStatement.setString(2, book.getEDITION());
-        preparedStatement.setString(3,book.getAUTHOR());
-        preparedStatement.setString(4, book.getGENRE());
-        preparedStatement.setString(5, book.getPUBLISHER());
-        preparedStatement.setString(6, book.getPUBLISHED_YEAR());
-        preparedStatement.setInt(7,book.getAVAILABLE_COPIES());
-        preparedStatement.setString(8, book.getBDESCRIPTION());
+        preparedStatement = connection.prepareStatement("INSERT INTO BOOK( ISBN , RESOURCE_TYPE , TITLE , EDITION , AUTHOR , CATEGOTY , PUBLISHER , LANGUAGE , QUANTITY , BDESCRIPTION) VALUES (?,?,?,?,?,?,?,?,?,?)");
+        preparedStatement.setString(1, book.getISBN());
+        preparedStatement.setString(2, book.getRESOURCE_TYPE());
+        preparedStatement.setString(3,book.getTITLE());
+        preparedStatement.setString(4, book.getEDITION());
+        preparedStatement.setString(5,book.getAUTHOR());
+        preparedStatement.setString(6, book.getCATEGORY());
+        preparedStatement.setString(7, book.getPUBLISHER());
+        preparedStatement.setString(8, book.getLANGUAGE());
+        preparedStatement.setInt(9,book.getQUANTITY());
+        preparedStatement.setString(10, book.getDESCRIPTION());
         preparedStatement.executeUpdate();
     }
 
@@ -46,16 +48,18 @@ public class BookDa implements AutoCloseable {
 
     public void update(Book book) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("UPDATE BOOK SET TITLE = ? , EDITION = ? , AUTHOR = ? , GENRE = ? , PUBLISHER = ? , PUBLISHED_YEAR = ? , AVAILABLE_COPIES = ? , BDESCRIPTION = ? WHERE Book_Id = ?");
-        preparedStatement.setString(1,book.getTITLE());
-        preparedStatement.setString(2, book.getEDITION());
-        preparedStatement.setString(3,book.getAUTHOR());
-        preparedStatement.setString(4, book.getGENRE());
-        preparedStatement.setString(5, book.getPUBLISHER());
-        preparedStatement.setString(6, book.getPUBLISHED_YEAR());
-        preparedStatement.setInt(7,book.getAVAILABLE_COPIES());
-        preparedStatement.setString(8, book.getBDESCRIPTION());
-        preparedStatement.setInt(9,book.getBOOK_ID());
+        preparedStatement = connection.prepareStatement("UPDATE BOOK SET ISBN = ? ,RESOURCE_TYPE = ? , TITLE = ? , EDITION = ? , AUTHOR = ? , CATEGORY = ? , PUBLISHER = ? , LANGUAGE = ? , QUANTITY = ? , DESCRIPTION = ? WHERE Book_Id = ?");
+        preparedStatement.setString(1, book.getISBN());
+        preparedStatement.setString(2, book.getRESOURCE_TYPE());
+        preparedStatement.setString(3,book.getTITLE());
+        preparedStatement.setString(4, book.getEDITION());
+        preparedStatement.setString(5,book.getAUTHOR());
+        preparedStatement.setString(6, book.getCATEGORY());
+        preparedStatement.setString(7, book.getPUBLISHER());
+        preparedStatement.setString(8, book.getLANGUAGE());
+        preparedStatement.setInt(9,book.getQUANTITY());
+        preparedStatement.setString(10, book.getDESCRIPTION());
+        preparedStatement.setInt(11,book.getBOOK_ID());
         preparedStatement.executeUpdate();
     }
 
@@ -66,15 +70,16 @@ public class BookDa implements AutoCloseable {
         resultSet = preparedStatement.executeQuery();
         Book book = new Book();
         if(resultSet.next()) {
-
+            book.setISBN(resultSet.getString("ISBN"));
+            book.setRESOURCE_TYPE(resultSet.getString("RESOURCE_TYPE"));
             book.setTITLE(resultSet.getString("TITLE"));
             book.setEDITION(resultSet.getString("EDITION"));
             book.setAUTHOR(resultSet.getString("AUTHOR"));
-            book.setGENRE(resultSet.getString("GENRE"));
+            book.setCATEGORY(resultSet.getString("CATEGORY"));
             book.setPUBLISHER(resultSet.getString("PUBLISHER"));
-            book.setPUBLISHED_YEAR(resultSet.getString("PUBLISHED_YEAR"));
-            book.setAVAILABLE_COPIES(resultSet.getInt("AVAILABLE_COPIES"));
-            book.setBDESCRIPTION(resultSet.getString("BDESCRIPTION"));
+            book.setLANGUAGE(resultSet.getString("LANGUAGE"));
+            book.setQUANTITY(resultSet.getInt("QUANTITY"));
+            book.setDESCRIPTION(resultSet.getString("DESCRIPTION"));
             book.setBOOK_ID(resultSet.getInt("Book_Id"));
         }
         return Optional.of(book);
@@ -89,15 +94,16 @@ public class BookDa implements AutoCloseable {
         if(resultSet.next()) {
             Book book = new Book();
             book.setBOOK_ID(resultSet.getInt("Book_Id"));
+            book.setISBN(resultSet.getString("ISBN"));
+            book.setRESOURCE_TYPE(resultSet.getString("RESOURCE_TYPE"));
             book.setTITLE(resultSet.getString("TITLE"));
             book.setEDITION(resultSet.getString("EDITION"));
             book.setAUTHOR(resultSet.getString("AUTHOR"));
-            book.setGENRE(resultSet.getString("GENRE"));
+            book.setCATEGORY(resultSet.getString("CATEGORY"));
             book.setPUBLISHER(resultSet.getString("PUBLISHER"));
-            book.setPUBLISHED_YEAR(resultSet.getString("PUBLISHED_YEAR"));
-            book.setAVAILABLE_COPIES(resultSet.getInt("AVAILABLE_COPIES"));
-            book.setBDESCRIPTION(resultSet.getString("BDESCRIPTION"));
-            book.setBOOK_ID(resultSet.getInt("Book_Id"));
+            book.setLANGUAGE(resultSet.getString("LANGUAGE"));
+            book.setQUANTITY(resultSet.getInt("QUANTITY"));
+            book.setDESCRIPTION(resultSet.getString("DESCRIPTION"));
             books.add(book);
         }
         return books;
@@ -114,13 +120,16 @@ public class BookDa implements AutoCloseable {
         while (resultSet.next()) {
             Book book = Book
                     .builder()
+                    .ISBN(resultSet.getString("ISBN"))
+                    .RESOURCE_TYPE(resultSet.getString("RESOURCE_TYPE"))
                     .TITLE(resultSet.getString("TITLE"))
                     .EDITION(resultSet.getString("EDITION"))
                     .AUTHOR(resultSet.getString("AUTHOR"))
-                    .GENRE(resultSet.getString("PUBLISHER"))
-                    .PUBLISHED_YEAR(resultSet.getString("PUBLISHED_YEAR"))
-                    .AVAILABLE_COPIES((resultSet.getInt("AVAILABLE_COPIES")))
-                    .BDESCRIPTION(resultSet.getString("BDESCRIPTION"))
+                    .CATEGORY(resultSet.getString("CATEGORY"))
+                    .PUBLISHER(resultSet.getString("PUBLISHER"))
+                    .LANGUAGE(resultSet.getString("LANGUAGE"))
+                    .QUANTITY(resultSet.getInt("QUANTITY"))
+                    .DESCRIPTION(resultSet.getString("DESCRIPTION"))
                     .build();
 
             books.add(book);

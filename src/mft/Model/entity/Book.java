@@ -13,14 +13,16 @@ import lombok.experimental.SuperBuilder;
 
 public class Book {
     private int BOOK_ID;
+    private String ISBN;
+    private String RESOURCE_TYPE;
     private String TITLE;
     private String EDITION;
     private String AUTHOR;
-    private String GENRE;
+    private String CATEGORY;
     private String PUBLISHER;
-    private String PUBLISHED_YEAR;
-    private int AVAILABLE_COPIES;
-    private String BDESCRIPTION;
+    private String LANGUAGE;
+    private int QUANTITY;
+    private String DESCRIPTION;
 
     @Override
     public String toString() {
