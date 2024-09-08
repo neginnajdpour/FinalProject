@@ -80,13 +80,14 @@ public class BookDa implements AutoCloseable {
         return Optional.of(book);
     }
 
-    public Optional<Book> getBookByTitle(String bookTitle) throws SQLException {
+    public List<Book> getBooksByTitle(String bookTitle) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
         preparedStatement = connection.prepareStatement("SELECT * FROM BOOK WHERE title = ?");
         preparedStatement.setString(1,bookTitle);
         resultSet = preparedStatement.executeQuery();
-        Book book = new Book();
+        List<Book> books = new ArrayList<>();
         if(resultSet.next()) {
+            Book book = new Book();
             book.setBOOK_ID(resultSet.getInt("Book_Id"));
             book.setTITLE(resultSet.getString("TITLE"));
             book.setEDITION(resultSet.getString("EDITION"));
@@ -96,8 +97,10 @@ public class BookDa implements AutoCloseable {
             book.setPUBLISHED_YEAR(resultSet.getString("PUBLISHED_YEAR"));
             book.setAVAILABLE_COPIES(resultSet.getInt("AVAILABLE_COPIES"));
             book.setBDESCRIPTION(resultSet.getString("BDESCRIPTION"));
+            book.setBOOK_ID(resultSet.getInt("Book_Id"));
+            books.add(book);
         }
-        return Optional.of(book);
+        return books;
     }
 
 

@@ -37,13 +37,14 @@ public class BookBl {
         return book;
     }
 
-    public static Book getBookByTitle(String bookTitle) throws Exception {
-        Book book = new Book();
+    public static List<Book> getBooksByTitle(String bookTitle) throws Exception {
+        List<Book> books = new ArrayList<>();
         try(BookDa bookDa = new BookDa()){
-            book = bookDa.getBookByTitle(bookTitle).get();
+            books = bookDa.getBooksByTitle(bookTitle);
         }
-        return book;
-    }
+        return books;
+    };
+
 
 
     public static List<Book>  getAllBooks() throws Exception {
