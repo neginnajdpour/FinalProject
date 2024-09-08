@@ -48,15 +48,15 @@ public class test {
 //        System.out.println(book.toString());
 //        BookBl.update(book);
 
-//        java.util.List<Book> optionalList = BookBl.getAllBooks();
-//        for(Book leave : optionalList) System.out.println(leave);
+        java.util.List<Book> optionalList = BookBl.getAllBooks();
+        for(Book leave : optionalList) System.out.println(leave);
 
 //        Member member = new Member();
 //        member = MemberBl.getMember(1);
 //        System.out.println(member.toString());
 
-        java.util.List<Member> optionalList = MemberBl.getAllMembers();
-        for(Member leave : optionalList) System.out.println(leave);
+//        java.util.List<Member> optionalList = MemberBl.getAllMembers();
+//        for(Member leave : optionalList) System.out.println(leave);
 
 
 
