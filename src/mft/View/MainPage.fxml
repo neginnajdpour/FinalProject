@@ -22,7 +22,7 @@
                 <Menu mnemonicParsing="false" text="Resources">
                   <items>
                         <MenuItem fx:id="AddResourceMenu" mnemonicParsing="false" onAction="#handleAddResourceAction" text="AddResource" />
-                    <MenuItem fx:id="MiClose" mnemonicParsing="false" onAction="#handleMiClose" text="Close" />
+                    <MenuItem fx:id="MiClose" mnemonicParsing="false" text="Close" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Members">
