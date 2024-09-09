@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="574.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" >
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="574.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mft.Controller.BookController">
    <children>
       <GridPane layoutX="35.0" layoutY="40.0" prefHeight="505.0" prefWidth="480.0">
         <columnConstraints>
@@ -36,20 +36,21 @@
             <Label text="Publisher" GridPane.rowIndex="6" />
             <TextField fx:id="titleTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="publisherTxt" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <ComboBox fx:id="categoryCmb" prefHeight="31.0" prefWidth="202.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ComboBox fx:id="categoryCmb" prefHeight="31.0" prefWidth="265.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label text="Author" GridPane.rowIndex="4" />
             <TextField fx:id="authorTxt" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label text="Language" GridPane.rowIndex="7" />
-            <TextField fx:id="yearTxt" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="languageTxt" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <Label text="Description" GridPane.rowIndex="9" />
             <TextArea fx:id="descriptionTxt" prefHeight="102.0" prefWidth="178.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
             <Label text="ISBN/Barcode" />
             <Label text="Resource Type" GridPane.rowIndex="1" />
             <Label text="Edition" GridPane.rowIndex="3" />
             <Label text="Quantity" GridPane.rowIndex="8" />
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ComboBox prefHeight="31.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="isbnTxt" GridPane.columnIndex="1" />
+            <TextField fx:id="editionTxt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox prefHeight="31.0" prefWidth="276.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="quantityTxt" GridPane.columnIndex="1" GridPane.rowIndex="8" />
          </children>
       </GridPane>
       <HBox layoutX="244.0" layoutY="525.0" prefHeight="31.0" prefWidth="271.0" />

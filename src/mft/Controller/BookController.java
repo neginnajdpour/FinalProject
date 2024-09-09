@@ -21,28 +21,11 @@ import java.util.ResourceBundle;
 
 public class BookController implements Initializable {
     @FXML
-    private TextField titleTxt;
+    private TextField isbnTxt, titleTxt, editionTxt, authorTxt, publisherTxt, languageTxt, quantityTxt, descriptionTxt;
+
 
     @FXML
-    private TextField editionTxt;
-
-    @FXML
-    private TextField authorTxt;
-
-    @FXML
-    private TextField publisherTxt;
-
-    @FXML
-    private TextField yearTxt;
-
-    @FXML
-    private TextField copiesTxt;
-
-    @FXML
-    private TextField descriptionTxt;
-
-    @FXML
-    private ComboBox genreCmb;
+    private ComboBox resourcetypeCmb , categoryCmb;
 
     @FXML
     private TableView<Book> bookTbl;
@@ -55,7 +38,7 @@ public class BookController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         for (Genre genre : Genre.values()) {
-            genreCmb.getItems().add(genre);
+            categoryCmb.getItems().add(genre);
         }
 
         refreshTbl();
