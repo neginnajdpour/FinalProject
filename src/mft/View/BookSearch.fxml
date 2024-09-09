@@ -17,7 +17,7 @@
             <TableColumn fx:id="publisherCol" prefWidth="250.0" text="Publisher" />
         </columns>
       </TableView>
-      <TextField fx:id="titleTxt" layoutX="32.0" layoutY="52.0" prefHeight="31.0" prefWidth="256.0" promptText="Enter Title" />
+      <TextField fx:id="titleeTxt" layoutX="32.0" layoutY="52.0" prefHeight="31.0" prefWidth="256.0" promptText="Enter Title" />
       <Button fx:id="searchBtn" layoutX="336.0" layoutY="52.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="128.0" text="Search" />
    </children>
 </Pane>

@@ -36,9 +36,21 @@ public class test {
 //            throw new RuntimeException(e);
 //        }
 
-//        Book book = Book.builder().TITLE("prgramming with java").AUTHOR("deitel & deitel").AVAILABLE_COPIES(1).EDITION("forth").GENRE("educational").build();
-//        System.out.println(book.toString());
-//        BookBl.save(book);
+        Book book = Book
+                .builder()
+                .ISBN("456")
+                .RESOURCE_TYPE("book")
+                .TITLE("prgramming with java")
+                .EDITION("forth")
+                .AUTHOR("deitel & deitel")
+                .CATEGORY("educational")
+                .PUBLISHER("EDIT")
+                .LANGUAGE("persian")
+                .QUANTITY(1)
+                .DESCRIPTION("ASDSAKDHAS")
+                .build();
+        System.out.println(book.toString());
+        BookBl.save(book);
 
 //          Book book = Book.builder().TITLE("prgramming with java").build();
 //          System.out.println(book.toString());
@@ -48,8 +60,8 @@ public class test {
 //        System.out.println(book.toString());
 //        BookBl.update(book);
 
-        java.util.List<Book> optionalList = BookBl.getAllBooks();
-        for(Book leave : optionalList) System.out.println(leave);
+//        java.util.List<Book> optionalList = BookBl.getAllBooks();
+//        for(Book leave : optionalList) System.out.println(leave);
 
 //        Member member = new Member();
 //        member = MemberBl.getMember(1);

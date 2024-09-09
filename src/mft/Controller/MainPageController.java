@@ -32,20 +32,7 @@ public class MainPageController implements Initializable {
         stage.show();
     }
 
-    @FXML
-    private void handleMiClose(ActionEvent event) {
-        System.out.println("handleMiClose");
-    }
 
-    @FXML
-    private void handleMiDelete(ActionEvent event) {
-        System.out.println("handleMiDelete");
-    }
-
-    @FXML
-    private void handleMIAbout(ActionEvent event) {
-        System.out.println("handleMIAbout");
-    }
 
 
 

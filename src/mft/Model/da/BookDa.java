@@ -25,7 +25,7 @@ public class BookDa implements AutoCloseable {
     }
     public void save(Book book) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("INSERT INTO BOOK( ISBN , RESOURCE_TYPE , TITLE , EDITION , AUTHOR , CATEGOTY , PUBLISHER , LANGUAGE , QUANTITY , BDESCRIPTION) VALUES (?,?,?,?,?,?,?,?,?,?)");
+        preparedStatement = connection.prepareStatement("INSERT INTO BOOK( ISBN , RESOURCE_TYPE , TITLE , EDITION , AUTHOR , CATEGORY , PUBLISHER , LANGUAGE , QUANTITY , DESCRIPTION) VALUES (?,?,?,?,?,?,?,?,?,?)");
         preparedStatement.setString(1, book.getISBN());
         preparedStatement.setString(2, book.getRESOURCE_TYPE());
         preparedStatement.setString(3,book.getTITLE());
