@@ -32,6 +32,17 @@ public class MainPageController implements Initializable {
         stage.show();
     }
 
+    @FXML
+    private void handleAllResourcesAction(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/View/BookSearch.fxml"))));
+        stage.setTitle("Panel");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+
 
 
 

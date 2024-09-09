@@ -23,7 +23,7 @@ public class BookSearchController implements Initializable {
     private TextField titleTxt;
 
     @FXML
-    private TableColumn<Book , String> titleCol , editionCol , authorCol, genreCol , publisherCol ;
+    private TableColumn<Book , String> titleCol ,editionCol, authorCol, languageCol;
 
     @FXML
     private TableView<Book> bookTbl;
@@ -37,31 +37,22 @@ public class BookSearchController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
-        searchBtn.setOnAction(event -> {
-
-            String title = titleTxt.getText();
-
-            try {
-                refreshBookTbl(title);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-
-
-        });
+        try {
+            List<Book> bookList = BookBl.getAllBooks();
+            refreshBookTbl(bookList);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
 
-    public void refreshBookTbl(String bookTitle) throws Exception {
-        List<Book> bookList = BookBl.getBooksByTitle(bookTitle);
+    public void refreshBookTbl(List<Book> bookList) throws Exception {
         ObservableList<Book> observableList = FXCollections.observableList(bookList);
         titleCol.setCellValueFactory(new PropertyValueFactory<>("TITLE"));
-        editionCol.setCellValueFactory(new PropertyValueFactory<>("EDITION"));
         authorCol.setCellValueFactory(new PropertyValueFactory<>("AUTHOR"));
-        genreCol.setCellValueFactory(new PropertyValueFactory<>("GENRE"));
-        publisherCol.setCellValueFactory(new PropertyValueFactory<>("PUBLISHER"));
+        editionCol.setCellValueFactory(new PropertyValueFactory<>("EDITION"));
+        languageCol.setCellValueFactory(new PropertyValueFactory<>("LANGUAGE"));
         bookTbl.setItems(observableList);
     }
 }
