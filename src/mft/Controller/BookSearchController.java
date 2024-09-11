@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lombok.SneakyThrows;
+import mft.Model.entity.Resource;
 
 import java.net.URL;
 import java.util.List;
@@ -18,10 +19,10 @@ public class BookSearchController implements Initializable {
     private TextField titleTxt;
 
     @FXML
-    private TableColumn<Book , String> titleCol ,editionCol, authorCol, languageCol;
+    private TableColumn<Resource, String> titleCol ,editionCol, authorCol, languageCol;
 
     @FXML
-    private TableView<Book> bookTbl;
+    private TableView<Resource> bookTbl;
 
     @FXML
     private Button searchBtn;
@@ -33,15 +34,15 @@ public class BookSearchController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
-            List<Book> bookList = BookBl.getAllBooks();
-            refreshBookTbl(bookList);
+            List<Resource> resourceList = ResourceBl.getAllBooks();
+            refreshBookTbl(resourceList);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
         bookTbl.setOnMouseReleased(event -> {
-            Book book = bookTbl.getSelectionModel().getSelectedItem();
-            if (book != null) {
+            Resource resource = bookTbl.getSelectionModel().getSelectedItem();
+            if (resource != null) {
 
             }
         });
@@ -50,8 +51,8 @@ public class BookSearchController implements Initializable {
     }
 
 
-    public void refreshBookTbl(List<Book> bookList) throws Exception {
-        ObservableList<Book> observableList = FXCollections.observableList(bookList);
+    public void refreshBookTbl(List<Resource> bookList) throws Exception {
+        ObservableList<Resource> observableList = FXCollections.observableList(bookList);
         titleCol.setCellValueFactory(new PropertyValueFactory<>("TITLE"));
         authorCol.setCellValueFactory(new PropertyValueFactory<>("AUTHOR"));
         editionCol.setCellValueFactory(new PropertyValueFactory<>("EDITION"));

@@ -66,7 +66,7 @@ public class ResourceDa {
     public Optional<Resource> getResource(int resourceId) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
         preparedStatement = connection.prepareStatement("SELECT * FROM RESOURCE WHERE Resource_Id = ?");
-        preparedStatement.setInt(1,bookId);
+        preparedStatement.setInt(1,resourceId);
         resultSet = preparedStatement.executeQuery();
         Resource resource = new Resource();
         if(resultSet.next()) {

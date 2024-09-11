@@ -1,5 +1,7 @@
 package mft.test;
 
+import mft.Model.bl.ResourceBl;
+import mft.Model.entity.Resource;
 import mft.Model.tools.JdbcProvider;
 
 
@@ -24,7 +26,7 @@ public class test {
 //            throw new RuntimeException(e);
 //        }
 
-        Book book = Book
+        Resource resource = Resource
                 .builder()
                 .ISBN("456")
                 .RESOURCE_TYPE("book")
@@ -37,8 +39,8 @@ public class test {
                 .QUANTITY(1)
                 .DESCRIPTION("ASDSAKDHAS")
                 .build();
-        System.out.println(book.toString());
-        BookBl.save(book);
+        System.out.println(resource.toString());
+        ResourceBl.save(resource);
 
 //          Book book = Book.builder().TITLE("prgramming with java").build();
 //          System.out.println(book.toString());
