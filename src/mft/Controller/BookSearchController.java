@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lombok.SneakyThrows;
+import mft.Model.bl.ResourceBl;
 import mft.Model.entity.Resource;
 
 import java.net.URL;
@@ -34,7 +35,7 @@ public class BookSearchController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
-            List<Resource> resourceList = ResourceBl.getAllBooks();
+            List<Resource> resourceList = ResourceBl.getAllResources();
             refreshBookTbl(resourceList);
         } catch (Exception e) {
             throw new RuntimeException(e);

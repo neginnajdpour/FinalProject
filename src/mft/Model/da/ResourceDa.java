@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ResourceDa {
+public class ResourceDa implements AutoCloseable {
 
     private Connection connection;
     private PreparedStatement preparedStatement;
