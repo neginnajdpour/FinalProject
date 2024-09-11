@@ -17,10 +17,14 @@ import java.util.ResourceBundle;
 public class BookSearchController implements Initializable {
 
     @FXML
-    private TextField titleTxt;
+    private Label resourceIdLbl, resourceTypeLbl, categoryLbl, publisherNameLbl, quantityLbl;
+
 
     @FXML
     private TableColumn<Resource, String> titleCol ,editionCol, authorCol, languageCol;
+
+    @FXML
+    private TableView<Resource> resourcesTable;
 
     @FXML
     private TableView<Resource> bookTbl;
@@ -44,6 +48,7 @@ public class BookSearchController implements Initializable {
         bookTbl.setOnMouseReleased(event -> {
             Resource resource = bookTbl.getSelectionModel().getSelectedItem();
             if (resource != null) {
+
 
             }
         });
