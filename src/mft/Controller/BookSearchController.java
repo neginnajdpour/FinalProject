@@ -48,8 +48,11 @@ public class BookSearchController implements Initializable {
         bookTbl.setOnMouseReleased(event -> {
             Resource resource = bookTbl.getSelectionModel().getSelectedItem();
             if (resource != null) {
-
-
+                resourceIdLbl.setText(String.valueOf(resource.getRESOURCE_ID()));
+                resourceTypeLbl.setText(resource.getRESOURCE_TYPE());
+                categoryLbl.setText(resource.getCATEGORY());
+                publisherNameLbl.setText(resource.getPUBLISHER());
+                quantityLbl.setText(String.valueOf(resource.getQUANTITY()));
             }
         });
 
