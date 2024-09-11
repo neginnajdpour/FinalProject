@@ -3,10 +3,11 @@ package mft.Controller;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import mft.Model.bl.MemberBl;
+import mft.Model.bl.ResourceBl;
 import mft.Model.da.FormState;
+import mft.Model.entity.Member;
 import mft.Model.entity.Resource;
 import mft.Model.entity.ResourceType;
 
@@ -24,6 +25,9 @@ public class ResourceUpdateController implements Initializable {
     @FXML
     private ComboBox resourcetypeCmb , categoryCmb, languageCmb;
 
+    @FXML
+    private Button updateBtn;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -40,6 +44,37 @@ public class ResourceUpdateController implements Initializable {
         resourcetypeCmb.getSelectionModel().select(resource.getRESOURCE_TYPE());
         categoryCmb.getSelectionModel().select(resource.getCATEGORY());
         languageCmb.getSelectionModel().select(resource.getLANGUAGE());
+
+        updateBtn.setOnAction(event -> {
+            try {
+                Resource book = Resource
+                        .builder()
+                        .ISBN(isbnTxt.getText())
+                        .RESOURCE_TYPE("Book")
+                        .TITLE(titleTxt.getText())
+                        .EDITION(editionTxt.getText())
+                        .AUTHOR(authorTxt.getText())
+                        .CATEGORY("Category.Classic")
+                        .PUBLISHER(publisherTxt.getText())
+                        .LANGUAGE("English")
+                        .QUANTITY(Integer.parseInt(quantityTxt.getText()))
+                        .DESCRIPTION(descriptionTxt.getText())
+                        .build();
+
+
+                ResourceBl.update(book);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText(null);
+                alert.setContentText("You have successfully updated the book !");
+                alert.showAndWait();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+
+
 
     }
 }

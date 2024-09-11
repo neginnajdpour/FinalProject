@@ -25,14 +25,14 @@ public class BookSearchController implements Initializable {
     @FXML
     private Label resourceIdLbl, resourceTypeLbl, categoryLbl, publisherNameLbl, quantityLbl;
 
+    @FXML
+    private TableColumn<Resource, Integer> resId;
 
     @FXML
     private TableColumn<Resource, String> titleCol ,editionCol, authorCol, languageCol;
 
     @FXML
     private TableView<Resource> resourceTbl;
-
-
 
     @FXML
     private Button editBtn;
@@ -64,6 +64,7 @@ public class BookSearchController implements Initializable {
         editBtn.setOnAction(event -> {
             Resource temp_resource = resourceTbl.getSelectionModel().getSelectedItem();
             FormState.resource = temp_resource;
+            System.out.println(FormState.resource);
             Stage stage = new Stage();
             Scene scene = null;
             try {
@@ -76,7 +77,7 @@ public class BookSearchController implements Initializable {
                 throw new RuntimeException(e);
             }
 
-            stage.setScene(scene);
+
 
         });
 

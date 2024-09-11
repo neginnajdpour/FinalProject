@@ -120,6 +120,7 @@ public class ResourceDa implements AutoCloseable {
         while (resultSet.next()) {
             Resource resource = Resource
                     .builder()
+                    .RESOURCE_ID(resultSet.getInt("RESOURCE_ID"))
                     .ISBN(resultSet.getString("ISBN"))
                     .RESOURCE_TYPE(resultSet.getString("RESOURCE_TYPE"))
                     .TITLE(resultSet.getString("TITLE"))
