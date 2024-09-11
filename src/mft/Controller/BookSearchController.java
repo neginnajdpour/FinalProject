@@ -7,13 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lombok.SneakyThrows;
-import mft.Model.bl.BookBl;
-import mft.Model.bl.MemberBl;
-import mft.Model.entity.Book;
-import mft.Model.entity.Member;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -43,6 +38,14 @@ public class BookSearchController implements Initializable {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+        bookTbl.setOnMouseReleased(event -> {
+            Book book = bookTbl.getSelectionModel().getSelectedItem();
+            if (book != null) {
+
+            }
+        });
+
 
     }
 

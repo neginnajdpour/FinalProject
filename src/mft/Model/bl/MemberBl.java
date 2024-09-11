@@ -1,13 +1,10 @@
 package mft.Model.bl;
 
-import mft.Model.da.BookDa;
 import mft.Model.da.MemberDa;
-import mft.Model.entity.Book;
 import mft.Model.entity.Member;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class MemberBl{
 

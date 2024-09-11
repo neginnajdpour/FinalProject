@@ -9,7 +9,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lombok.SneakyThrows;
 import mft.Model.bl.MemberBl;
-import mft.Model.entity.Book;
 import mft.Model.entity.Member;
 
 import java.net.URL;

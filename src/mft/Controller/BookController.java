@@ -1,7 +1,5 @@
 package mft.Controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -10,12 +8,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
 
-import lombok.SneakyThrows;
-import mft.Model.bl.BookBl;
-import mft.Model.bl.MemberBl;
+import mft.Model.bl.ResourceBl;
 import mft.Model.entity.*;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -52,7 +47,7 @@ public class BookController implements Initializable {
 
         saveBtn.setOnAction(event -> {
             try {
-                Book book = Book
+                Resource book = Resource
                         .builder()
                         .ISBN(isbnTxt.getText())
                         .RESOURCE_TYPE("Book")
@@ -67,7 +62,7 @@ public class BookController implements Initializable {
                         .build();
 
 
-                BookBl.save(book);
+                ResourceBl.save(book);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText(null);

@@ -1,19 +1,7 @@
 package mft.test;
 
-import mft.Model.bl.BookBl;
-import mft.Model.bl.MemberBl;
-import mft.Model.bl.ProfileBl;
-import mft.Model.da.MemberDa;
-import mft.Model.entity.Book;
-import mft.Model.entity.Member;
-import mft.Model.entity.Profile;
 import mft.Model.tools.JdbcProvider;
 
-
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 import static java.util.Arrays.stream;
 

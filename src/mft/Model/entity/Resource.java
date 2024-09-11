@@ -11,8 +11,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @ToString
 
-public class Book {
-    private int BOOK_ID;
+public class Resource {
+    private int RESOURCE_ID;
     private String ISBN;
     private String RESOURCE_TYPE;
     private String TITLE;
