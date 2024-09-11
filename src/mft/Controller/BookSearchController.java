@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lombok.SneakyThrows;
 import mft.Model.bl.ResourceBl;
+import mft.Model.da.FormState;
 import mft.Model.entity.Resource;
 
 import java.net.URL;
@@ -24,13 +25,12 @@ public class BookSearchController implements Initializable {
     private TableColumn<Resource, String> titleCol ,editionCol, authorCol, languageCol;
 
     @FXML
-    private TableView<Resource> resourcesTable;
+    private TableView<Resource> resourceTbl;
+
+
 
     @FXML
-    private TableView<Resource> bookTbl;
-
-    @FXML
-    private Button searchBtn;
+    private Button editBtn;
 
 
 
@@ -45,8 +45,8 @@ public class BookSearchController implements Initializable {
             throw new RuntimeException(e);
         }
 
-        bookTbl.setOnMouseReleased(event -> {
-            Resource resource = bookTbl.getSelectionModel().getSelectedItem();
+        resourceTbl.setOnMouseReleased(event -> {
+            Resource resource = resourceTbl.getSelectionModel().getSelectedItem();
             if (resource != null) {
                 resourceIdLbl.setText(String.valueOf(resource.getRESOURCE_ID()));
                 resourceTypeLbl.setText(resource.getRESOURCE_TYPE());
@@ -55,6 +55,14 @@ public class BookSearchController implements Initializable {
                 quantityLbl.setText(String.valueOf(resource.getQUANTITY()));
             }
         });
+
+        editBtn.setOnAction(event -> {
+            Resource temp_resource = resourceTbl.getSelectionModel().getSelectedItem();
+            FormState.resource = temp_resource;
+
+        });
+
+
 
 
     }
@@ -66,6 +74,6 @@ public class BookSearchController implements Initializable {
         authorCol.setCellValueFactory(new PropertyValueFactory<>("AUTHOR"));
         editionCol.setCellValueFactory(new PropertyValueFactory<>("EDITION"));
         languageCol.setCellValueFactory(new PropertyValueFactory<>("LANGUAGE"));
-        bookTbl.setItems(observableList);
+        resourceTbl.setItems(observableList);
     }
 }
