@@ -62,19 +62,20 @@ public class BookSearchController implements Initializable {
         });
 
         editBtn.setOnAction(event -> {
-            Resource temp_resource = resourceTbl.getSelectionModel().getSelectedItem();
-            FormState.resource = temp_resource;
-            System.out.println(FormState.resource);
-            Stage stage = new Stage();
-            Scene scene = null;
             try {
-                scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/View/ResourceUpdate.fxml"))));
+                Resource temp_resource = new Resource();
+                temp_resource= resourceTbl.getSelectionModel().getSelectedItem();
+                FormState.resource = temp_resource;
+                System.out.println(FormState.resource);
+                Stage stage = new Stage();
+                Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/View/ResourceUpdate.fxml"))));
                 stage.setTitle("Panel");
                 stage.setScene(scene);
                 stage.show();
-
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            }
+                catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR,e.getMessage());
+                alert.showAndWait();
             }
 
 

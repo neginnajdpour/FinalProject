@@ -25,30 +25,44 @@ public class test {
 //        } catch (Exception e) {
 //            throw new RuntimeException(e);
 //        }
-
-        Resource resource = Resource
-                .builder()
-                .ISBN("456")
-                .RESOURCE_TYPE("book")
-                .TITLE("prgramming with java")
-                .EDITION("forth")
-                .AUTHOR("deitel & deitel")
-                .CATEGORY("educational")
-                .PUBLISHER("EDIT")
-                .LANGUAGE("persian")
-                .QUANTITY(1)
-                .DESCRIPTION("ASDSAKDHAS")
-                .build();
-        System.out.println(resource.toString());
-        ResourceBl.save(resource);
+//
+//        Resource resource = Resource
+//                .builder()
+//                .ISBN("456")
+//                .RESOURCE_TYPE("book")
+//                .TITLE("prgramming with java")
+//                .EDITION("forth")
+//                .AUTHOR("deitel & deitel")
+//                .CATEGORY("educational")
+//                .PUBLISHER("EDIT")
+//                .LANGUAGE("persian")
+//                .QUANTITY(1)
+//                .DESCRIPTION("ASDSAKDHAS")
+//                .build();
+//        System.out.println(resource.toString());
+//        ResourceBl.save(resource);
 
 //          Book book = Book.builder().TITLE("prgramming with java").build();
 //          System.out.println(book.toString());
 //          BookBl.delete(book);
 
-//        Book book = Book.builder().TITLE("prgramming with c++").AUTHOR("deitel & deitel").AVAILABLE_COPIES(1).EDITION("forth").GENRE("educational").BOOK_ID(2).build();
-//        System.out.println(book.toString());
-//        BookBl.update(book);
+        Resource book = Resource
+                .builder()
+                .RESOURCE_ID(Integer.parseInt("1"))
+                .ISBN("456")
+                .RESOURCE_TYPE("Book")
+                .TITLE("titleTxt.getText()")
+                .EDITION("six")
+                .AUTHOR("authorTxt.getText()")
+                .CATEGORY("Category.Classic")
+                .PUBLISHER("publisherTxt.getText()")
+                .LANGUAGE("English")
+                .QUANTITY(Integer.parseInt("1"))
+                .DESCRIPTION("descriptionTxt.getText()")
+                .build();
+
+        ResourceBl.update(book);
+
 
 //        java.util.List<Book> optionalList = BookBl.getAllBooks();
 //        for(Book leave : optionalList) System.out.println(leave);
