@@ -2,14 +2,19 @@ package mft.Controller;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import mft.Model.bl.MemberBl;
 import mft.Model.bl.ResourceBl;
 import mft.Model.da.FormState;
 import mft.Model.entity.*;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ResourceUpdateController implements Initializable {
@@ -44,7 +49,6 @@ public class ResourceUpdateController implements Initializable {
             languageCmb.getItems().add(genre);
         };
 
-
         resourceIdLbl.setText(String.valueOf(FormState.resource.getRESOURCE_ID()));
         isbnTxt.setText(FormState.resource.getISBN());
         titleTxt.setText(FormState.resource.getTITLE());
@@ -57,13 +61,10 @@ public class ResourceUpdateController implements Initializable {
         categoryCmb.getSelectionModel().select(FormState.resource.getCATEGORY());
         languageCmb.getSelectionModel().select(FormState.resource.getLANGUAGE());
 
-//        Resource finalResource = resource;
-//        System.out.println(finalResource);
+
         Integer resourceId = FormState.resource.getRESOURCE_ID();
         updateBtn.setOnAction(event -> {
             try {
-
-
                 Resource book = Resource
                         .builder()
                         .RESOURCE_ID(Integer.parseInt(resourceIdLbl.getText()))
@@ -80,39 +81,30 @@ public class ResourceUpdateController implements Initializable {
                         .build();
 
                 ResourceBl.update(book);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                Alert alert = new  Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText(null);
                 alert.setContentText("You have successfully updated the book !");
                 alert.showAndWait();
-                updateBtn.setDisable(true);
+                updateBtn.getScene().getWindow().hide();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/mft/View/BookSearch.fxml"));
+                Parent root = loader.load();
+
+                BookSearchController controller = loader.getController();
+                List<Resource> resourceList = ResourceBl.getAllResources();
+                controller.refreshBookTbl(resourceList);
+
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.show();
+
 
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         });
-//                Resource book = Resource
-//                        .builder()
-//                        .RESOURCE_ID(finalResource.getRESOURCE_ID())
-//                        .ISBN(isbnTxt.getText())
-//                        .RESOURCE_TYPE("Magazin")
-//                        .TITLE(titleTxt.getText())
-//                        .EDITION(editionTxt.getText())
-//                        .AUTHOR(authorTxt.getText())
-//                        .CATEGORY("Fiction")
-//                        .PUBLISHER(publisherTxt.getText())
-//                        .LANGUAGE("English")
-//                        .QUANTITY(Integer.parseInt(quantityTxt.getText()))
-//                        .DESCRIPTION(descriptionTxt.getText())
-//                        .build();
-
-//            System.out.println(book);
-
-
-//                ResourceBl.update(book);
-
-
-
 
 
     }
