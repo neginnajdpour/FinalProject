@@ -67,7 +67,7 @@
             <Button fx:id="saveBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" text="Save" />
             <Button fx:id="updateBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" text="Update" />
             <Button fx:id="deleteBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" text="Delete" />
-            <Button fx:id="saveBtn3" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" text="New" />
+            <Button fx:id="newBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="78.0" text="New" />
          </children>
       </HBox>
    </children>

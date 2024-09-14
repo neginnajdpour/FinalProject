@@ -13,9 +13,9 @@ public class ResourceBl {
         resourceDa.save(resource);
     }
 
-    public static void delete(Resource resource) throws Exception {
+    public static void delete(Integer ISBN) throws Exception {
         ResourceDa resourceDa = new ResourceDa();
-        resourceDa.delete(resource);
+        resourceDa.delete(ISBN);
     }
 
     public static void update(Resource resource) throws Exception {

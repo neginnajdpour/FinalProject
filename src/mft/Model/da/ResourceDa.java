@@ -43,10 +43,10 @@ public class ResourceDa implements AutoCloseable {
         preparedStatement.executeUpdate();
     }
 
-    public void delete(Resource resource) throws SQLException {
+    public void delete(Integer ISBN) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
         preparedStatement = connection.prepareStatement("DELETE FROM RESOURCE WHERE ISBN = ?");
-        preparedStatement.setInt(1,resource.getISBN());
+        preparedStatement.setInt(1, ISBN);
         preparedStatement.executeUpdate();
     }
 

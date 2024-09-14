@@ -33,7 +33,7 @@ public class ResourceController implements Initializable {
     private ComboBox resourcetypeCmb , categoryCmb, languageCmb;
 
     @FXML
-    private Button saveBtn, updateBtn, deleteBtn;
+    private Button saveBtn, updateBtn, deleteBtn, newBtn;
 
     @FXML
     private TableColumn<Resource, Integer> resId;
@@ -132,9 +132,34 @@ public class ResourceController implements Initializable {
             }
         });
         deleteBtn.setOnAction(event -> {
+            try {
+                ResourceBl.delete(Integer.valueOf(isbnTxt.getText()));
+                Alert alert = new  Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText(null);
+                alert.setContentText("You have successfully deleted the book !");
+                alert.showAndWait();
 
+                refreshBookTbl(ResourceBl.getAllResources());
 
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         });
+
+        newBtn.setOnAction(event -> {
+            isbnTxt.setText("");
+            titleTxt.setText("");
+            editionTxt.setText("");
+            authorTxt.setText("");
+            publisherTxt.setText("");
+            quantityTxt.setText("");
+            descriptionTxt.setText("");
+            resourcetypeCmb.getSelectionModel().clearSelection();
+            categoryCmb.getSelectionModel().clearSelection();
+            languageCmb.getSelectionModel().clearSelection();
+        });
+
         resourceTbl.setOnMouseReleased(event -> {
             Resource resource = resourceTbl.getSelectionModel().getSelectedItem();
             if (resource != null) {
