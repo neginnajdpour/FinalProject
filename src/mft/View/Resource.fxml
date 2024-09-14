@@ -55,7 +55,7 @@
       </GridPane>
       <TableView fx:id="resourceTbl" layoutX="35.0" layoutY="420.0" prefHeight="319.0" prefWidth="1001.0">
          <columns>
-            <TableColumn prefWidth="170.0" text="ISBN/Barcode" />
+            <TableColumn fx:id="isbnCol" prefWidth="170.0" text="ISBN/Barcode" />
             <TableColumn fx:id="titleCol" prefWidth="214.0" text="Title" />
             <TableColumn fx:id="editionCol" prefWidth="157.0" text="Edition" />
             <TableColumn fx:id="authorCol" prefWidth="151.0" text="Author" />

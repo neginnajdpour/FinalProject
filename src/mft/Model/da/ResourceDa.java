@@ -30,7 +30,7 @@ public class ResourceDa implements AutoCloseable {
     public void save(Resource resource) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
         preparedStatement = connection.prepareStatement("INSERT INTO RESOURCE( ISBN , RESOURCE_TYPE , TITLE , EDITION , AUTHOR , CATEGORY , PUBLISHER , LANGUAGE , QUANTITY , DESCRIPTION) VALUES (?,?,?,?,?,?,?,?,?,?)");
-        preparedStatement.setString(1, resource.getISBN());
+        preparedStatement.setInt(1, resource.getISBN());
         preparedStatement.setString(2, resource.getRESOURCE_TYPE().name());
         preparedStatement.setString(3,resource.getTITLE());
         preparedStatement.setString(4, resource.getEDITION());
@@ -45,24 +45,24 @@ public class ResourceDa implements AutoCloseable {
 
     public void delete(Resource resource) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("DELETE FROM RESOURCE WHERE TITLE = ?");
-        preparedStatement.setString(1,resource.getTITLE());
+        preparedStatement = connection.prepareStatement("DELETE FROM RESOURCE WHERE ISBN = ?");
+        preparedStatement.setInt(1,resource.getISBN());
         preparedStatement.executeUpdate();
     }
 
     public void update(Resource resource) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("UPDATE RESOURCE SET ISBN = ? ,RESOURCE_TYPE = ? , TITLE = ? , EDITION = ? , AUTHOR = ? , CATEGORY = ? , PUBLISHER = ? , LANGUAGE = ? , QUANTITY = ? , DESCRIPTION = ? WHERE RESOURCE_ID = ?");
-        preparedStatement.setString(1, resource.getISBN());
-        preparedStatement.setString(2, resource.getRESOURCE_TYPE().name());
-        preparedStatement.setString(3,resource.getTITLE());
-        preparedStatement.setString(4, resource.getEDITION());
-        preparedStatement.setString(5,resource.getAUTHOR());
-        preparedStatement.setString(6, resource.getCATEGORY().name());
-        preparedStatement.setString(7, resource.getPUBLISHER());
-        preparedStatement.setString(8, resource.getLANGUAGE().name());
-        preparedStatement.setInt(9,resource.getQUANTITY());
-        preparedStatement.setString(10, resource.getDESCRIPTION());
+        preparedStatement = connection.prepareStatement("UPDATE RESOURCE SET RESOURCE_TYPE = ? , TITLE = ? , EDITION = ? , AUTHOR = ? , CATEGORY = ? , PUBLISHER = ? , LANGUAGE = ? , QUANTITY = ? , DESCRIPTION = ? WHERE ISBN = ?");
+        preparedStatement.setString(1, resource.getRESOURCE_TYPE().name());
+        preparedStatement.setString(2,resource.getTITLE());
+        preparedStatement.setString(3, resource.getEDITION());
+        preparedStatement.setString(4,resource.getAUTHOR());
+        preparedStatement.setString(5, resource.getCATEGORY().name());
+        preparedStatement.setString(6, resource.getPUBLISHER());
+        preparedStatement.setString(7, resource.getLANGUAGE().name());
+        preparedStatement.setInt(8,resource.getQUANTITY());
+        preparedStatement.setString(9, resource.getDESCRIPTION());
+        preparedStatement.setInt(10, resource.getISBN());
         //preparedStatement.setInt(11,resource.getRESOURCE_ID());
         preparedStatement.executeUpdate();
     }
@@ -74,7 +74,7 @@ public class ResourceDa implements AutoCloseable {
         resultSet = preparedStatement.executeQuery();
         Resource resource = new Resource();
         if(resultSet.next()) {
-            resource.setISBN(resultSet.getString("ISBN"));
+            resource.setISBN(resultSet.getInt("ISBN"));
             resource.setRESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")));
             resource.setTITLE(resultSet.getString("TITLE"));
             resource.setEDITION(resultSet.getString("EDITION"));
@@ -98,7 +98,7 @@ public class ResourceDa implements AutoCloseable {
         if(resultSet.next()) {
             Resource resource = new Resource();
             //resource.setRESOURCE_ID(resultSet.getInt("Resource_Id"));
-            resource.setISBN(resultSet.getString("ISBN"));
+            resource.setISBN(resultSet.getInt("ISBN"));
             resource.setRESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")));
             resource.setTITLE(resultSet.getString("TITLE"));
             resource.setEDITION(resultSet.getString("EDITION"));
@@ -125,7 +125,7 @@ public class ResourceDa implements AutoCloseable {
             Resource resource = Resource
                     .builder()
                     //.RESOURCE_ID(resultSet.getInt("RESOURCE_ID"))
-                    .ISBN(resultSet.getString("ISBN"))
+                    .ISBN(resultSet.getInt("ISBN"))
                     .RESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")))
                     .TITLE(resultSet.getString("TITLE"))
                     .EDITION(resultSet.getString("EDITION"))

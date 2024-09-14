@@ -39,7 +39,7 @@ public class ResourceController implements Initializable {
     private TableColumn<Resource, Integer> resId;
 
     @FXML
-    private TableColumn<Resource, String> titleCol ,editionCol, authorCol, languageCol;
+    private TableColumn<Resource, String> isbnCol, titleCol ,editionCol, authorCol, languageCol;
 
     @FXML
     private TableView<Resource> resourceTbl;
@@ -70,7 +70,7 @@ public class ResourceController implements Initializable {
                 Language language = (Language) languageCmb.getSelectionModel().getSelectedItem();
                 Resource book = Resource
                         .builder()
-                        .ISBN(isbnTxt.getText())
+                        .ISBN(Integer.parseInt(isbnTxt.getText()))
                         .RESOURCE_TYPE(ResourceType.valueOf(resourceType.name()))
                         .TITLE(titleTxt.getText())
                         .EDITION(editionTxt.getText())
@@ -106,7 +106,7 @@ public class ResourceController implements Initializable {
                 Resource book = Resource
                         .builder()
                         //.RESOURCE_ID(Integer.parseInt(resourceIdLbl.getText()))
-                        .ISBN(isbnTxt.getText())
+                        .ISBN(Integer.parseInt(isbnTxt.getText()))
                         .RESOURCE_TYPE(ResourceType.valueOf(resourceType.name()))
                         .TITLE(titleTxt.getText())
                         .EDITION(editionTxt.getText())
@@ -131,11 +131,35 @@ public class ResourceController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+        deleteBtn.setOnAction(event -> {
+
+
+        });
+        resourceTbl.setOnMouseReleased(event -> {
+            Resource resource = resourceTbl.getSelectionModel().getSelectedItem();
+            if (resource != null) {
+                isbnTxt.setText(resource.getISBN().toString());
+                titleTxt.setText(resource.getTITLE());
+                editionTxt.setText(resource.getEDITION());
+                authorTxt.setText(resource.getAUTHOR());
+                publisherTxt.setText(resource.getPUBLISHER());
+                quantityTxt.setText(String.valueOf(resource.getQUANTITY()));
+                descriptionTxt.setText(resource.getDESCRIPTION());
+                resourcetypeCmb.getSelectionModel().select(resource.getRESOURCE_TYPE());
+                categoryCmb.getSelectionModel().select(resource.getCATEGORY());
+                languageCmb.getSelectionModel().select(resource.getLANGUAGE());
+
+            }
+        });
+
+
+
 
     }
 
     public void refreshBookTbl(List<Resource> bookList) throws Exception {
         ObservableList<Resource> observableList = FXCollections.observableList(bookList);
+        isbnCol.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
         titleCol.setCellValueFactory(new PropertyValueFactory<>("TITLE"));
         authorCol.setCellValueFactory(new PropertyValueFactory<>("AUTHOR"));
         editionCol.setCellValueFactory(new PropertyValueFactory<>("EDITION"));

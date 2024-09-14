@@ -13,7 +13,7 @@ import lombok.experimental.SuperBuilder;
 
 public class Resource {
 
-    private String ISBN;
+    private Integer ISBN;
     private ResourceType RESOURCE_TYPE;
     private String TITLE;
     private String EDITION;
