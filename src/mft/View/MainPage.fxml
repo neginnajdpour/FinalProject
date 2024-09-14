@@ -14,7 +14,7 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Resources">
                   <items>
-                        <MenuItem fx:id="AddResourceMenu" mnemonicParsing="false" onAction="#handleAddResourceAction" text="Manage Resources" />
+                        <MenuItem fx:id="ManageResourcesMenu" mnemonicParsing="false" onAction="#handleManageResourcesAction" text="Manage Resources" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Members">

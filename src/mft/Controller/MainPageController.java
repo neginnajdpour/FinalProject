@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lombok.SneakyThrows;
 
 import java.awt.*;
 import java.io.IOException;
@@ -23,15 +24,16 @@ public class MainPageController implements Initializable {
     @FXML
     private MenuItem addResourceMenu , resourceListMenu;
 
+
+    @SneakyThrows
     @FXML
-    private void handleAddResourceAction(ActionEvent event) throws IOException {
+    private void handleManageResourcesAction(ActionEvent event) {
         Stage stage = new Stage();
         Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/View/Resource.fxml"))));
         stage.setTitle("Panel");
         stage.setScene(scene);
         stage.show();
     }
-
 
 
     @FXML
