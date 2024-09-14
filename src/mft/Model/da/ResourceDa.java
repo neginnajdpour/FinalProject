@@ -1,6 +1,9 @@
 package mft.Model.da;
 
+import mft.Model.entity.Category;
+import mft.Model.entity.Language;
 import mft.Model.entity.Resource;
+import mft.Model.entity.ResourceType;
 import mft.Model.tools.JdbcProvider;
 
 
@@ -10,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 public class ResourceDa implements AutoCloseable {
@@ -27,13 +31,13 @@ public class ResourceDa implements AutoCloseable {
         connection = JdbcProvider.getInstance().getConnection();
         preparedStatement = connection.prepareStatement("INSERT INTO RESOURCE( ISBN , RESOURCE_TYPE , TITLE , EDITION , AUTHOR , CATEGORY , PUBLISHER , LANGUAGE , QUANTITY , DESCRIPTION) VALUES (?,?,?,?,?,?,?,?,?,?)");
         preparedStatement.setString(1, resource.getISBN());
-        preparedStatement.setString(2, resource.getRESOURCE_TYPE());
+        preparedStatement.setString(2, resource.getRESOURCE_TYPE().name());
         preparedStatement.setString(3,resource.getTITLE());
         preparedStatement.setString(4, resource.getEDITION());
         preparedStatement.setString(5,resource.getAUTHOR());
-        preparedStatement.setString(6, resource.getCATEGORY());
+        preparedStatement.setString(6, resource.getCATEGORY().name());
         preparedStatement.setString(7, resource.getPUBLISHER());
-        preparedStatement.setString(8, resource.getLANGUAGE());
+        preparedStatement.setString(8, resource.getLANGUAGE().name());
         preparedStatement.setInt(9,resource.getQUANTITY());
         preparedStatement.setString(10, resource.getDESCRIPTION());
         preparedStatement.executeUpdate();
@@ -50,16 +54,16 @@ public class ResourceDa implements AutoCloseable {
         connection = JdbcProvider.getInstance().getConnection();
         preparedStatement = connection.prepareStatement("UPDATE RESOURCE SET ISBN = ? ,RESOURCE_TYPE = ? , TITLE = ? , EDITION = ? , AUTHOR = ? , CATEGORY = ? , PUBLISHER = ? , LANGUAGE = ? , QUANTITY = ? , DESCRIPTION = ? WHERE RESOURCE_ID = ?");
         preparedStatement.setString(1, resource.getISBN());
-        preparedStatement.setString(2, resource.getRESOURCE_TYPE());
+        preparedStatement.setString(2, resource.getRESOURCE_TYPE().name());
         preparedStatement.setString(3,resource.getTITLE());
         preparedStatement.setString(4, resource.getEDITION());
         preparedStatement.setString(5,resource.getAUTHOR());
-        preparedStatement.setString(6, resource.getCATEGORY());
+        preparedStatement.setString(6, resource.getCATEGORY().name());
         preparedStatement.setString(7, resource.getPUBLISHER());
-        preparedStatement.setString(8, resource.getLANGUAGE());
+        preparedStatement.setString(8, resource.getLANGUAGE().name());
         preparedStatement.setInt(9,resource.getQUANTITY());
         preparedStatement.setString(10, resource.getDESCRIPTION());
-        preparedStatement.setInt(11,resource.getRESOURCE_ID());
+        //preparedStatement.setInt(11,resource.getRESOURCE_ID());
         preparedStatement.executeUpdate();
     }
 
@@ -71,16 +75,16 @@ public class ResourceDa implements AutoCloseable {
         Resource resource = new Resource();
         if(resultSet.next()) {
             resource.setISBN(resultSet.getString("ISBN"));
-            resource.setRESOURCE_TYPE(resultSet.getString("RESOURCE_TYPE"));
+            resource.setRESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")));
             resource.setTITLE(resultSet.getString("TITLE"));
             resource.setEDITION(resultSet.getString("EDITION"));
             resource.setAUTHOR(resultSet.getString("AUTHOR"));
-            resource.setCATEGORY(resultSet.getString("CATEGORY"));
+            resource.setCATEGORY(Category.valueOf(resultSet.getString("CATEGORY")));
             resource.setPUBLISHER(resultSet.getString("PUBLISHER"));
-            resource.setLANGUAGE(resultSet.getString("LANGUAGE"));
+            resource.setLANGUAGE(Language.valueOf(resultSet.getString("LANGUAGE")));
             resource.setQUANTITY(resultSet.getInt("QUANTITY"));
             resource.setDESCRIPTION(resultSet.getString("DESCRIPTION"));
-            resource.setRESOURCE_ID(resultSet.getInt("Resource_Id"));;
+            //resource.setRESOURCE_ID(resultSet.getInt("Resource_Id"));;
         }
         return Optional.of(resource);
     }
@@ -93,15 +97,15 @@ public class ResourceDa implements AutoCloseable {
         List<Resource> resources = new ArrayList<>();
         if(resultSet.next()) {
             Resource resource = new Resource();
-            resource.setRESOURCE_ID(resultSet.getInt("Resource_Id"));
+            //resource.setRESOURCE_ID(resultSet.getInt("Resource_Id"));
             resource.setISBN(resultSet.getString("ISBN"));
-            resource.setRESOURCE_TYPE(resultSet.getString("RESOURCE_TYPE"));
+            resource.setRESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")));
             resource.setTITLE(resultSet.getString("TITLE"));
             resource.setEDITION(resultSet.getString("EDITION"));
             resource.setAUTHOR(resultSet.getString("AUTHOR"));
-            resource.setCATEGORY(resultSet.getString("CATEGORY"));
+            resource.setCATEGORY(Category.valueOf(resultSet.getString("CATEGORY")));
             resource.setPUBLISHER(resultSet.getString("PUBLISHER"));
-            resource.setLANGUAGE(resultSet.getString("LANGUAGE"));
+            resource.setLANGUAGE(Language.valueOf(resultSet.getString("LANGUAGE")));
             resource.setQUANTITY(resultSet.getInt("QUANTITY"));
             resource.setDESCRIPTION(resultSet.getString("DESCRIPTION"));
             resources.add(resource);
@@ -120,15 +124,15 @@ public class ResourceDa implements AutoCloseable {
         while (resultSet.next()) {
             Resource resource = Resource
                     .builder()
-                    .RESOURCE_ID(resultSet.getInt("RESOURCE_ID"))
+                    //.RESOURCE_ID(resultSet.getInt("RESOURCE_ID"))
                     .ISBN(resultSet.getString("ISBN"))
-                    .RESOURCE_TYPE(resultSet.getString("RESOURCE_TYPE"))
+                    .RESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")))
                     .TITLE(resultSet.getString("TITLE"))
                     .EDITION(resultSet.getString("EDITION"))
                     .AUTHOR(resultSet.getString("AUTHOR"))
-                    .CATEGORY(resultSet.getString("CATEGORY"))
+                    .CATEGORY(Category.valueOf(resultSet.getString("CATEGORY")))
                     .PUBLISHER(resultSet.getString("PUBLISHER"))
-                    .LANGUAGE(resultSet.getString("LANGUAGE"))
+                    .LANGUAGE(Language.valueOf(resultSet.getString("LANGUAGE")))
                     .QUANTITY(resultSet.getInt("QUANTITY"))
                     .DESCRIPTION(resultSet.getString("DESCRIPTION"))
                     .build();

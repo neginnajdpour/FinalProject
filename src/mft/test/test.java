@@ -28,7 +28,7 @@ public class test {
 //
 //        Resource resource = Resource
 //                .builder()
-//                .ISBN("456")
+//                .ISBN("123456789")
 //                .RESOURCE_TYPE("book")
 //                .TITLE("prgramming with java")
 //                .EDITION("forth")
@@ -46,22 +46,22 @@ public class test {
 //          System.out.println(book.toString());
 //          BookBl.delete(book);
 
-        Resource book = Resource
-                .builder()
-                .RESOURCE_ID(Integer.parseInt("1"))
-                .ISBN("456")
-                .RESOURCE_TYPE("Book")
-                .TITLE("titleTxt.getText()")
-                .EDITION("six")
-                .AUTHOR("authorTxt.getText()")
-                .CATEGORY("Category.Classic")
-                .PUBLISHER("publisherTxt.getText()")
-                .LANGUAGE("English")
-                .QUANTITY(Integer.parseInt("1"))
-                .DESCRIPTION("descriptionTxt.getText()")
-                .build();
-
-        ResourceBl.update(book);
+//        Resource book = Resource
+//                .builder()
+//                //.RESOURCE_ID(Integer.parseInt("1"))
+//                .ISBN("456")
+//                .RESOURCE_TYPE("Book")
+//                .TITLE("titleTxt.getText()")
+//                .EDITION("six")
+//                .AUTHOR("authorTxt.getText()")
+//                .CATEGORY("Category.Classic")
+//                .PUBLISHER("publisherTxt.getText()")
+//                .LANGUAGE("English")
+//                .QUANTITY(Integer.parseInt("1"))
+//                .DESCRIPTION("descriptionTxt.getText()")
+//                .build();
+//
+//        ResourceBl.update(book);
 
 
 //        java.util.List<Book> optionalList = BookBl.getAllBooks();

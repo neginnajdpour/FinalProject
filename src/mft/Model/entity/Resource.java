@@ -12,15 +12,15 @@ import lombok.experimental.SuperBuilder;
 @ToString
 
 public class Resource {
-    private int RESOURCE_ID;
+
     private String ISBN;
-    private String RESOURCE_TYPE;
+    private ResourceType RESOURCE_TYPE;
     private String TITLE;
     private String EDITION;
     private String AUTHOR;
-    private String CATEGORY;
+    private Category CATEGORY;
     private String PUBLISHER;
-    private String LANGUAGE;
+    private Language LANGUAGE;
     private int QUANTITY;
     private String DESCRIPTION;
 
