@@ -1,8 +1,7 @@
 package mft.test;
 
-import mft.Model.bl.ResourceBl;
-import mft.Model.entity.Resource;
-import mft.Model.tools.JdbcProvider;
+import mft.model.bl.ResourceBl;
+import mft.model.tools.JdbcProvider;
 
 
 import static java.util.Arrays.stream;
