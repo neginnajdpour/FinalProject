@@ -19,8 +19,7 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Members">
                   <items>
-                        <MenuItem mnemonicParsing="false" onAction="#handleAddMemberAction" text="Add Member" />
-                    <MenuItem mnemonicParsing="false" onAction="#handleAllMembersAction" text="All Members" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleManageMemberAction" text="Manage Member" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Requests">

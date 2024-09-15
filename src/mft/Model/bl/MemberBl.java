@@ -14,9 +14,9 @@ public class MemberBl{
         }
     }
 
-    public static void delete(Member member) throws Exception {
+    public static void delete(Integer NationalID) throws Exception {
         try(MemberDa memberDa = new MemberDa()){
-            memberDa.delete(member);
+            memberDa.delete(NationalID);
         }
     }
 

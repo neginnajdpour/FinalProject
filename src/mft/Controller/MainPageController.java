@@ -37,7 +37,7 @@ public class MainPageController implements Initializable {
 
 
     @FXML
-    private void handleAddMemberAction(ActionEvent event) throws IOException {
+    private void handleManageMemberAction(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/View/Member.fxml"))));
         stage.setTitle("Panel");
@@ -45,14 +45,6 @@ public class MainPageController implements Initializable {
         stage.show();
     }
 
-    @FXML
-    private void handleAllMembersAction(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/View/MemberList.fxml"))));
-        stage.setTitle("Panel");
-        stage.setScene(scene);
-        stage.show();
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

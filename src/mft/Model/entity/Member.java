@@ -14,7 +14,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 
 public class Member {
-    private String memberID;
+    private Integer NationalID;
     private String FirstName;
     private String LastName;
     private String PhoneNumber;
