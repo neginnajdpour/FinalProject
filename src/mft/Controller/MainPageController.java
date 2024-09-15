@@ -23,25 +23,6 @@ public class MainPageController implements Initializable {
     private Button resourceBtn, memberBtn;
 
 
-//    @SneakyThrows
-//    @FXML
-//    private void handleManageResourcesAction(ActionEvent event) {
-//        Stage stage = new Stage();
-//        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/View/Resource.fxml"))));
-//        stage.setTitle("Panel");
-//        stage.setScene(scene);
-//        stage.show();
-//    }
-//
-//
-//    @FXML
-//    private void handleManageMembersAction(ActionEvent event) throws IOException {
-//        Stage stage = new Stage();
-//        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/View/Member.fxml"))));
-//        stage.setTitle("Panel");
-//        stage.setScene(scene);
-//        stage.show();
-//    }
 
 
     @Override
