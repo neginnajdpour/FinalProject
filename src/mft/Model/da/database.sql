@@ -10,13 +10,9 @@ create table mft.PROFILE_TBL
     active tinyint
 );
 
-DROP TABLE mft.BOOK;
 
-SELECT * FROM BOOK;
-
-CREATE TABLE MFT.BOOK (
-    BOOK_ID INT PRIMARY KEY AUTO_INCREMENT,
-    ISBN VARCHAR(50),
+CREATE TABLE MFT.RESOURCE (
+    ISBN INT PRIMARY KEY,
     RESOURCE_TYPE VARCHAR(50),
     TITLE VARCHAR(50),
     EDITION VARCHAR(50),
@@ -27,11 +23,9 @@ CREATE TABLE MFT.BOOK (
     QUANTITY INT,
     DESCRIPTION VARCHAR(50)
 );
-insert into(TITLE , EDITION , AUTHOR , GENRE , PUBLISHER , PUBLSHED_YEAR , AVAILABLE_COPIES, BDESCRIPTION)
 
-DROP TABLE member;
 create table member (
-                        memberID INT PRIMARY KEY AUTO_INCREMENT,
+                        NationalID INT PRIMARY KEY,
                         FIRSTNAME NVARCHAR(50),
                         LastName NVARCHAR(50),
                         PhoneNumber NVARCHAR(50),
@@ -44,6 +38,5 @@ create table member (
                         postalcode nvarchar(50),
                         Photo NVARCHAR(50)
 );
-INSERT INTO member(FirstName , LastName , PhoneNumber , Email , addressLine1 , addressLine2 , city , state , country , postalcode , Photo )
-VALUES (?,?,?,?,?,?,?,?,?,?,?)
+
 
