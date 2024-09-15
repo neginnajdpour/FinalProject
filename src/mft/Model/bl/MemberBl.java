@@ -22,7 +22,7 @@ public class MemberBl{
 
     public static void update(Member member) throws Exception {
         try(MemberDa memberDa = new MemberDa()){
-            memberDa.edit(member);
+            memberDa.update(member);
         }
     }
 

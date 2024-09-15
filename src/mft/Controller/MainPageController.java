@@ -37,7 +37,7 @@ public class MainPageController implements Initializable {
 
 
     @FXML
-    private void handleManageMemberAction(ActionEvent event) throws IOException {
+    private void handleManageMembersAction(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/View/Member.fxml"))));
         stage.setTitle("Panel");

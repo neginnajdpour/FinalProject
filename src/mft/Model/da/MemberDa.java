@@ -43,16 +43,16 @@ public class MemberDa implements AutoCloseable {
         preparedStatement.executeUpdate();
     }
 
-    public void delete(Integer NationalID) throws SQLException {
+    public void delete(int NationalID) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
         preparedStatement = connection.prepareStatement("DELETE FROM MEMBER WHERE NationalID = ?");
         preparedStatement.setInt(1, NationalID);
         preparedStatement.executeUpdate();
     }
 
-    public void edit(Member member) throws SQLException {
+    public void update(Member member) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("UPDATE MEMBER SET FirstName = ? , LastName = ? , PhoneNumber = ? , Email = ? , addressLine1 = ? , addressLine2 = ? , city = ? , state = ? , country = ? , postalcode = ? , Photo = ? WHERE NationalID = ?)");
+        preparedStatement = connection.prepareStatement("UPDATE MEMBER SET FirstName = ? , LastName = ? , PhoneNumber = ? , Email = ? , addressLine1 = ? , addressLine2 = ? , city = ? , state = ? , country = ? , postalcode = ? , Photo = ? WHERE NationalID = ?");
         preparedStatement.setString(1, member.getFirstName());
         preparedStatement.setString(2, member.getLastName());
         preparedStatement.setString(3, member.getPhoneNumber());

@@ -19,7 +19,7 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Members">
                   <items>
-                        <MenuItem mnemonicParsing="false" onAction="#handleManageMemberAction" text="Manage Member" />
+                        <MenuItem fx:id="ManageMembersMenu" mnemonicParsing="false" onAction="#handleManageMembersAction" text="Manage Members" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Requests">

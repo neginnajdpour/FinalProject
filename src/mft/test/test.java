@@ -74,6 +74,8 @@ public class test {
 //        java.util.List<Member> optionalList = MemberBl.getAllMembers();
 //        for(Member leave : optionalList) System.out.println(leave);
 
+        ResourceBl.delete(123456789);
+
 
 
     }

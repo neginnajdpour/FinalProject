@@ -23,18 +23,22 @@ public class MemberController implements Initializable {
 
 
     @FXML
-    private Button saveBtn, editBtn, deleteBtn, newBtn;
+    private Button saveBtn, updateBtn, deleteBtn, newBtn;
 
     @FXML
     private TableView<Member> memberTbl;
 
+    @FXML
+    private TableColumn<Member, String> firstnameCol, lastnameCol, phonenumberCol, emailCol, addressCol;
 
-    private TableColumn<Member, String> firstnameCol , lastnameCol , phonenumberCol, emailCol, addressCol;
 
 
-
+    @SneakyThrows
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        List<Member> memberList = MemberBl.getAllMembers();
+        refreshMemberTbl(memberList);
 
         saveBtn.setOnAction(event -> {
             try {
@@ -62,8 +66,7 @@ public class MemberController implements Initializable {
                 alert.setContentText("You have successfully save the member !");
                 alert.showAndWait();
 
-                List<Member> memberList = MemberBl.getAllMembers();
-                refreshMemberTbl(memberList);
+                refreshMemberTbl(MemberBl.getAllMembers());
 
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -71,7 +74,7 @@ public class MemberController implements Initializable {
 
         });
 
-        editBtn.setOnAction(event -> {
+        updateBtn.setOnAction(event -> {
             try {
                 Member member = Member
                         .builder()
@@ -97,8 +100,7 @@ public class MemberController implements Initializable {
                 alert.setContentText("You have successfully update the member !");
                 alert.showAndWait();
 
-                List<Member> memberList = MemberBl.getAllMembers();
-                refreshMemberTbl(memberList);
+                refreshMemberTbl(MemberBl.getAllMembers());
 
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -109,15 +111,14 @@ public class MemberController implements Initializable {
         deleteBtn.setOnAction(event -> {
 
             try {
-                ResourceBl.delete(Integer.valueOf(nationalIdTxt.getText()));
+                MemberBl.delete(Integer.valueOf(nationalIdTxt.getText()));
                 Alert alert = new  Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText(null);
                 alert.setContentText("You have successfully deleted the member !");
                 alert.showAndWait();
 
-                List<Member> memberList = MemberBl.getAllMembers();
-                refreshMemberTbl(memberList);
+                refreshMemberTbl(MemberBl.getAllMembers());
 
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -126,9 +127,37 @@ public class MemberController implements Initializable {
         });
 
         newBtn.setOnAction(event -> {
-
-
+            nationalIdTxt.clear();
+            firstnameTxt.clear();
+            lastnameTxt.clear();
+            phoneTxt.clear();
+            emailTxt.clear();
+            addressoneTxt.clear();
+            addresstwoTxt.clear();
+            cityTxt.clear();
+            stateTxt.clear();
+            postalcodeTxt.clear();
+            countryTxt.clear();
+            photoTxt.clear();
         });
+
+        memberTbl.setOnMouseReleased(event -> {
+            Member member = memberTbl.getSelectionModel().getSelectedItem();
+            nationalIdTxt.setText(String.valueOf(member.getNationalID()));
+            firstnameTxt.setText(member.getFirstName());
+            lastnameTxt.setText(member.getLastName());
+            phoneTxt.setText(member.getPhoneNumber());
+            emailTxt.setText(member.getEmail());
+            addressoneTxt.setText(member.getAddressLine1());
+            addresstwoTxt.setText(member.getAddressLine2());
+            cityTxt.setText(member.getCity());
+            stateTxt.setText(member.getState());
+            postalcodeTxt.setText(member.getPostalcode());
+            countryTxt.setText(member.getCountry());
+            photoTxt.setText(member.getPhoto());
+        });
+
+
 
 
 
