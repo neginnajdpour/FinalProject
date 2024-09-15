@@ -1,35 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mft.Controller.MainPageController">
-  <children>
-    <AnchorPane fx:id="MainPage" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-      <children>
-            <MenuBar layoutY="-2.0" prefHeight="27.0" prefWidth="646.0">
-              <menus>
-                <Menu mnemonicParsing="false" text="Resources">
-                  <items>
-                        <MenuItem fx:id="ManageResourcesMenu" mnemonicParsing="false" onAction="#handleManageResourcesAction" text="Manage Resources" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Members">
-                  <items>
-                        <MenuItem fx:id="ManageMembersMenu" mnemonicParsing="false" onAction="#handleManageMembersAction" text="Manage Members" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Requests">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-              </menus>
-            </MenuBar>
-      </children>
-    </AnchorPane>
-  </children>
-</VBox>
+
+<Pane fx:controller="mft.Controller.MainPageController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="843.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox layoutX="63.0" layoutY="67.0" prefHeight="425.0" prefWidth="187.0">
+         <children>
+            <Button fx:id="resourceBtn" mnemonicParsing="false" prefHeight="56.0" prefWidth="186.0" text="Manage Resources" />
+            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="186.0" text="Button" />
+            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="186.0" text="Button" />
+            <Button fx:id="memberBtn" mnemonicParsing="false" prefHeight="56.0" prefWidth="187.0" text="Manage Members" />
+            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="188.0" text="Button" />
+         </children>
+      </VBox>
+   </children>
+</Pane>
