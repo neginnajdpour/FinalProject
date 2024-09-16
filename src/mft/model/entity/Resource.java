@@ -14,13 +14,13 @@ import lombok.experimental.SuperBuilder;
 public class Resource {
 
     private Integer ISBN;
-    private ResourceType RESOURCE_TYPE;
+    private mft.model.entity.ResourceType RESOURCE_TYPE;
     private String title;
     private String EDITION;
     private String AUTHOR;
-    private Category CATEGORY;
+    private mft.model.entity.Category CATEGORY;
     private String PUBLISHER;
-    private Language LANGUAGE;
+    private mft.model.entity.Language LANGUAGE;
     private int QUANTITY;
     private String DESCRIPTION;
 
