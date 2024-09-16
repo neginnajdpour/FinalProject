@@ -18,11 +18,13 @@
    <children>
       <TableView fx:id="memberTbl" layoutX="33.0" layoutY="138.0" prefHeight="294.0" prefWidth="1041.0">
          <columns>
-            <TableColumn fx:id="firstnameCol" prefWidth="111.0" text="First Name" />
-            <TableColumn fx:id="lastnameCol" prefWidth="114.0" text="Last Name" />
-            <TableColumn fx:id="phonenumberCol" prefWidth="120.0" text="Phone Number" />
-            <TableColumn fx:id="emailCol" minWidth="150.0" prefWidth="75.0" text="Email" />
-            <TableColumn fx:id="addressCol" prefWidth="250.0" text="Address" />
+            <TableColumn fx:id="nationalIdCol" prefWidth="134.0" text="National ID" />
+            <TableColumn fx:id="firstnameCol" prefWidth="138.0" text="First Name" />
+            <TableColumn fx:id="lastnameCol" prefWidth="149.0" text="Last Name" />
+            <TableColumn fx:id="dateofbirthCol" prefWidth="174.0" text="Date Of Birth" />
+            <TableColumn fx:id="genderCol" minWidth="101.0" prefWidth="131.0" text="Gender" />
+            <TableColumn fx:id="activeCol" prefWidth="91.0" text="Active" />
+            <TableColumn fx:id="joindateCol" prefWidth="219.0" text="Join Date" />
          </columns>
       </TableView>
       <GridPane layoutX="39.0" layoutY="66.0" prefHeight="41.0" prefWidth="647.0">

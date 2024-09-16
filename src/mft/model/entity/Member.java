@@ -21,6 +21,7 @@ public class Member {
     private String LastName;
     private Date dateOfBirth;
     private Gender Gender;
+    private boolean active;
     private String PhoneNumber;
     private String Email;
     private String AddressLine1;
@@ -30,6 +31,7 @@ public class Member {
     private String Country;
     private String Postalcode;
     private String Photo;
+    private Date JoinDate;
 
     @Override
     public java.lang.String toString() {
