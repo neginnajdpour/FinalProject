@@ -24,11 +24,6 @@ public class MemberController implements Initializable {
     @FXML
     private Button saveBtn, updateBtn, deleteBtn, newBtn;
 
-    @FXML
-    private TableView<Member> memberTbl;
-
-    @FXML
-    private TableColumn<Member, String> firstnameCol, lastnameCol, phonenumberCol, emailCol, addressCol;
 
 
 
@@ -36,8 +31,7 @@ public class MemberController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        List<Member> memberList = MemberBl.getAllMembers();
-        refreshMemberTbl(memberList);
+
 
         saveBtn.setOnAction(event -> {
             try {
@@ -65,7 +59,7 @@ public class MemberController implements Initializable {
                 alert.setContentText("You have successfully save the member !");
                 alert.showAndWait();
 
-                refreshMemberTbl(MemberBl.getAllMembers());
+
 
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -99,7 +93,6 @@ public class MemberController implements Initializable {
                 alert.setContentText("You have successfully update the member !");
                 alert.showAndWait();
 
-                refreshMemberTbl(MemberBl.getAllMembers());
 
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -117,7 +110,6 @@ public class MemberController implements Initializable {
                 alert.setContentText("You have successfully deleted the member !");
                 alert.showAndWait();
 
-                refreshMemberTbl(MemberBl.getAllMembers());
 
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -140,21 +132,21 @@ public class MemberController implements Initializable {
             photoTxt.clear();
         });
 
-        memberTbl.setOnMouseReleased(event -> {
-            Member member = memberTbl.getSelectionModel().getSelectedItem();
-            nationalIdTxt.setText(String.valueOf(member.getNationalID()));
-            firstnameTxt.setText(member.getFirstName());
-            lastnameTxt.setText(member.getLastName());
-            phoneTxt.setText(member.getPhoneNumber());
-            emailTxt.setText(member.getEmail());
-            addressoneTxt.setText(member.getAddressLine1());
-            addresstwoTxt.setText(member.getAddressLine2());
-            cityTxt.setText(member.getCity());
-            stateTxt.setText(member.getState());
-            postalcodeTxt.setText(member.getPostalcode());
-            countryTxt.setText(member.getCountry());
-            photoTxt.setText(member.getPhoto());
-        });
+//        memberTbl.setOnMouseReleased(event -> {
+//            Member member = memberTbl.getSelectionModel().getSelectedItem();
+//            nationalIdTxt.setText(String.valueOf(member.getNationalID()));
+//            firstnameTxt.setText(member.getFirstName());
+//            lastnameTxt.setText(member.getLastName());
+//            phoneTxt.setText(member.getPhoneNumber());
+//            emailTxt.setText(member.getEmail());
+//            addressoneTxt.setText(member.getAddressLine1());
+//            addresstwoTxt.setText(member.getAddressLine2());
+//            cityTxt.setText(member.getCity());
+//            stateTxt.setText(member.getState());
+//            postalcodeTxt.setText(member.getPostalcode());
+//            countryTxt.setText(member.getCountry());
+//            photoTxt.setText(member.getPhoto());
+//        });
 
 
 
@@ -163,16 +155,5 @@ public class MemberController implements Initializable {
 
     }
 
-    @SneakyThrows
-    public void refreshMemberTbl(List<Member> memberList) {
 
-        ObservableList<Member> observableList = FXCollections.observableList(memberList);
-        firstnameCol.setCellValueFactory(new PropertyValueFactory<>("FirstName"));
-        lastnameCol.setCellValueFactory(new PropertyValueFactory<>("LastName"));
-        phonenumberCol.setCellValueFactory(new PropertyValueFactory<>("PhoneNumber"));
-        emailCol.setCellValueFactory(new PropertyValueFactory<>("Email"));
-        addressCol.setCellValueFactory(new PropertyValueFactory<>("AddressLine1"));
-        memberTbl.setItems(observableList);
-
-    }
 }
