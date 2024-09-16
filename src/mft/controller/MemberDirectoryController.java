@@ -1,4 +1,13 @@
 package mft.controller;
 
-public class MemberDirectoryController {
+import javafx.fxml.Initializable;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class MemberDirectoryController implements Initializable {
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 }
