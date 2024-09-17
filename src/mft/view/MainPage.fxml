@@ -1,37 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="984.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mft.controller.MainPageController">
    <children>
-      <VBox layoutX="71.0" layoutY="100.0" prefHeight="396.0" prefWidth="187.0">
-         <children>
-            <Button fx:id="resourceBtn" mnemonicParsing="false" prefHeight="56.0" prefWidth="186.0" text="User Setting">
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin></Button>
-            <Button fx:id="memberBtn" mnemonicParsing="false" prefHeight="56.0" prefWidth="187.0" text="Member Directory">
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin></Button>
-            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="186.0" text="Book Search">
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="188.0" text="Book Issue">
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin></Button>
-            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="186.0" text="Book Return" />
-         </children>
-      </VBox>
       <MenuBar layoutY="-2.0" prefHeight="32.0" prefWidth="984.0">
         <menus>
           <Menu mnemonicParsing="false" text="Library">
@@ -41,17 +16,24 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Master">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+                  <MenuItem mnemonicParsing="false" text="Member Setting Master" />
+                  <MenuItem mnemonicParsing="false" text="Language Master" />
+              <MenuItem mnemonicParsing="false" text="Subject Master" />
+                  <MenuItem mnemonicParsing="false" text="Category Master" />
+                  <MenuItem mnemonicParsing="false" text="Author Master" />
+                  <MenuItem mnemonicParsing="false" text="Publisher Master" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Registration">
+          <Menu mnemonicParsing="false" text="Member">
             <items>
-              <MenuItem fx:id="MemberRegistrationMenu" mnemonicParsing="false" onAction="#handleMemberRegistrationAction" text="Member Registration" />
+              <MenuItem fx:id="newMemberMenu" mnemonicParsing="false" onAction="#handleMemberRegistrationAction" text="New Member" />
+                  <MenuItem fx:id="searchMemberMenu" mnemonicParsing="false" text="Search Member" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Books">
               <items>
                 <MenuItem mnemonicParsing="false" text="New Book" />
+                  <MenuItem mnemonicParsing="false" text="Search Book" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Transaction">
@@ -72,11 +54,6 @@
                   <MenuItem mnemonicParsing="false" text="Student Reports" />
                   <MenuItem mnemonicParsing="false" text="Staff Reports" />
                   <MenuItem mnemonicParsing="false" text="All Members" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Search Book">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Book Search" />
               </items>
             </Menu>
         </menus>

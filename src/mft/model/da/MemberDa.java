@@ -3,10 +3,7 @@ package mft.model.da;
 import mft.model.entity.Member;
 import mft.model.tools.JdbcProvider;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -28,19 +25,23 @@ public class MemberDa implements AutoCloseable {
 
     public void save(Member member) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("INSERT INTO MEMBER(NationalID, FirstName , LastName , PhoneNumber , Email , addressLine1 , addressLine2 , city , state , country , postalcode , Photo ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?) ");
+        preparedStatement = connection.prepareStatement("INSERT INTO MEMBER(NationalID, FirstName , LastName , DateOfBirth , Gender , Active , PhoneNumber , Email , addressLine1 , addressLine2 , city , state , country , postalcode , Photo , JoinDate) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
         preparedStatement.setInt(1,member.getNationalID());
         preparedStatement.setString(2, member.getFirstName());
         preparedStatement.setString(3, member.getLastName());
-        preparedStatement.setString(4, member.getPhoneNumber());
-        preparedStatement.setString(5, member.getEmail());
-        preparedStatement.setString(6, member.getAddressLine1());
-        preparedStatement.setString(7, member.getAddressLine2());
-        preparedStatement.setString(8, member.getCity());
-        preparedStatement.setString(9, member.getState());
-        preparedStatement.setString(10, member.getCountry());
-        preparedStatement.setString(11, member.getPostalcode());
-        preparedStatement.setString(12, member.getPhoto());
+        preparedStatement.setDate(4 , Date.valueOf(member.getDateOfBirth()));
+        preparedStatement.setString(5, member.getGender().toString());
+        preparedStatement.setBoolean(6, member.isActive());
+        preparedStatement.setString(7, member.getPhoneNumber());
+        preparedStatement.setString(8, member.getEmail());
+        preparedStatement.setString(9, member.getAddressLine1());
+        preparedStatement.setString(10, member.getAddressLine2());
+        preparedStatement.setString(11, member.getCity());
+        preparedStatement.setString(12, member.getState());
+        preparedStatement.setString(13, member.getCountry());
+        preparedStatement.setString(14, member.getPostalcode());
+        preparedStatement.setString(15, member.getPhoto());
+        preparedStatement.setDate(16, Date.valueOf(member.getJoinDate()));
         preparedStatement.executeUpdate();
     }
 
@@ -93,6 +94,32 @@ public class MemberDa implements AutoCloseable {
         }
         return Optional.of(member);
     }
+
+    public List<Member> getAllMembers(Integer NationalID) throws SQLException {
+        connection = JdbcProvider.getInstance().getConnection();
+        preparedStatement = connection.prepareStatement("SELECT * FROM MEMBER WHERE NationalID = ?");
+        preparedStatement.setInt(1, NationalID);
+        resultSet = preparedStatement.executeQuery();
+        List<Member> members = new ArrayList<>();
+        while (resultSet.next()) {
+            Member member = new Member();
+            member.setNationalID(resultSet.getInt("NationalID"));
+            member.setFirstName(resultSet.getString("FirstName"));
+            member.setLastName(resultSet.getString("LastName"));
+            member.setPhoneNumber(resultSet.getString("PhoneNumber"));
+            member.setEmail(resultSet.getString("Email"));
+            member.setAddressLine1(resultSet.getString("AddressLine1"));
+            member.setAddressLine2(resultSet.getString("AddressLine2"));
+            member.setCity(resultSet.getString("City"));
+            member.setState(resultSet.getString("State"));
+            member.setCountry(resultSet.getString("Country"));
+            member.setPostalcode(resultSet.getString("Postalcode"));
+            members.add(member);
+        }
+
+        return members;
+    }
+
 
     public List<Member> getAllMembers() throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();

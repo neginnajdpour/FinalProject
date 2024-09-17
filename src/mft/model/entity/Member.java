@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -19,7 +20,7 @@ public class Member {
     private Integer nationalID;
     private String FirstName;
     private String LastName;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private Gender Gender;
     private boolean active;
     private String PhoneNumber;
@@ -31,7 +32,7 @@ public class Member {
     private String Country;
     private String Postalcode;
     private String Photo;
-    private Date JoinDate;
+    private LocalDate JoinDate;
 
     @Override
     public java.lang.String toString() {

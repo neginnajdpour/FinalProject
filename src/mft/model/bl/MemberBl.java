@@ -34,6 +34,15 @@ public class MemberBl{
         return member;
     }
 
+    public static List<Member> getAllMembers(int nationalId) throws Exception {
+        List<Member> members = new ArrayList<>();
+
+        try(MemberDa memberDa = new MemberDa()){
+            members = memberDa.getAllMembers(nationalId);
+        }
+        return members;
+    }
+
     public static List<Member> getAllMembers() throws Exception {
         List<Member> members = new ArrayList<>();
 

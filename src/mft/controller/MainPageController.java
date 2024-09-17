@@ -16,11 +16,9 @@ import java.util.ResourceBundle;
 
 public class MainPageController implements Initializable {
 
-    @FXML
-    private Button resourceBtn, memberBtn;
 
     @FXML
-    private MenuItem MemberRegistrationMenu;
+    private MenuItem newMemberMenu, searchMemberMenu;
 
     @FXML
     private void handleMemberRegistrationAction(ActionEvent event) throws IOException {
@@ -37,7 +35,7 @@ public class MainPageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        MemberRegistrationMenu.setOnAction(event -> {
+        newMemberMenu.setOnAction(event -> {
 
             try {
                 Stage stage = new Stage();
@@ -49,43 +47,21 @@ public class MainPageController implements Initializable {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-
         });
 
-        resourceBtn.setOnAction(event -> {
+        searchMemberMenu.setOnAction(event -> {
 
             try {
                 Stage stage = new Stage();
-                Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/view/Resource.fxml"))));
+                Scene scene = null;
+                scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/view/MemberDirectory.fxml"))));
                 stage.setTitle("Panel");
                 stage.setScene(scene);
                 stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-
         });
-
-        memberBtn.setOnAction(event -> {
-
-            try {
-                Stage stage = new Stage();
-                Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/view/MemberDirectory.fxml"))));
-                stage.setTitle("Panel");
-                stage.setScene(scene);
-                stage.show();
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        });
-
-
-
-
 
     }
 }
