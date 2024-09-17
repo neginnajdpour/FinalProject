@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import lombok.SneakyThrows;
 import mft.model.bl.MemberBl;
 import mft.model.entity.Gender;
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -38,7 +40,7 @@ public class MemberController implements Initializable {
 
 
     @FXML
-    private Button saveBtn, updateBtn, deleteBtn, newBtn;
+    private Button saveBtn, closeBtn, deleteBtn, newBtn;
 
 
 
@@ -73,9 +75,6 @@ public class MemberController implements Initializable {
                     .JoinDate(joinDate.getValue())
                     .build();
 
-                System.out.println(member);
-
-
                 MemberBl.save(member);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
@@ -83,13 +82,17 @@ public class MemberController implements Initializable {
                 alert.setContentText("You have successfully save the member !");
                 alert.showAndWait();
 
-
-
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-
         });
+
+        closeBtn.setOnAction(event -> {
+            Stage stage = (Stage) closeBtn.getScene().getWindow();
+            stage.close();
+        });
+
+
 
 //
 //        updateBtn.setOnAction(event -> {
