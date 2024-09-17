@@ -102,7 +102,7 @@
             <DatePicker fx:id="dateofbirthDate" prefHeight="31.0" prefWidth="326.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label text="Gender" GridPane.rowIndex="6" />
             <Label text="Active" GridPane.rowIndex="5" />
-            <CheckBox fx:id="activeChk" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <CheckBox fx:id="activeChk" mnemonicParsing="false" selected="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <RadioButton fx:id="maleRdo" mnemonicParsing="false" text="Male" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets />
@@ -111,13 +111,10 @@
                   <ToggleGroup fx:id="GenderToggle" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="femaleRdo" mnemonicParsing="false" text="Female" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <RadioButton fx:id="femaleRdo" mnemonicParsing="false" text="Female" toggleGroup="$GenderToggle" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets left="100.0" />
                </GridPane.margin>
-               <toggleGroup>
-                  <ToggleGroup fx:id="Gender" />
-               </toggleGroup>
             </RadioButton>
             <Label text="Last Name" GridPane.rowIndex="3" />
             <TextField fx:id="lastnameTxt" GridPane.columnIndex="1" GridPane.rowIndex="3" />

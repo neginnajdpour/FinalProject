@@ -52,8 +52,6 @@ public class MemberController implements Initializable {
 
             try {
                 RadioButton selectedRadioButton = (RadioButton) GenderToggle.getSelectedToggle();
-                Gender gender = Gender.valueOf(selectedRadioButton.getText());
-
 
             Member member = Member
                     .builder()
@@ -62,7 +60,7 @@ public class MemberController implements Initializable {
                     .LastName(lastnameTxt.getText())
                     .dateOfBirth(dateofbirthDate.getValue())
                     .Gender(Gender.valueOf(selectedRadioButton.getText()))
-                    .active(true)
+                    .active(activeChk.isSelected())
                     .PhoneNumber(phoneTxt.getText())
                     .Email(emailTxt.getText())
                     .AddressLine1(addressoneTxt.getText())
