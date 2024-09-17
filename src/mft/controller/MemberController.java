@@ -28,7 +28,7 @@ public class MemberController implements Initializable {
     private DatePicker dateofbirthDate , joinDate;
 
     @FXML
-    private ChoiceBox activeChk;
+    private CheckBox activeChk;
 
     @FXML
     private RadioButton maleRdo , femaleRdo;
@@ -48,11 +48,6 @@ public class MemberController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
 
-
-
-
-
-
         saveBtn.setOnAction(event -> {
 
             try {
@@ -67,7 +62,7 @@ public class MemberController implements Initializable {
                     .LastName(lastnameTxt.getText())
                     .dateOfBirth(dateofbirthDate.getValue())
                     .Gender(Gender.valueOf(selectedRadioButton.getText()))
-                    .active((Boolean) activeChk.getValue())
+                    .active(true)
                     .PhoneNumber(phoneTxt.getText())
                     .Email(emailTxt.getText())
                     .AddressLine1(addressoneTxt.getText())
@@ -80,13 +75,15 @@ public class MemberController implements Initializable {
                     .JoinDate(joinDate.getValue())
                     .build();
 
+                System.out.println(member);
 
-                MemberBl.save(member);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information");
-                alert.setHeaderText(null);
-                alert.setContentText("You have successfully save the member !");
-                alert.showAndWait();
+
+//                MemberBl.save(member);
+//                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//                alert.setTitle("Information");
+//                alert.setHeaderText(null);
+//                alert.setContentText("You have successfully save the member !");
+//                alert.showAndWait();
 
 
 
@@ -95,6 +92,7 @@ public class MemberController implements Initializable {
             }
 
         });
+
 //
 //        updateBtn.setOnAction(event -> {
 //            try {
