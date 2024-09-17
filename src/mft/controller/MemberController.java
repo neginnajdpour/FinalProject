@@ -78,12 +78,12 @@ public class MemberController implements Initializable {
                 System.out.println(member);
 
 
-//                MemberBl.save(member);
-//                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                alert.setTitle("Information");
-//                alert.setHeaderText(null);
-//                alert.setContentText("You have successfully save the member !");
-//                alert.showAndWait();
+                MemberBl.save(member);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText(null);
+                alert.setContentText("You have successfully save the member !");
+                alert.showAndWait();
 
 
 
