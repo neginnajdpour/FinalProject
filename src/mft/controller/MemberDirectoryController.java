@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -67,11 +68,21 @@ public class MemberDirectoryController implements Initializable {
             try {
                 Stage stage = new Stage();
                 Scene scene = null;
-                scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/view/Member.fxml"))));
-                stage.setScene(scene);
-                stage.show();
+//                scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/view/Member.fxml"))));
+//                stage.setScene(scene);
+//                stage.show();
                 Member member = memberTbl.getSelectionModel().getSelectedItem();
+                FormState.member = member;
                 if (member != null) {
+                    MemberController controller = new MemberController();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/mft/view/Member.fxml"));
+                    loader.setController(controller);
+                    Parent root = loader.load();
+                    stage.setTitle("Member Details");
+                    stage.setScene(new Scene(root));
+                    stage.show();
+
+
 
                 }
 

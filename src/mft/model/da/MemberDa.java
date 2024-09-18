@@ -112,9 +112,9 @@ public class MemberDa implements AutoCloseable {
             member.setNationalID(resultSet.getInt("NationalID"));
             member.setFirstName(resultSet.getString("FirstName"));
             member.setLastName(resultSet.getString("LastName"));
-            //member.setDateOfBirth(resultSet.getDate("DateOfBirth").toLocalDate());
-            //member.setGender(Gender.valueOf(resultSet.getString("Gender")));
-            //member.setActive(resultSet.getBoolean("Active"));
+            member.setDateOfBirth(LocalDate.parse(resultSet.getString("DateOfBirth")));
+            member.setGender(Gender.valueOf(resultSet.getString("Gender")));
+            member.setActive(resultSet.getBoolean("Active"));
             member.setPhoneNumber(resultSet.getString("PhoneNumber"));
             member.setEmail(resultSet.getString("Email"));
             member.setAddressLine1(resultSet.getString("AddressLine1"));
@@ -124,7 +124,7 @@ public class MemberDa implements AutoCloseable {
             member.setCountry(resultSet.getString("Country"));
             member.setPostalcode(resultSet.getString("Postalcode"));
             member.setPhoto(resultSet.getString("Photo"));
-            //member.setJoinDate(resultSet.getDate("JoinDate").toLocalDate());
+            member.setJoinDate(resultSet.getDate("JoinDate").toLocalDate());
             members.add(member);
         }
 
