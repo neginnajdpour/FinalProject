@@ -181,24 +181,35 @@ public class MemberController implements Initializable {
 
     }
 
-    public void setUser(String str) {
+    public void setUser(Member member) {
 
+        nationalIdTxt.setText(String.valueOf(member.getNationalID()));
+        firstnameTxt.setText(member.getFirstName());
+        lastnameTxt.setText(member.getLastName());
+        dateofbirthDate.setValue(member.getDateOfBirth());
+        phoneTxt.setText(member.getPhoneNumber());
 
+        if (member.getGender().name() == "Male") {
+                maleRdo.setSelected(true);
+        }
+        else{
+                femaleRdo.setSelected(true); }
 
-        this.admissionTxt.setText(str);
-//        firstnameTxt.setText(member.getFirstName());
-//        lastnameTxt.setText(member.getLastName());
-//        dateofbirthDate.setValue(member.getDateOfBirth());
-//        phoneTxt.setText(member.getPhoneNumber());
-//        emailTxt.setText(member.getEmail());
-//        addressoneTxt.setText(member.getAddressLine1());
-//        addresstwoTxt.setText(member.getAddressLine2());
-//        cityTxt.setText(member.getCity());
-//        stateTxt.setText(member.getState());
-//        postalcodeTxt.setText(member.getPostalcode());
-//        countryTxt.setText(member.getCountry());
-//        photoTxt.setText(member.getPhoto());
-//        joinDate.setValue(member.getJoinDate());
+        if (member.isActive()) {
+            activeChk.setSelected(true);}
+        else{
+            activeChk.setSelected(false);
+        }
+
+        emailTxt.setText(member.getEmail());
+        addressoneTxt.setText(member.getAddressLine1());
+        addresstwoTxt.setText(member.getAddressLine2());
+        cityTxt.setText(member.getCity());
+        stateTxt.setText(member.getState());
+        postalcodeTxt.setText(member.getPostalcode());
+        countryTxt.setText(member.getCountry());
+        photoTxt.setText(member.getPhoto());
+        joinDate.setValue(member.getJoinDate());
 
     }
 

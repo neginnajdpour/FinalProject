@@ -72,17 +72,30 @@ public class MemberDirectoryController implements Initializable {
                 FormState.member = member;
                 if (member != null) {
 
+//                    Stage stage = new Stage();
+//                    Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/view/Member.fxml"))));
+//                    stage.setTitle("Panel");
+//                    stage.setScene(scene);
+//                    stage.show();
+//
+//
+//
+//                    // Step 3
+//                    MemberController controller = new MemberController();
+//                    controller.setUser(member.getFirstName());
+
+                    ////////////////////////////////////
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/mft/view/Member.fxml" ));
+
                     Stage stage = new Stage();
-                    Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/view/Member.fxml"))));
-                    stage.setTitle("Panel");
-                    stage.setScene(scene);
+                    stage.setScene(  new Scene(loader.load())
+                    );
+
+                    MemberController controller = loader.getController();
+                    controller.setUser(member);
+
                     stage.show();
-
-
-
-                    // Step 3
-                    MemberController controller = new MemberController();
-                    controller.setUser(member.getFirstName());
 
                 }
 
