@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 public class MemberController implements Initializable {
 
     @FXML
-    private TextField nationalIdTxt, firstnameTxt, lastnameTxt, photoTxt, phoneTxt, emailTxt, addressoneTxt, addresstwoTxt, cityTxt, stateTxt, postalcodeTxt, countryTxt;
+    private TextField admissionTxt, nationalIdTxt, firstnameTxt, lastnameTxt, photoTxt, phoneTxt, emailTxt, addressoneTxt, addresstwoTxt, cityTxt, stateTxt, postalcodeTxt, countryTxt;
 
     @FXML
     private DatePicker dateofbirthDate , joinDate;
@@ -48,6 +48,8 @@ public class MemberController implements Initializable {
     @SneakyThrows
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+
 
 
         saveBtn.setOnAction(event -> {
@@ -177,9 +179,26 @@ public class MemberController implements Initializable {
 //        });
 
 
+    }
+
+    public void setUser(String str) {
 
 
 
+        this.admissionTxt.setText(str);
+//        firstnameTxt.setText(member.getFirstName());
+//        lastnameTxt.setText(member.getLastName());
+//        dateofbirthDate.setValue(member.getDateOfBirth());
+//        phoneTxt.setText(member.getPhoneNumber());
+//        emailTxt.setText(member.getEmail());
+//        addressoneTxt.setText(member.getAddressLine1());
+//        addresstwoTxt.setText(member.getAddressLine2());
+//        cityTxt.setText(member.getCity());
+//        stateTxt.setText(member.getState());
+//        postalcodeTxt.setText(member.getPostalcode());
+//        countryTxt.setText(member.getCountry());
+//        photoTxt.setText(member.getPhoto());
+//        joinDate.setValue(member.getJoinDate());
 
     }
 

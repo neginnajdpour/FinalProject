@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -66,23 +67,22 @@ public class MemberDirectoryController implements Initializable {
 
 
             try {
-                Stage stage = new Stage();
-                Scene scene = null;
-//                scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/view/Member.fxml"))));
-//                stage.setScene(scene);
-//                stage.show();
+
                 Member member = memberTbl.getSelectionModel().getSelectedItem();
                 FormState.member = member;
                 if (member != null) {
-                    MemberController controller = new MemberController();
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/mft/view/Member.fxml"));
-                    loader.setController(controller);
-                    Parent root = loader.load();
-                    stage.setTitle("Member Details");
-                    stage.setScene(new Scene(root));
+
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/view/Member.fxml"))));
+                    stage.setTitle("Panel");
+                    stage.setScene(scene);
                     stage.show();
 
 
+
+                    // Step 3
+                    MemberController controller = new MemberController();
+                    controller.setUser(member.getFirstName());
 
                 }
 
