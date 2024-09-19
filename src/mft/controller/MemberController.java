@@ -227,13 +227,5 @@ public class MemberController implements Initializable {
 
     }
 
-    public void setStage(Stage stage) {
-        Stage thisStage = (Stage) projectNameTextField.getScene().getWindow();
-        this.stage = stage;
-        projectNameTextField.setOnAction(event -> {
-            stage.hide();
-        });
-    }
-
 
 }
