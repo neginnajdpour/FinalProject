@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
 public class MemberDirectoryController implements Initializable {
 
     @FXML
-    private Button searchBtn;
+    private Button searchBtn, refreshTbl;
 
     @FXML
     private TextField nationalIdTxt;
@@ -85,6 +85,16 @@ public class MemberDirectoryController implements Initializable {
             }
 
         });
+
+        refreshTbl.setOnAction(event -> {
+            try {
+                refreshMemberTbl(MemberBl.getAllMembers());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+
 
 
     }

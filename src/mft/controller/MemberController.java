@@ -131,66 +131,38 @@ public class MemberController implements Initializable {
                 alert.showAndWait();
                 ((Stage) (updateBtn.getScene().getWindow())).hide();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/mft/view/MemberDirectory.fxml" ));
-                Stage stage = new Stage();
-                stage.setScene(new Scene(loader.load()));
-                MemberDirectoryController controller = loader.getController();
-                controller.refreshMemberTbl(MemberBl.getAllMembers());
-                stage.show();
+//                FXMLLoader loader = new FXMLLoader(getClass().getResource("/mft/view/MemberDirectory.fxml" ));
+//                Stage stage = new Stage();
+//                stage.setScene(new Scene(loader.load()));
+//                MemberDirectoryController controller = loader.getController();
+//                controller.refreshMemberTbl(MemberBl.getAllMembers());
+//                stage.show();
 
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
 
         });
-//
-//        deleteBtn.setOnAction(event -> {
-//
-//            try {
-//                MemberBl.delete(Integer.valueOf(nationalIdTxt.getText()));
-//                Alert alert = new  Alert(Alert.AlertType.INFORMATION);
-//                alert.setTitle("Information");
-//                alert.setHeaderText(null);
-//                alert.setContentText("You have successfully deleted the member !");
-//                alert.showAndWait();
-//
-//
-//            } catch (Exception e) {
-//                throw new RuntimeException(e);
-//            }
-//
-//        });
-//
-//        newBtn.setOnAction(event -> {
-//            nationalIdTxt.clear();
-//            firstnameTxt.clear();
-//            lastnameTxt.clear();
-//            phoneTxt.clear();
-//            emailTxt.clear();
-//            addressoneTxt.clear();
-//            addresstwoTxt.clear();
-//            cityTxt.clear();
-//            stateTxt.clear();
-//            postalcodeTxt.clear();
-//            countryTxt.clear();
-//            photoTxt.clear();
-//        });
 
-//        memberTbl.setOnMouseReleased(event -> {
-//            Member member = memberTbl.getSelectionModel().getSelectedItem();
-//            nationalIdTxt.setText(String.valueOf(member.getNationalID()));
-//            firstnameTxt.setText(member.getFirstName());
-//            lastnameTxt.setText(member.getLastName());
-//            phoneTxt.setText(member.getPhoneNumber());
-//            emailTxt.setText(member.getEmail());
-//            addressoneTxt.setText(member.getAddressLine1());
-//            addresstwoTxt.setText(member.getAddressLine2());
-//            cityTxt.setText(member.getCity());
-//            stateTxt.setText(member.getState());
-//            postalcodeTxt.setText(member.getPostalcode());
-//            countryTxt.setText(member.getCountry());
-//            photoTxt.setText(member.getPhoto());
-//        });
+        deleteBtn.setOnAction(event -> {
+
+            try {
+                MemberBl.delete(Integer.valueOf(nationalIdTxt.getText()));
+                Alert alert = new  Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText(null);
+                alert.setContentText("You have successfully deleted the member !");
+                alert.showAndWait();
+                ((Stage) (deleteBtn.getScene().getWindow())).hide();
+
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
+        });
+
+
+
 
 
     }
