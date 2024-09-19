@@ -80,5 +80,6 @@
             </Tab>
         </tabs>
       </TabPane>
+      <Button fx:id="refreshTbl" layoutX="931.0" layoutY="71.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="143.0" text="Refresh Table" />
    </children>
 </Pane>

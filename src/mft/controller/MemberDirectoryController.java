@@ -65,44 +65,24 @@ public class MemberDirectoryController implements Initializable {
 
         memberTbl.setOnMouseReleased(event -> {
 
-
             try {
 
                 Member member = memberTbl.getSelectionModel().getSelectedItem();
                 FormState.member = member;
                 if (member != null) {
 
-//                    Stage stage = new Stage();
-//                    Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/view/Member.fxml"))));
-//                    stage.setTitle("Panel");
-//                    stage.setScene(scene);
-//                    stage.show();
-//
-//
-//
-//                    // Step 3
-//                    MemberController controller = new MemberController();
-//                    controller.setUser(member.getFirstName());
-
-                    ////////////////////////////////////
-
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/mft/view/Member.fxml" ));
-
                     Stage stage = new Stage();
-                    stage.setScene(  new Scene(loader.load())
-                    );
 
+                    stage.setScene(new Scene(loader.load()));
                     MemberController controller = loader.getController();
                     controller.setUser(member);
-
                     stage.show();
-
                 }
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
 
         });
 

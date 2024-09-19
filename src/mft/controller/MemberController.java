@@ -3,7 +3,9 @@ package mft.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
@@ -40,7 +42,7 @@ public class MemberController implements Initializable {
 
 
     @FXML
-    private Button saveBtn, closeBtn, deleteBtn, newBtn;
+    private Button saveBtn,updateBtn, deleteBtn, newBtn, closeBtn;
 
 
 
@@ -96,39 +98,51 @@ public class MemberController implements Initializable {
 
 
 
-//
-//        updateBtn.setOnAction(event -> {
-//            try {
-//                Member member = Member
-//                        .builder()
-//                        .nationalID(Integer.valueOf(nationalIdTxt.getText()))
-//                        .FirstName(firstnameTxt.getText())
-//                        .LastName(lastnameTxt.getText())
-//                        .PhoneNumber(phoneTxt.getText())
-//                        .Email(emailTxt.getText())
-//                        .AddressLine1(addressoneTxt.getText())
-//                        .AddressLine2(addresstwoTxt.getText())
-//                        .City(cityTxt.getText())
-//                        .State(stateTxt.getText())
-//                        .Postalcode(postalcodeTxt.getText())
-//                        .Country(countryTxt.getText())
-//                        .Photo(photoTxt.getText())
-//                        .build();
-//
-//
-//                MemberBl.update(member);
-//                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                alert.setTitle("Information");
-//                alert.setHeaderText(null);
-//                alert.setContentText("You have successfully update the member !");
-//                alert.showAndWait();
-//
-//
-//            } catch (Exception e) {
-//                throw new RuntimeException(e);
-//            }
-//
-//        });
+
+        updateBtn.setOnAction(event -> {
+            try {
+                RadioButton selectedRadioButton = (RadioButton) GenderToggle.getSelectedToggle();
+                Member member = Member
+                        .builder()
+                        .nationalID(Integer.valueOf(nationalIdTxt.getText()))
+                        .FirstName(firstnameTxt.getText())
+                        .LastName(lastnameTxt.getText())
+                        .dateOfBirth(dateofbirthDate.getValue())
+                        .Gender(Gender.valueOf(selectedRadioButton.getText()))
+                        .active(activeChk.isSelected())
+                        .PhoneNumber(phoneTxt.getText())
+                        .Email(emailTxt.getText())
+                        .AddressLine1(addressoneTxt.getText())
+                        .AddressLine2(addresstwoTxt.getText())
+                        .City(cityTxt.getText())
+                        .State(stateTxt.getText())
+                        .Country(countryTxt.getText())
+                        .Postalcode(postalcodeTxt.getText())
+                        .Photo(photoTxt.getText())
+                        .JoinDate(joinDate.getValue())
+                        .build();
+
+
+                MemberBl.update(member);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText(null);
+                alert.setContentText("You have successfully update the member !");
+                alert.showAndWait();
+                ((Stage) (updateBtn.getScene().getWindow())).hide();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/mft/view/MemberDirectory.fxml" ));
+                Stage stage = new Stage();
+                stage.setScene(new Scene(loader.load()));
+                MemberDirectoryController controller = loader.getController();
+                controller.refreshMemberTbl(MemberBl.getAllMembers());
+                stage.show();
+
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
+        });
 //
 //        deleteBtn.setOnAction(event -> {
 //
@@ -211,6 +225,14 @@ public class MemberController implements Initializable {
         photoTxt.setText(member.getPhoto());
         joinDate.setValue(member.getJoinDate());
 
+    }
+
+    public void setStage(Stage stage) {
+        Stage thisStage = (Stage) projectNameTextField.getScene().getWindow();
+        this.stage = stage;
+        projectNameTextField.setOnAction(event -> {
+            stage.hide();
+        });
     }
 
 

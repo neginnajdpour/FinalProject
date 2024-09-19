@@ -47,28 +47,34 @@ public class MemberDa implements AutoCloseable {
         preparedStatement.executeUpdate();
     }
 
+
+
+    public void update(Member member) throws SQLException {
+        connection = JdbcProvider.getInstance().getConnection();
+        preparedStatement = connection.prepareStatement("UPDATE MEMBER SET FirstName = ? , LastName = ? , DateOfBirth = ? , Gender = ? , Active = ? , PhoneNumber = ? , Email = ? , addressLine1 = ? , addressLine2 = ? , city = ? , state = ? , country = ? , postalcode = ? , Photo = ? , JoinDate = ? WHERE NationalID = ?");
+        preparedStatement.setString(1, member.getFirstName());
+        preparedStatement.setString(2, member.getLastName());
+        preparedStatement.setDate(3, Date.valueOf(member.getDateOfBirth()));
+        preparedStatement.setString(4, member.getGender().toString());
+        preparedStatement.setBoolean(5, member.isActive());
+        preparedStatement.setString(6, member.getPhoneNumber());
+        preparedStatement.setString(7, member.getEmail());
+        preparedStatement.setString(8, member.getAddressLine1());
+        preparedStatement.setString(9, member.getAddressLine2());
+        preparedStatement.setString(10, member.getCity());
+        preparedStatement.setString(11, member.getState());
+        preparedStatement.setString(12, member.getCountry());
+        preparedStatement.setString(13, member.getPostalcode());
+        preparedStatement.setString(14, member.getPhoto());
+        preparedStatement.setDate(15, Date.valueOf(member.getJoinDate()));
+        preparedStatement.setInt(16, member.getNationalID());
+        preparedStatement.executeUpdate();
+    }
+
     public void delete(int NationalID) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
         preparedStatement = connection.prepareStatement("DELETE FROM MEMBER WHERE NationalID = ?");
         preparedStatement.setInt(1, NationalID);
-        preparedStatement.executeUpdate();
-    }
-
-    public void update(Member member) throws SQLException {
-        connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("UPDATE MEMBER SET FirstName = ? , LastName = ? , PhoneNumber = ? , Email = ? , addressLine1 = ? , addressLine2 = ? , city = ? , state = ? , country = ? , postalcode = ? , Photo = ? WHERE NationalID = ?");
-        preparedStatement.setString(1, member.getFirstName());
-        preparedStatement.setString(2, member.getLastName());
-        preparedStatement.setString(3, member.getPhoneNumber());
-        preparedStatement.setString(4, member.getEmail());
-        preparedStatement.setString(5, member.getAddressLine1());
-        preparedStatement.setString(6, member.getAddressLine2());
-        preparedStatement.setString(7, member.getCity());
-        preparedStatement.setString(8, member.getState());
-        preparedStatement.setString(9, member.getCountry());
-        preparedStatement.setString(10, member.getPostalcode());
-        preparedStatement.setString(11, member.getPhoto());
-        preparedStatement.setInt(12, member.getNationalID());
         preparedStatement.executeUpdate();
     }
 
