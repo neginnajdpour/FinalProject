@@ -126,19 +126,34 @@
             <TextField fx:id="admissionTxt" GridPane.columnIndex="1" />
          </children>
       </GridPane>
-      <HBox layoutX="833.0" layoutY="447.0" prefHeight="42.0" prefWidth="231.0">
+      <HBox layoutX="587.0" layoutY="447.0" prefHeight="42.0" prefWidth="477.0">
          <children>
             <Button fx:id="saveBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="97.0" text="Save">
                <opaqueInsets>
                   <Insets left="20.0" />
                </opaqueInsets></Button>
-            <Button fx:id="closeBtn" mnemonicParsing="false" prefHeight="43.0" prefWidth="95.0" text="Close">
+            <Button fx:id="updateBtn" mnemonicParsing="false" prefHeight="43.0" prefWidth="95.0" text="Update">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <HBox.margin>
-                  <Insets left="40.0" />
+                  <Insets />
                </HBox.margin>
+            </Button>
+            <Button fx:id="deleteBtn" mnemonicParsing="false" prefHeight="43.0" prefWidth="95.0" text="Delete">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="newBtn" mnemonicParsing="false" prefHeight="43.0" prefWidth="95.0" text="New">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="closeBtn" mnemonicParsing="false" prefHeight="43.0" prefWidth="95.0" text="Close">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </Button>
          </children>
       </HBox>
