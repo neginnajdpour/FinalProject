@@ -50,8 +50,12 @@ public class ResourceController implements Initializable {
             languageCmb.getItems().add(genre);
         };
 
-        List<Resource> resourceList = ResourceBl.getAllResources();
-        refreshBookTbl(resourceList);
+        for (Status genre : Status.values()) {
+            statusCmb.getItems().add(genre);
+        };
+
+//        List<Resource> resourceList = ResourceBl.getAllResources();
+//        refreshBookTbl(resourceList);
 
         saveBtn.setOnAction(event -> {
             try {
@@ -150,35 +154,22 @@ public class ResourceController implements Initializable {
         });
 
         newBtn.setOnAction(event -> {
-            isbnTxt.setText("");
-            titleTxt.setText("");
-            editionTxt.setText("");
-            authorTxt.setText("");
-            publisherTxt.setText("");
-            quantityTxt.setText("");
-            descriptionTxt.setText("");
+            titleTxt.clear();
+            subjectTxt.clear();
+            quantityTxt.clear();
+            isbnTxt.clear();
+            author1Txt.clear();
+            editionTxt.clear();
+            contentTxt.clear();
+            publisherTxt.clear();
+            seriesTxt.clear();
+            costTxt.clear();
+            author2Txt.clear();
+            keywordTxt.clear();
             resourcetypeCmb.getSelectionModel().clearSelection();
             categoryCmb.getSelectionModel().clearSelection();
             languageCmb.getSelectionModel().clearSelection();
         });
-
-        resourceTbl.setOnMouseReleased(event -> {
-            Resource resource = resourceTbl.getSelectionModel().getSelectedItem();
-            if (resource != null) {
-                isbnTxt.setText(resource.getISBN().toString());
-                titleTxt.setText(resource.getTitle());
-                editionTxt.setText(resource.getEDITION());
-                authorTxt.setText(resource.getAUTHOR());
-                publisherTxt.setText(resource.getPUBLISHER());
-                quantityTxt.setText(String.valueOf(resource.getQUANTITY()));
-                descriptionTxt.setText(resource.getDESCRIPTION());
-                resourcetypeCmb.getSelectionModel().select(resource.getRESOURCE_TYPE());
-                categoryCmb.getSelectionModel().select(resource.getCATEGORY());
-                languageCmb.getSelectionModel().select(resource.getLANGUAGE());
-
-            }
-        });
-
 
 
 

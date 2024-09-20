@@ -18,7 +18,7 @@ public class MainPageController implements Initializable {
 
 
     @FXML
-    private MenuItem newMemberMenu, searchMemberMenu;
+    private MenuItem newMemberMenu, searchMemberMenu , newResourceMenu, searchResourceMenu;
 
     @FXML
     private void handleMemberRegistrationAction(ActionEvent event) throws IOException {
@@ -55,6 +55,34 @@ public class MainPageController implements Initializable {
                 Stage stage = new Stage();
                 Scene scene = null;
                 scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/view/MemberDirectory.fxml"))));
+                stage.setTitle("Panel");
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        newResourceMenu.setOnAction(event -> {
+
+            try {
+                Stage stage = new Stage();
+                Scene scene = null;
+                scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/view/Resource.fxml"))));
+                stage.setTitle("Panel");
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        searchResourceMenu.setOnAction(event -> {
+
+            try {
+                Stage stage = new Stage();
+                Scene scene = null;
+                scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/view/SearchBook.fxml"))));
                 stage.setTitle("Panel");
                 stage.setScene(scene);
                 stage.show();

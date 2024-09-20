@@ -32,8 +32,8 @@
           </Menu>
             <Menu mnemonicParsing="false" text="Books">
               <items>
-                <MenuItem mnemonicParsing="false" text="New Book" />
-                  <MenuItem mnemonicParsing="false" text="Search Book" />
+                <MenuItem fx:id="newResourceMenu" mnemonicParsing="false" text="New Book" />
+                  <MenuItem fx:id="searchResourceMenu" mnemonicParsing="false" text="Search Book" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Transaction">

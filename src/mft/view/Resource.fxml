@@ -5,7 +5,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -13,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="1063.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mft.controller.ResourceController">
+<Pane fx:controller="mft.controller.ResourceController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="1063.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <GridPane layoutX="35.0" layoutY="110.0" prefHeight="421.0" prefWidth="932.0">
         <columnConstraints>
@@ -39,7 +38,6 @@
             <ComboBox fx:id="categoryCmb" prefHeight="31.0" prefWidth="324.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Language" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <Label text="Keywords" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-            <TextArea fx:id="keywordTxt" prefHeight="102.0" prefWidth="178.0" GridPane.columnIndex="4" GridPane.rowIndex="7" />
             <Label text="ISBN/Barcode" GridPane.rowIndex="4" />
             <Label text="Resource Type" />
             <Label text="Edition" GridPane.rowIndex="6" />
@@ -62,8 +60,9 @@
             <Label text="Author 2" GridPane.columnIndex="3" GridPane.rowIndex="5" />
             <TextField fx:id="seriesTxt" GridPane.columnIndex="4" GridPane.rowIndex="3" />
             <TextField fx:id="costTxt" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-            <TextArea fx:id="contentTxt" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <ComboBox fx:id="statusCmb" prefHeight="31.0" prefWidth="304.0" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+            <TextField fx:id="keywordTxt" prefHeight="57.0" prefWidth="301.0" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+            <TextField fx:id="contentTxt" prefHeight="58.0" prefWidth="325.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
       <HBox layoutX="340.0" layoutY="585.0" prefHeight="38.0" prefWidth="495.0">

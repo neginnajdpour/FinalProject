@@ -12,7 +12,7 @@ import lombok.experimental.SuperBuilder;
 @ToString
 
 public class Resource {
-
+    private int RESOURCE_ID;
     private String TITLE;
     private ResourceType RESOURCE_TYPE;
     private String SUBJECT;

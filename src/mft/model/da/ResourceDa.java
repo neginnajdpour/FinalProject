@@ -30,7 +30,7 @@ public class ResourceDa implements AutoCloseable {
     public void save(Resource resource) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
         preparedStatement = connection.prepareStatement("INSERT INTO RESOURCE(TITLE , RESOURCE_TYPE , SUBJECT , CATEGORY ,QUANTITY , ISBN ,  AUTHOR1 , EDITION , CONTENT ,PUBLISHER , LANGUAGE , SERIES , COST , AUTHOR2 , STATUS , KEYWORD) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        preparedStatement.setString(1,resource.getTITLE(resultSet.getString("TITLE")));
+        preparedStatement.setString(1,resource.getTITLE());
         preparedStatement.setString(2,resource.getRESOURCE_TYPE().name());
         preparedStatement.setString(3,resource.getSUBJECT());
         preparedStatement.setString(4,resource.getCATEGORY().name());
@@ -53,7 +53,7 @@ public class ResourceDa implements AutoCloseable {
     public void update(Resource resource) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
         preparedStatement = connection.prepareStatement("UPDATE RESOURCE SET TITLE = ? , RESOURCE_TYPE = ? , SUBJECT = ? , CATEGORY = ? , QUANTITY = ? , ISBN = ? ,  AUTHOR1 = ? , EDITION = ? , CONTENT = ? ,PUBLISHER = ? , LANGUAGE = ? , SERIES = ? , COST = ? , AUTHOR2 = ? , STATUS = ? , KEYWORD = ? WHERE ISBN = ?");
-        preparedStatement.setString(1,resource.getTITLE(resultSet.getString("TITLE")));
+        preparedStatement.setString(1,resource.getTITLE());
         preparedStatement.setString(2,resource.getRESOURCE_TYPE().name());
         preparedStatement.setString(3,resource.getSUBJECT());
         preparedStatement.setString(4,resource.getCATEGORY().name());
@@ -86,18 +86,23 @@ public class ResourceDa implements AutoCloseable {
         resultSet = preparedStatement.executeQuery();
         Resource resource = new Resource();
         if(resultSet.next()) {
-            resource.getTITLE(resultSet.getString("TITLE"));
-            resource.setISBN(resultSet.getInt("ISBN"));
+            resource.setRESOURCE_ID(resultSet.getInt("Resource_Id"));
+            resource.setTITLE(resultSet.getString("TITLE"));
             resource.setRESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")));
-            resource.setTitle(resultSet.getString("TITLE"));
-            resource.setEDITION(resultSet.getString("EDITION"));
-            resource.setAUTHOR(resultSet.getString("AUTHOR"));
+            resource.setSUBJECT(resultSet.getString("SUBJECT"));
             resource.setCATEGORY(Category.valueOf(resultSet.getString("CATEGORY")));
+            resource.setQUANTITY(resultSet.getInt("QUANTITY"));
+            resource.setISBN(resultSet.getInt("ISBN"));
+            resource.setAUTHOR1(resultSet.getString("AUTHOR1"));
+            resource.setEDITION(resultSet.getString("EDITION"));
+            resource.setCONTENT(resultSet.getString("CONTENT"));
             resource.setPUBLISHER(resultSet.getString("PUBLISHER"));
             resource.setLANGUAGE(Language.valueOf(resultSet.getString("LANGUAGE")));
-            resource.setQUANTITY(resultSet.getInt("QUANTITY"));
-            resource.setDESCRIPTION(resultSet.getString("DESCRIPTION"));
-            //resource.setRESOURCE_ID(resultSet.getInt("Resource_Id"));;
+            resource.setSERIES(resultSet.getInt("SERIES"));
+            resource.setCOST(resultSet.getInt("COST"));
+            resource.setAUTHOR2(resultSet.getString("AUTHOR2"));
+            resource.setSTATUS(resultSet.getString("STATUS"));
+            resource.setKEYWORD(resultSet.getString("KEYWORD"));
         }
         return Optional.of(resource);
     }
@@ -110,17 +115,23 @@ public class ResourceDa implements AutoCloseable {
         List<Resource> resources = new ArrayList<>();
         if(resultSet.next()) {
             Resource resource = new Resource();
-            //resource.setRESOURCE_ID(resultSet.getInt("Resource_Id"));
-            resource.setISBN(resultSet.getInt("ISBN"));
+            resource.setRESOURCE_ID(resultSet.getInt("Resource_Id"));
+            resource.setTITLE(resultSet.getString("TITLE"));
             resource.setRESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")));
-            resource.setTitle(resultSet.getString("TITLE"));
-            resource.setEDITION(resultSet.getString("EDITION"));
-            resource.setAUTHOR(resultSet.getString("AUTHOR"));
+            resource.setSUBJECT(resultSet.getString("SUBJECT"));
             resource.setCATEGORY(Category.valueOf(resultSet.getString("CATEGORY")));
+            resource.setQUANTITY(resultSet.getInt("QUANTITY"));
+            resource.setISBN(resultSet.getInt("ISBN"));
+            resource.setAUTHOR1(resultSet.getString("AUTHOR1"));
+            resource.setEDITION(resultSet.getString("EDITION"));
+            resource.setCONTENT(resultSet.getString("CONTENT"));
             resource.setPUBLISHER(resultSet.getString("PUBLISHER"));
             resource.setLANGUAGE(Language.valueOf(resultSet.getString("LANGUAGE")));
-            resource.setQUANTITY(resultSet.getInt("QUANTITY"));
-            resource.setDESCRIPTION(resultSet.getString("DESCRIPTION"));
+            resource.setSERIES(resultSet.getInt("SERIES"));
+            resource.setCOST(resultSet.getInt("COST"));
+            resource.setAUTHOR2(resultSet.getString("AUTHOR2"));
+            resource.setSTATUS(resultSet.getString("STATUS"));
+            resource.setKEYWORD(resultSet.getString("KEYWORD"));
             resources.add(resource);
         }
         return resources;
@@ -137,17 +148,23 @@ public class ResourceDa implements AutoCloseable {
         while (resultSet.next()) {
             Resource resource = Resource
                     .builder()
-                    //.RESOURCE_ID(resultSet.getInt("RESOURCE_ID"))
-                    .ISBN(resultSet.getInt("ISBN"))
+                    .RESOURCE_ID(resultSet.getInt("RESOURCE_ID"))
+                    .TITLE(resultSet.getString("TITLE"))
                     .RESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")))
-                    .title(resultSet.getString("TITLE"))
-                    .EDITION(resultSet.getString("EDITION"))
-                    .AUTHOR(resultSet.getString("AUTHOR"))
+                    .SUBJECT(resultSet.getString("SUBJECT"))
                     .CATEGORY(Category.valueOf(resultSet.getString("CATEGORY")))
+                    .QUANTITY(resultSet.getInt("QUANTITY"))
+                    .ISBN(resultSet.getInt("ISBN"))
+                    .AUTHOR1(resultSet.getString("AUTHOR1"))
+                    .EDITION(resultSet.getString("EDITION"))
+                    .CONTENT(resultSet.getString("CONTENT"))
                     .PUBLISHER(resultSet.getString("PUBLISHER"))
                     .LANGUAGE(Language.valueOf(resultSet.getString("LANGUAGE")))
-                    .QUANTITY(resultSet.getInt("QUANTITY"))
-                    .DESCRIPTION(resultSet.getString("DESCRIPTION"))
+                    .SERIES(resultSet.getInt("SERIES"))
+                    .COST(resultSet.getInt("COST"))
+                    .AUTHOR2(resultSet.getString("AUTHOR2"))
+                    .STATUS(resultSet.getString("STATUS"))
+                    .KEYWORD(resultSet.getString("KEYWORD"))
                     .build();
 
             resources.add(resource);
