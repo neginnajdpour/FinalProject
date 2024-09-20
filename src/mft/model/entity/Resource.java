@@ -13,15 +13,28 @@ import lombok.experimental.SuperBuilder;
 
 public class Resource {
 
-    private Integer ISBN;
-    private mft.model.entity.ResourceType RESOURCE_TYPE;
-    private String title;
-    private String EDITION;
-    private String AUTHOR;
-    private mft.model.entity.Category CATEGORY;
-    private String PUBLISHER;
-    private mft.model.entity.Language LANGUAGE;
+    private String TITLE;
+    private ResourceType RESOURCE_TYPE;
+    private String SUBJECT;
+    private Category CATEGORY;
     private int QUANTITY;
+    private Integer ISBN;
+    private String AUTHOR1;
+    private String EDITION;
+    private String CONTENT;
+    private String PUBLISHER;
+    private Language LANGUAGE;
+    private int SERIES;
+    private int COST;
+    private String AUTHOR2;
+    private String STATUS;
+    private String KEYWORD;
+
+
+
+
+
+
     private String DESCRIPTION;
 
     @Override

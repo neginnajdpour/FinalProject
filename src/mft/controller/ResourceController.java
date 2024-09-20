@@ -8,10 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lombok.SneakyThrows;
 import mft.model.bl.ResourceBl;
-import mft.model.entity.Category;
-import mft.model.entity.Language;
-import mft.model.entity.Resource;
-import mft.model.entity.ResourceType;
+import mft.model.entity.*;
 
 import java.net.URL;
 import java.util.List;
@@ -20,13 +17,10 @@ import java.util.ResourceBundle;
 public class ResourceController implements Initializable {
 
     @FXML
-    private TextField isbnTxt, titleTxt, editionTxt, authorTxt, publisherTxt, quantityTxt;
+    private TextField   titleTxt , subjectTxt , quantityTxt , isbnTxt, author1Txt , editionTxt , contentTxt , publisherTxt, seriesTxt, costTxt, author2Txt , keywordTxt  ;
 
     @FXML
-    private TextArea descriptionTxt;
-
-    @FXML
-    private ComboBox resourcetypeCmb , categoryCmb, languageCmb;
+    private ComboBox resourcetypeCmb , categoryCmb, languageCmb , statusCmb;
 
     @FXML
     private Button saveBtn, updateBtn, deleteBtn, newBtn;
@@ -64,20 +58,26 @@ public class ResourceController implements Initializable {
                 ResourceType resourceType = (ResourceType) resourcetypeCmb.getSelectionModel().getSelectedItem();
                 Category category = (Category) categoryCmb.getSelectionModel().getSelectedItem();
                 Language language = (Language) languageCmb.getSelectionModel().getSelectedItem();
+                Status status = (Status) statusCmb.getSelectionModel().getSelectedItem();
                 Resource book = Resource
                         .builder()
-                        .ISBN(Integer.parseInt(isbnTxt.getText()))
+                        .TITLE(titleTxt.getText())
                         .RESOURCE_TYPE(ResourceType.valueOf(resourceType.name()))
-                        .title(titleTxt.getText())
-                        .EDITION(editionTxt.getText())
-                        .AUTHOR(authorTxt.getText())
+                        .SUBJECT(subjectTxt.getText())
                         .CATEGORY(Category.valueOf(category.name()))
+                        .QUANTITY(Integer.parseInt(quantityTxt.getText()))
+                        .ISBN(Integer.parseInt(isbnTxt.getText()))
+                        .AUTHOR1(author1Txt.getText())
+                        .EDITION(editionTxt.getText())
+                        .CONTENT(contentTxt.getText())
                         .PUBLISHER(publisherTxt.getText())
                         .LANGUAGE(Language.valueOf(language.name()))
-                        .QUANTITY(Integer.parseInt(quantityTxt.getText()))
-                        .DESCRIPTION(descriptionTxt.getText())
+                        .SERIES(Integer.parseInt(seriesTxt.getText()))
+                        .COST(Integer.parseInt(costTxt.getText()))
+                        .AUTHOR2(author2Txt.getText())
+                        .STATUS(String.valueOf(Status.valueOf(status.name())))
+                        .KEYWORD(keywordTxt.getText())
                         .build();
-
 
                 ResourceBl.save(book);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -99,19 +99,25 @@ public class ResourceController implements Initializable {
                 ResourceType resourceType = (ResourceType) resourcetypeCmb.getSelectionModel().getSelectedItem();
                 Category category = (Category) categoryCmb.getSelectionModel().getSelectedItem();
                 Language language = (Language) languageCmb.getSelectionModel().getSelectedItem();
+                Status status = (Status) statusCmb.getSelectionModel().getSelectedItem();
                 Resource book = Resource
                         .builder()
-                        //.RESOURCE_ID(Integer.parseInt(resourceIdLbl.getText()))
-                        .ISBN(Integer.parseInt(isbnTxt.getText()))
+                        .TITLE(titleTxt.getText())
                         .RESOURCE_TYPE(ResourceType.valueOf(resourceType.name()))
-                        .title(titleTxt.getText())
-                        .EDITION(editionTxt.getText())
-                        .AUTHOR(authorTxt.getText())
+                        .SUBJECT(subjectTxt.getText())
                         .CATEGORY(Category.valueOf(category.name()))
+                        .QUANTITY(Integer.parseInt(quantityTxt.getText()))
+                        .ISBN(Integer.parseInt(isbnTxt.getText()))
+                        .AUTHOR1(author1Txt.getText())
+                        .EDITION(editionTxt.getText())
+                        .CONTENT(contentTxt.getText())
                         .PUBLISHER(publisherTxt.getText())
                         .LANGUAGE(Language.valueOf(language.name()))
-                        .QUANTITY(Integer.parseInt(quantityTxt.getText()))
-                        .DESCRIPTION(descriptionTxt.getText())
+                        .SERIES(Integer.parseInt(seriesTxt.getText()))
+                        .COST(Integer.parseInt(costTxt.getText()))
+                        .AUTHOR2(author2Txt.getText())
+                        .STATUS(String.valueOf(Status.valueOf(status.name())))
+                        .KEYWORD(keywordTxt.getText())
                         .build();
 
                 ResourceBl.update(book);

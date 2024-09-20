@@ -29,17 +29,46 @@ public class ResourceDa implements AutoCloseable {
 
     public void save(Resource resource) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("INSERT INTO RESOURCE( ISBN , RESOURCE_TYPE , TITLE , EDITION , AUTHOR , CATEGORY , PUBLISHER , LANGUAGE , QUANTITY , DESCRIPTION) VALUES (?,?,?,?,?,?,?,?,?,?)");
-        preparedStatement.setInt(1, resource.getISBN());
-        preparedStatement.setString(2, resource.getRESOURCE_TYPE().name());
-        preparedStatement.setString(3,resource.getTitle());
-        preparedStatement.setString(4, resource.getEDITION());
-        preparedStatement.setString(5,resource.getAUTHOR());
-        preparedStatement.setString(6, resource.getCATEGORY().name());
-        preparedStatement.setString(7, resource.getPUBLISHER());
-        preparedStatement.setString(8, resource.getLANGUAGE().name());
-        preparedStatement.setInt(9,resource.getQUANTITY());
-        preparedStatement.setString(10, resource.getDESCRIPTION());
+        preparedStatement = connection.prepareStatement("INSERT INTO RESOURCE(TITLE , RESOURCE_TYPE , SUBJECT , CATEGORY ,QUANTITY , ISBN ,  AUTHOR1 , EDITION , CONTENT ,PUBLISHER , LANGUAGE , SERIES , COST , AUTHOR2 , STATUS , KEYWORD) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        preparedStatement.setString(1,resource.getTITLE(resultSet.getString("TITLE")));
+        preparedStatement.setString(2,resource.getRESOURCE_TYPE().name());
+        preparedStatement.setString(3,resource.getSUBJECT());
+        preparedStatement.setString(4,resource.getCATEGORY().name());
+        preparedStatement.setInt(5,resource.getQUANTITY());
+        preparedStatement.setInt(6,resource.getISBN());
+        preparedStatement.setString(7,resource.getAUTHOR1());
+        preparedStatement.setString(8,resource.getEDITION());
+        preparedStatement.setString(9,resource.getCONTENT());
+        preparedStatement.setString(10,resource.getPUBLISHER());
+        preparedStatement.setString(11, resource.getLANGUAGE().name());
+        preparedStatement.setInt(12, resource.getSERIES());
+        preparedStatement.setInt(13, resource.getCOST());
+        preparedStatement.setString(14, resource.getAUTHOR2());
+        preparedStatement.setString(15, resource.getSTATUS());
+        preparedStatement.setString(16, resource.getKEYWORD());
+        preparedStatement.executeUpdate();
+
+    }
+
+    public void update(Resource resource) throws SQLException {
+        connection = JdbcProvider.getInstance().getConnection();
+        preparedStatement = connection.prepareStatement("UPDATE RESOURCE SET TITLE = ? , RESOURCE_TYPE = ? , SUBJECT = ? , CATEGORY = ? , QUANTITY = ? , ISBN = ? ,  AUTHOR1 = ? , EDITION = ? , CONTENT = ? ,PUBLISHER = ? , LANGUAGE = ? , SERIES = ? , COST = ? , AUTHOR2 = ? , STATUS = ? , KEYWORD = ? WHERE ISBN = ?");
+        preparedStatement.setString(1,resource.getTITLE(resultSet.getString("TITLE")));
+        preparedStatement.setString(2,resource.getRESOURCE_TYPE().name());
+        preparedStatement.setString(3,resource.getSUBJECT());
+        preparedStatement.setString(4,resource.getCATEGORY().name());
+        preparedStatement.setInt(5,resource.getQUANTITY());
+        preparedStatement.setString(6,resource.getAUTHOR1());
+        preparedStatement.setString(7,resource.getEDITION());
+        preparedStatement.setString(8,resource.getCONTENT());
+        preparedStatement.setString(9,resource.getPUBLISHER());
+        preparedStatement.setString(10, resource.getLANGUAGE().name());
+        preparedStatement.setInt(11, resource.getSERIES());
+        preparedStatement.setInt(12, resource.getCOST());
+        preparedStatement.setString(13, resource.getAUTHOR2());
+        preparedStatement.setString(14, resource.getSTATUS());
+        preparedStatement.setString(15, resource.getKEYWORD());
+        preparedStatement.setInt(16,resource.getISBN());
         preparedStatement.executeUpdate();
     }
 
@@ -50,23 +79,6 @@ public class ResourceDa implements AutoCloseable {
         preparedStatement.executeUpdate();
     }
 
-    public void update(Resource resource) throws SQLException {
-        connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("UPDATE RESOURCE SET RESOURCE_TYPE = ? , TITLE = ? , EDITION = ? , AUTHOR = ? , CATEGORY = ? , PUBLISHER = ? , LANGUAGE = ? , QUANTITY = ? , DESCRIPTION = ? WHERE ISBN = ?");
-        preparedStatement.setString(1, resource.getRESOURCE_TYPE().name());
-        preparedStatement.setString(2,resource.getTitle());
-        preparedStatement.setString(3, resource.getEDITION());
-        preparedStatement.setString(4,resource.getAUTHOR());
-        preparedStatement.setString(5, resource.getCATEGORY().name());
-        preparedStatement.setString(6, resource.getPUBLISHER());
-        preparedStatement.setString(7, resource.getLANGUAGE().name());
-        preparedStatement.setInt(8,resource.getQUANTITY());
-        preparedStatement.setString(9, resource.getDESCRIPTION());
-        preparedStatement.setInt(10, resource.getISBN());
-        //preparedStatement.setInt(11,resource.getRESOURCE_ID());
-        preparedStatement.executeUpdate();
-    }
-
     public Optional<Resource> getResource(int resourceId) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
         preparedStatement = connection.prepareStatement("SELECT * FROM RESOURCE WHERE Resource_Id = ?");
@@ -74,6 +86,7 @@ public class ResourceDa implements AutoCloseable {
         resultSet = preparedStatement.executeQuery();
         Resource resource = new Resource();
         if(resultSet.next()) {
+            resource.getTITLE(resultSet.getString("TITLE"));
             resource.setISBN(resultSet.getInt("ISBN"));
             resource.setRESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")));
             resource.setTitle(resultSet.getString("TITLE"));
