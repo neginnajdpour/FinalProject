@@ -63,7 +63,7 @@ public class ResourceController implements Initializable {
                 Category category = (Category) categoryCmb.getSelectionModel().getSelectedItem();
                 Language language = (Language) languageCmb.getSelectionModel().getSelectedItem();
                 Status status = (Status) statusCmb.getSelectionModel().getSelectedItem();
-                Resource book = Resource
+                Resource resource = Resource
                         .builder()
                         .TITLE(titleTxt.getText())
                         .RESOURCE_TYPE(ResourceType.valueOf(resourceType.name()))
@@ -79,18 +79,21 @@ public class ResourceController implements Initializable {
                         .SERIES(Integer.parseInt(seriesTxt.getText()))
                         .COST(Integer.parseInt(costTxt.getText()))
                         .AUTHOR2(author2Txt.getText())
-                        .STATUS(String.valueOf(Status.valueOf(status.name())))
+                        .STATUS("New")
                         .KEYWORD(keywordTxt.getText())
                         .build();
 
-                ResourceBl.save(book);
+                System.out.println(resource);
+
+
+                ResourceBl.save(resource);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText(null);
                 alert.setContentText("You have successfully save the book !");
                 alert.showAndWait();
 
-                refreshBookTbl(ResourceBl.getAllResources());
+
 
             } catch (Exception e) {
                 throw new RuntimeException(e);

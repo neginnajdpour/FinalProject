@@ -29,7 +29,7 @@ public class ResourceDa implements AutoCloseable {
 
     public void save(Resource resource) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("INSERT INTO RESOURCE(TITLE , RESOURCE_TYPE , SUBJECT , CATEGORY ,QUANTITY , ISBN ,  AUTHOR1 , EDITION , CONTENT ,PUBLISHER , LANGUAGE , SERIES , COST , AUTHOR2 , STATUS , KEYWORD) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        preparedStatement = connection.prepareStatement("INSERT INTO RESOURCE(TITLE , RESOURCE_TYPE , SUBJECT , CATEGORY ,QUANTITY , ISBN ,  AUTHOR1 , EDITION , CONTENT ,PUBLISHER , LANGUAGE , SERIES , COST , AUTHOR2 , STATUS , KEYWORD) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         preparedStatement.setString(1,resource.getTITLE());
         preparedStatement.setString(2,resource.getRESOURCE_TYPE().name());
         preparedStatement.setString(3,resource.getSUBJECT());
