@@ -79,7 +79,7 @@ public class ResourceDa implements AutoCloseable {
         preparedStatement.executeUpdate();
     }
 
-    public Optional<Resource> getResource(int resourceId) throws SQLException {
+    public Optional<Resource> getResourceById(int resourceId) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
         preparedStatement = connection.prepareStatement("SELECT * FROM RESOURCE WHERE Resource_Id = ?");
         preparedStatement.setInt(1,resourceId);
@@ -105,36 +105,6 @@ public class ResourceDa implements AutoCloseable {
             resource.setKEYWORD(resultSet.getString("KEYWORD"));
         }
         return Optional.of(resource);
-    }
-
-    public List<Resource> getResourcesByTitle(String resourceTitle) throws SQLException {
-        connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("SELECT * FROM RESOURCE WHERE title like ? ");
-        preparedStatement.setString(1, "%" + resourceTitle + "%");
-        resultSet = preparedStatement.executeQuery();
-        List<Resource> resources = new ArrayList<>();
-        if(resultSet.next()) {
-            Resource resource = new Resource();
-            resource.setRESOURCE_ID(resultSet.getInt("Resource_Id"));
-            resource.setTITLE(resultSet.getString("TITLE"));
-            resource.setRESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")));
-            resource.setSUBJECT(resultSet.getString("SUBJECT"));
-            resource.setCATEGORY(Category.valueOf(resultSet.getString("CATEGORY")));
-            resource.setQUANTITY(resultSet.getInt("QUANTITY"));
-            resource.setISBN(resultSet.getInt("ISBN"));
-            resource.setAUTHOR1(resultSet.getString("AUTHOR1"));
-            resource.setEDITION(resultSet.getString("EDITION"));
-            resource.setCONTENT(resultSet.getString("CONTENT"));
-            resource.setPUBLISHER(resultSet.getString("PUBLISHER"));
-            resource.setLANGUAGE(Language.valueOf(resultSet.getString("LANGUAGE")));
-            resource.setSERIES(resultSet.getInt("SERIES"));
-            resource.setCOST(resultSet.getInt("COST"));
-            resource.setAUTHOR2(resultSet.getString("AUTHOR2"));
-            resource.setSTATUS(resultSet.getString("STATUS"));
-            resource.setKEYWORD(resultSet.getString("KEYWORD"));
-            resources.add(resource);
-        }
-        return resources;
     }
 
     public List<Resource> getResourcesByISBN(Integer ISBN) throws SQLException {
@@ -167,6 +137,160 @@ public class ResourceDa implements AutoCloseable {
         return resources;
     }
 
+    public List<Resource> getResourcesByTitle(String resourceTitle) throws SQLException {
+        connection = JdbcProvider.getInstance().getConnection();
+        preparedStatement = connection.prepareStatement("SELECT * FROM RESOURCE WHERE title like ? ");
+        preparedStatement.setString(1, "%" + resourceTitle + "%");
+        resultSet = preparedStatement.executeQuery();
+        List<Resource> resources = new ArrayList<>();
+        while (resultSet.next()) {
+            Resource resource = new Resource();
+            resource.setRESOURCE_ID(resultSet.getInt("Resource_Id"));
+            resource.setTITLE(resultSet.getString("TITLE"));
+            resource.setRESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")));
+            resource.setSUBJECT(resultSet.getString("SUBJECT"));
+            resource.setCATEGORY(Category.valueOf(resultSet.getString("CATEGORY")));
+            resource.setQUANTITY(resultSet.getInt("QUANTITY"));
+            resource.setISBN(resultSet.getInt("ISBN"));
+            resource.setAUTHOR1(resultSet.getString("AUTHOR1"));
+            resource.setEDITION(resultSet.getString("EDITION"));
+            resource.setCONTENT(resultSet.getString("CONTENT"));
+            resource.setPUBLISHER(resultSet.getString("PUBLISHER"));
+            resource.setLANGUAGE(Language.valueOf(resultSet.getString("LANGUAGE")));
+            resource.setSERIES(resultSet.getInt("SERIES"));
+            resource.setCOST(resultSet.getInt("COST"));
+            resource.setAUTHOR2(resultSet.getString("AUTHOR2"));
+            resource.setSTATUS(resultSet.getString("STATUS"));
+            resource.setKEYWORD(resultSet.getString("KEYWORD"));
+            resources.add(resource);
+        }
+        return resources;
+    }
+
+
+    public List<Resource> getResourcesByResourceType(ResourceType resourceType) throws SQLException {
+        connection = JdbcProvider.getInstance().getConnection();
+        preparedStatement = connection.prepareStatement("SELECT * FROM RESOURCE WHERE RESOURCE_TYPE = ? ");
+        preparedStatement.setString(1, resourceType.toString());
+        resultSet = preparedStatement.executeQuery();
+        List<Resource> resources = new ArrayList<>();
+        while (resultSet.next()) {
+            Resource resource = new Resource();
+            resource.setRESOURCE_ID(resultSet.getInt("Resource_Id"));
+            resource.setTITLE(resultSet.getString("TITLE"));
+            resource.setRESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")));
+            resource.setSUBJECT(resultSet.getString("SUBJECT"));
+            resource.setCATEGORY(Category.valueOf(resultSet.getString("CATEGORY")));
+            resource.setQUANTITY(resultSet.getInt("QUANTITY"));
+            resource.setISBN(resultSet.getInt("ISBN"));
+            resource.setAUTHOR1(resultSet.getString("AUTHOR1"));
+            resource.setEDITION(resultSet.getString("EDITION"));
+            resource.setCONTENT(resultSet.getString("CONTENT"));
+            resource.setPUBLISHER(resultSet.getString("PUBLISHER"));
+            resource.setLANGUAGE(Language.valueOf(resultSet.getString("LANGUAGE")));
+            resource.setSERIES(resultSet.getInt("SERIES"));
+            resource.setCOST(resultSet.getInt("COST"));
+            resource.setAUTHOR2(resultSet.getString("AUTHOR2"));
+            resource.setSTATUS(resultSet.getString("STATUS"));
+            resource.setKEYWORD(resultSet.getString("KEYWORD"));
+            resources.add(resource);
+        }
+        return resources;
+    }
+
+    public List<Resource> getResourcesByAuthor(String author) throws SQLException {
+        connection = JdbcProvider.getInstance().getConnection();
+        preparedStatement = connection.prepareStatement("SELECT * FROM RESOURCE WHERE AUTHOR1 LIKE ? or AUTHOR2 LIKE ? ");
+        preparedStatement.setString(1, "%" + author + "%");
+        preparedStatement.setString(2, "%" + author + "%");
+        resultSet = preparedStatement.executeQuery();
+        List<Resource> resources = new ArrayList<>();
+        while (resultSet.next()) {
+            Resource resource = new Resource();
+            resource.setRESOURCE_ID(resultSet.getInt("Resource_Id"));
+            resource.setTITLE(resultSet.getString("TITLE"));
+            resource.setRESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")));
+            resource.setSUBJECT(resultSet.getString("SUBJECT"));
+            resource.setCATEGORY(Category.valueOf(resultSet.getString("CATEGORY")));
+            resource.setQUANTITY(resultSet.getInt("QUANTITY"));
+            resource.setISBN(resultSet.getInt("ISBN"));
+            resource.setAUTHOR1(resultSet.getString("AUTHOR1"));
+            resource.setEDITION(resultSet.getString("EDITION"));
+            resource.setCONTENT(resultSet.getString("CONTENT"));
+            resource.setPUBLISHER(resultSet.getString("PUBLISHER"));
+            resource.setLANGUAGE(Language.valueOf(resultSet.getString("LANGUAGE")));
+            resource.setSERIES(resultSet.getInt("SERIES"));
+            resource.setCOST(resultSet.getInt("COST"));
+            resource.setAUTHOR2(resultSet.getString("AUTHOR2"));
+            resource.setSTATUS(resultSet.getString("STATUS"));
+            resource.setKEYWORD(resultSet.getString("KEYWORD"));
+            resources.add(resource);
+        }
+        return resources;
+    }
+
+
+    public List<Resource> getResourcesByPublisher(String publisher) throws SQLException {
+        connection = JdbcProvider.getInstance().getConnection();
+        preparedStatement = connection.prepareStatement("SELECT * FROM RESOURCE WHERE AUTHOR1 LIKE ? or AUTHOR2 LIKE ? ");
+        preparedStatement.setString(1, "%" + author + "%");
+        preparedStatement.setString(2, "%" + author + "%");
+        resultSet = preparedStatement.executeQuery();
+        List<Resource> resources = new ArrayList<>();
+        while (resultSet.next()) {
+            Resource resource = new Resource();
+            resource.setRESOURCE_ID(resultSet.getInt("Resource_Id"));
+            resource.setTITLE(resultSet.getString("TITLE"));
+            resource.setRESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")));
+            resource.setSUBJECT(resultSet.getString("SUBJECT"));
+            resource.setCATEGORY(Category.valueOf(resultSet.getString("CATEGORY")));
+            resource.setQUANTITY(resultSet.getInt("QUANTITY"));
+            resource.setISBN(resultSet.getInt("ISBN"));
+            resource.setAUTHOR1(resultSet.getString("AUTHOR1"));
+            resource.setEDITION(resultSet.getString("EDITION"));
+            resource.setCONTENT(resultSet.getString("CONTENT"));
+            resource.setPUBLISHER(resultSet.getString("PUBLISHER"));
+            resource.setLANGUAGE(Language.valueOf(resultSet.getString("LANGUAGE")));
+            resource.setSERIES(resultSet.getInt("SERIES"));
+            resource.setCOST(resultSet.getInt("COST"));
+            resource.setAUTHOR2(resultSet.getString("AUTHOR2"));
+            resource.setSTATUS(resultSet.getString("STATUS"));
+            resource.setKEYWORD(resultSet.getString("KEYWORD"));
+            resources.add(resource);
+        }
+        return resources;
+    }
+
+    public List<Resource> getResourcesByCategory(String category) throws SQLException {
+        connection = JdbcProvider.getInstance().getConnection();
+        preparedStatement = connection.prepareStatement("SELECT * FROM RESOURCE WHERE CATEGORY = ? ");
+        preparedStatement.setString(1,  category );
+
+        resultSet = preparedStatement.executeQuery();
+        List<Resource> resources = new ArrayList<>();
+        while (resultSet.next()) {
+            Resource resource = new Resource();
+            resource.setRESOURCE_ID(resultSet.getInt("Resource_Id"));
+            resource.setTITLE(resultSet.getString("TITLE"));
+            resource.setRESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")));
+            resource.setSUBJECT(resultSet.getString("SUBJECT"));
+            resource.setCATEGORY(Category.valueOf(resultSet.getString("CATEGORY")));
+            resource.setQUANTITY(resultSet.getInt("QUANTITY"));
+            resource.setISBN(resultSet.getInt("ISBN"));
+            resource.setAUTHOR1(resultSet.getString("AUTHOR1"));
+            resource.setEDITION(resultSet.getString("EDITION"));
+            resource.setCONTENT(resultSet.getString("CONTENT"));
+            resource.setPUBLISHER(resultSet.getString("PUBLISHER"));
+            resource.setLANGUAGE(Language.valueOf(resultSet.getString("LANGUAGE")));
+            resource.setSERIES(resultSet.getInt("SERIES"));
+            resource.setCOST(resultSet.getInt("COST"));
+            resource.setAUTHOR2(resultSet.getString("AUTHOR2"));
+            resource.setSTATUS(resultSet.getString("STATUS"));
+            resource.setKEYWORD(resultSet.getString("KEYWORD"));
+            resources.add(resource);
+        }
+        return resources;
+    }
 
 
 
