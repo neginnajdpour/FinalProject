@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="597.0" prefWidth="1027.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="597.0" prefWidth="1027.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mft.controller.SearchResourceController">
    <children>
       <GridPane layoutX="72.0" layoutY="68.0" prefHeight="73.0" prefWidth="874.0">
         <columnConstraints>
@@ -30,19 +30,19 @@
             <Label text="Search By" />
             <Label text="Search For" GridPane.columnIndex="3" />
             <TextField prefHeight="34.0" prefWidth="170.0" GridPane.columnIndex="4" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="79.0" text="Search" GridPane.columnIndex="6" />
+            <Button fx:id="searchBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="79.0" text="Search" GridPane.columnIndex="6" />
             <ComboBox fx:id="searchCmb" prefHeight="31.0" prefWidth="286.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
       <TableView layoutX="72.0" layoutY="166.0" prefHeight="379.0" prefWidth="874.0">
         <columns>
-          <TableColumn prefWidth="139.0" text="Title" />
-            <TableColumn prefWidth="151.0" text="Author" />
-            <TableColumn prefWidth="136.0" text="ISBN" />
-            <TableColumn prefWidth="101.0" text="Publisher" />
-            <TableColumn minWidth="0.0" prefWidth="109.0" text="Edition" />
-            <TableColumn prefWidth="127.0" text="Category" />
-            <TableColumn prefWidth="110.0" text="Language" />
+          <TableColumn fx:id="titleCol" prefWidth="139.0" text="Title" />
+            <TableColumn fx:id="authorCol" prefWidth="151.0" text="Author" />
+            <TableColumn fx:id="isbnCol" prefWidth="136.0" text="ISBN" />
+            <TableColumn fx:id="publisherCol" prefWidth="101.0" text="Publisher" />
+            <TableColumn fx:id="editionCol" minWidth="0.0" prefWidth="109.0" text="Edition" />
+            <TableColumn fx:id="categoryCol" prefWidth="127.0" text="Category" />
+            <TableColumn fx:id="languageCol" prefWidth="110.0" text="Language" />
         </columns>
       </TableView>
    </children>
