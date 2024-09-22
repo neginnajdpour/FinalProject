@@ -6,11 +6,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import mft.model.bl.MemberBl;
 import mft.model.bl.ResourceBl;
 import mft.model.entity.Member;
 import mft.model.entity.Resource;
-import mft.model.entity.ResourceType;
 import mft.model.entity.SearchCriteria;
 
 import java.net.URL;
@@ -29,7 +27,7 @@ public class SearchResourceController implements Initializable {
     private TextField searchTxt;
 
     @FXML
-    private TableView<Resource> resourceTable;
+    private TableView<Member> resourceTable;
 
     @FXML
     private TableColumn<Resource, String> titleCol , authorCol , isbnCol , publisherCol , editionCol , categoryCol , languageCol;
@@ -47,7 +45,7 @@ public class SearchResourceController implements Initializable {
             if (searchCriteria == "RESOURCE_ID")
             {
                 try {
-                    refreshResourceTbl((List<Member>) ResourceBl.getResourceById(Integer.parseInt(searchTxt.getText()));
+                    refreshResourceTbl((List<Member>) ResourceBl.getResourceById(Integer.parseInt(searchTxt.getText())));
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
