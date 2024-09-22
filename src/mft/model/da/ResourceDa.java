@@ -137,6 +137,37 @@ public class ResourceDa implements AutoCloseable {
         return resources;
     }
 
+    public List<Resource> getResourcesByISBN(Integer ISBN) throws SQLException {
+        connection = JdbcProvider.getInstance().getConnection();
+        preparedStatement = connection.prepareStatement("SELECT * FROM RESOURCE WHERE ISBN = ? ");
+        preparedStatement.setInt(1, ISBN);
+        resultSet = preparedStatement.executeQuery();
+        List<Resource> resources = new ArrayList<>();
+        if(resultSet.next()) {
+            Resource resource = new Resource();
+            resource.setRESOURCE_ID(resultSet.getInt("Resource_Id"));
+            resource.setTITLE(resultSet.getString("TITLE"));
+            resource.setRESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")));
+            resource.setSUBJECT(resultSet.getString("SUBJECT"));
+            resource.setCATEGORY(Category.valueOf(resultSet.getString("CATEGORY")));
+            resource.setQUANTITY(resultSet.getInt("QUANTITY"));
+            resource.setISBN(resultSet.getInt("ISBN"));
+            resource.setAUTHOR1(resultSet.getString("AUTHOR1"));
+            resource.setEDITION(resultSet.getString("EDITION"));
+            resource.setCONTENT(resultSet.getString("CONTENT"));
+            resource.setPUBLISHER(resultSet.getString("PUBLISHER"));
+            resource.setLANGUAGE(Language.valueOf(resultSet.getString("LANGUAGE")));
+            resource.setSERIES(resultSet.getInt("SERIES"));
+            resource.setCOST(resultSet.getInt("COST"));
+            resource.setAUTHOR2(resultSet.getString("AUTHOR2"));
+            resource.setSTATUS(resultSet.getString("STATUS"));
+            resource.setKEYWORD(resultSet.getString("KEYWORD"));
+            resources.add(resource);
+        }
+        return resources;
+    }
+
+
 
 
     public List<Resource> getAllResources() throws SQLException {
