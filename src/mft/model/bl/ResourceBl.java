@@ -50,21 +50,21 @@ public class ResourceBl {
 
         return resources;
     };
-    public List<Resource> getResourcesByResourceType(ResourceType resourceType) throws SQLException {
+    public static List<Resource> getResourcesByResourceType(ResourceType resourceType) throws SQLException {
         List<Resource> resources = new ArrayList<>();
         ResourceDa resourceDa = new ResourceDa();
         resources = resourceDa.getResourcesByResourceType(resourceType);
         return resources;
     }
 
-    public List<Resource> getResourcesByAuthor(String author) throws SQLException {
+    public static List<Resource> getResourcesByAuthor(String author) throws SQLException {
         List<Resource> resources = new ArrayList<>();
         ResourceDa resourceDa = new ResourceDa();
         resources = resourceDa.getResourcesByAuthor(author);
         return resources;
     }
 
-    public List<Resource> getResourcesByPublisher(String publisher) throws SQLException {
+    public static List<Resource> getResourcesByPublisher(String publisher) throws SQLException {
         List<Resource> resources = new ArrayList<>();
         ResourceDa resourceDa = new ResourceDa();
         resources = resourceDa.getResourcesByPublisher(publisher);

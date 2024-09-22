@@ -9,6 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import mft.model.bl.ResourceBl;
 import mft.model.entity.Member;
 import mft.model.entity.Resource;
+import mft.model.entity.ResourceType;
 import mft.model.entity.SearchCriteria;
 
 import java.net.URL;
@@ -70,10 +71,19 @@ public class SearchResourceController implements Initializable {
                 }
             }
 
-            if (searchCriteria == "RESOURCE_TYPE")
+            if (searchCriteria == "AUTHOR")
             {
                 try {
-                    refreshResourceTbl(ResourceBl.getResourceByTitle(searchTxt.getText()));
+                    refreshResourceTbl(ResourceBl.getResourcesByAuthor(searchTxt.getText()));
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            if (searchCriteria == "PUBLISHER")
+            {
+                try {
+                    refreshResourceTbl(ResourceBl.getResourcesByPublisher(searchTxt.getText()));
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
