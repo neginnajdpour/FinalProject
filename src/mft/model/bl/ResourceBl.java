@@ -23,10 +23,10 @@ public class ResourceBl {
         resourceDa.update(resource);
     }
 
-    public static Resource getResource(int resourceId) throws Exception {
+    public static Resource getResourceById(int resourceId) throws Exception {
         Resource resource = new Resource();
         ResourceDa resourceDa = new ResourceDa();
-        resource = resourceDa.getResource(resourceId).get();
+        resource = resourceDa.getResourceById(resourceId).get();
 
         return resource;
     }

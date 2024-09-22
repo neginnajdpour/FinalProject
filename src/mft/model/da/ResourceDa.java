@@ -232,9 +232,8 @@ public class ResourceDa implements AutoCloseable {
 
     public List<Resource> getResourcesByPublisher(String publisher) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("SELECT * FROM RESOURCE WHERE AUTHOR1 LIKE ? or AUTHOR2 LIKE ? ");
-        preparedStatement.setString(1, "%" + author + "%");
-        preparedStatement.setString(2, "%" + author + "%");
+        preparedStatement = connection.prepareStatement("SELECT * FROM RESOURCE WHERE PUBLISHER LIKE ?  ");
+        preparedStatement.setString(1, "%" + publisher + "%");
         resultSet = preparedStatement.executeQuery();
         List<Resource> resources = new ArrayList<>();
         while (resultSet.next()) {
@@ -265,7 +264,6 @@ public class ResourceDa implements AutoCloseable {
         connection = JdbcProvider.getInstance().getConnection();
         preparedStatement = connection.prepareStatement("SELECT * FROM RESOURCE WHERE CATEGORY = ? ");
         preparedStatement.setString(1,  category );
-
         resultSet = preparedStatement.executeQuery();
         List<Resource> resources = new ArrayList<>();
         while (resultSet.next()) {
