@@ -12,6 +12,7 @@ import mft.model.entity.Resource;
 import mft.model.entity.SearchCriteria;
 
 import java.net.URL;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -27,7 +28,7 @@ public class SearchResourceController implements Initializable {
     private TextField searchTxt;
 
     @FXML
-    private TableView<Member> resourceTable;
+    private TableView<Resource> resourceTbl;
 
     @FXML
     private TableColumn<Resource, String> titleCol , authorCol , isbnCol , publisherCol , editionCol , categoryCol , languageCol;
@@ -45,11 +46,24 @@ public class SearchResourceController implements Initializable {
             if (searchCriteria == "RESOURCE_ID")
             {
                 try {
-                    refreshResourceTbl((List<Member>) ResourceBl.getResourceById(Integer.parseInt(searchTxt.getText())));
+                    refreshResourceTbl(Collections.singletonList(ResourceBl.getResourceById(Integer.parseInt(searchTxt.getText()))));
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
             }
+
+            if (searchCriteria == "ISBN")
+            {
+                try {
+                    refreshResourceTbl(Collections.singletonList(ResourceBl.getResourcesByISBN(Integer.valueOf(searchTxt.getText()))));
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+
+
+
 
 
         });
@@ -61,17 +75,17 @@ public class SearchResourceController implements Initializable {
 
     }
 
-    public void refreshResourceTbl(List<Member> resourceList) {
+    public void refreshResourceTbl(List<Resource> resourceList) {
 
-        ObservableList<Member> observableList = FXCollections.observableList(resourceList);
-        titleCol.setCellValueFactory(new PropertyValueFactory<>("nationalID"));
-        authorCol.setCellValueFactory(new PropertyValueFactory<>("FirstName"));
-        isbnCol.setCellValueFactory(new PropertyValueFactory<>("LastName"));
-        publisherCol.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
-        editionCol.setCellValueFactory(new PropertyValueFactory<>("Gender"));        ;
-        categoryCol.setCellValueFactory(new PropertyValueFactory<>("JoinDate"));
-        languageCol.setCellValueFactory(new PropertyValueFactory<>("Active"));
-        resourceTable.setItems(observableList);
+        ObservableList<Resource> observableList = FXCollections.observableList(resourceList);
+        titleCol.setCellValueFactory(new PropertyValueFactory<>("TITLE"));
+        authorCol.setCellValueFactory(new PropertyValueFactory<>("AUTHOR1"));
+        isbnCol.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
+        publisherCol.setCellValueFactory(new PropertyValueFactory<>("PUBLISHER"));
+        editionCol.setCellValueFactory(new PropertyValueFactory<>("EDITION"));        ;
+        categoryCol.setCellValueFactory(new PropertyValueFactory<>("CATEGORY"));
+        languageCol.setCellValueFactory(new PropertyValueFactory<>("LANGUAGE"));
+        resourceTbl.setItems(observableList);
 
     }
 }

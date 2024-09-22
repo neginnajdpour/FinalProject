@@ -75,6 +75,7 @@ public class test {
 
         ResourceBl.delete(123456789);
 
+        System.out.println(ResourceBl.getResourceById(1));
 
 
     }

@@ -1,15 +1,13 @@
 package mft.model.bl;
 
 import mft.model.da.ResourceDa;
-import mft.model.entity.Category;
-import mft.model.entity.Language;
 import mft.model.entity.Resource;
 import mft.model.entity.ResourceType;
-import mft.model.tools.JdbcProvider;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ResourceBl {
 
@@ -31,18 +29,18 @@ public class ResourceBl {
 
 
     public static Resource getResourceById(int resourceId) throws Exception {
-        Resource resource = new Resource();
+        Optional<Resource> resource = Optional.of(new Resource());
         ResourceDa resourceDa = new ResourceDa();
-        resource = resourceDa.getResourceById(resourceId).get();
+        resource = resourceDa.getResourceById(resourceId);
 
-        return resource;
+        return resource.get();
     }
 
-    public List<Resource> getResourcesByISBN(Integer ISBN) throws SQLException {
-        List<Resource> resources = new ArrayList<>();
+    public static Resource getResourcesByISBN(Integer ISBN) throws SQLException {
+        Optional<Resource> resource = Optional.of(new Resource());
         ResourceDa resourceDa = new ResourceDa();
-        resources = resourceDa.getResourcesByISBN(ISBN);
-        return resources;
+        resource = resourceDa.getResourcesByISBN(ISBN);
+        return resource.get();
     }
 
     public static List<Resource> getBooksByTitle(String resourceTitle) throws Exception {

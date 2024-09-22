@@ -107,14 +107,14 @@ public class ResourceDa implements AutoCloseable {
         return Optional.of(resource);
     }
 
-    public List<Resource> getResourcesByISBN(Integer ISBN) throws SQLException {
+    public Optional<Resource>  getResourcesByISBN(Integer ISBN) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
         preparedStatement = connection.prepareStatement("SELECT * FROM RESOURCE WHERE ISBN = ? ");
         preparedStatement.setInt(1, ISBN);
         resultSet = preparedStatement.executeQuery();
-        List<Resource> resources = new ArrayList<>();
+        Resource resource = new Resource();
         if(resultSet.next()) {
-            Resource resource = new Resource();
+
             resource.setRESOURCE_ID(resultSet.getInt("Resource_Id"));
             resource.setTITLE(resultSet.getString("TITLE"));
             resource.setRESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")));
@@ -132,9 +132,8 @@ public class ResourceDa implements AutoCloseable {
             resource.setAUTHOR2(resultSet.getString("AUTHOR2"));
             resource.setSTATUS(resultSet.getString("STATUS"));
             resource.setKEYWORD(resultSet.getString("KEYWORD"));
-            resources.add(resource);
         }
-        return resources;
+        return Optional.of(resource);
     }
 
     public List<Resource> getResourcesByTitle(String resourceTitle) throws SQLException {

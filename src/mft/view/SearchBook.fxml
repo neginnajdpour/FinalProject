@@ -29,12 +29,12 @@
          <children>
             <Label text="Search By" />
             <Label text="Search For" GridPane.columnIndex="3" />
-            <TextField prefHeight="34.0" prefWidth="170.0" GridPane.columnIndex="4" />
+            <TextField fx:id="searchTxt" prefHeight="34.0" prefWidth="170.0" GridPane.columnIndex="4" />
             <Button fx:id="searchBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="79.0" text="Search" GridPane.columnIndex="6" />
             <ComboBox fx:id="searchCmb" prefHeight="31.0" prefWidth="286.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
-      <TableView layoutX="72.0" layoutY="166.0" prefHeight="379.0" prefWidth="874.0">
+      <TableView fx:id="resourceTbl" layoutX="72.0" layoutY="166.0" prefHeight="379.0" prefWidth="874.0">
         <columns>
           <TableColumn fx:id="titleCol" prefWidth="139.0" text="Title" />
             <TableColumn fx:id="authorCol" prefWidth="151.0" text="Author" />
