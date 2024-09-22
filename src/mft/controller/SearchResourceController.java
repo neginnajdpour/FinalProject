@@ -61,6 +61,25 @@ public class SearchResourceController implements Initializable {
                 }
             }
 
+            if (searchCriteria == "TITLE")
+            {
+                try {
+                    refreshResourceTbl(ResourceBl.getResourceByTitle(searchTxt.getText()));
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            if (searchCriteria == "RESOURCE_TYPE")
+            {
+                try {
+                    refreshResourceTbl(ResourceBl.getResourceByTitle(searchTxt.getText()));
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+
 
 
 

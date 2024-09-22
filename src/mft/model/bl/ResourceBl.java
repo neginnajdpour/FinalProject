@@ -43,12 +43,12 @@ public class ResourceBl {
         return resource.get();
     }
 
-    public static List<Resource> getBooksByTitle(String resourceTitle) throws Exception {
-        List<Resource> books = new ArrayList<>();
+    public static List<Resource> getResourceByTitle(String resourceTitle) throws Exception {
+        List<Resource> resources = new ArrayList<>();
         ResourceDa resourceDa = new ResourceDa();
-        books = resourceDa.getResourcesByTitle(resourceTitle);
+        resources = resourceDa.getResourcesByTitle(resourceTitle);
 
-        return books;
+        return resources;
     };
     public List<Resource> getResourcesByResourceType(ResourceType resourceType) throws SQLException {
         List<Resource> resources = new ArrayList<>();
