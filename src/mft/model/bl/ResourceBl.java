@@ -80,7 +80,7 @@ public class ResourceBl {
         return resources;
     }
 
-    public List<Resource> getAllResources() throws SQLException {
+    public static List<Resource> getAllResources() throws SQLException {
         List<Resource> resources = new ArrayList<>();
         ResourceDa resourceDa = new ResourceDa();
         resources = resourceDa.getAllResources();

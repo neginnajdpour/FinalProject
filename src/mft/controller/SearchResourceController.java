@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import mft.model.bl.MemberBl;
+import mft.model.bl.ResourceBl;
 import mft.model.entity.Member;
 import mft.model.entity.Resource;
 import mft.model.entity.ResourceType;
@@ -45,8 +46,14 @@ public class SearchResourceController implements Initializable {
             String searchCriteria = searchCmb.getSelectionModel().getSelectedItem().toString();
             if (searchCriteria == "RESOURCE_ID")
             {
-                refreshResourceTbl(MemberBl.getAllResources(Integer.parseInt(searchTxt.getText())));
+                try {
+                    refreshResourceTbl((List<Member>) ResourceBl.getResourceById(Integer.parseInt(searchTxt.getText()));
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
             }
+
+
         });
 
 
