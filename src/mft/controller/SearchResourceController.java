@@ -89,6 +89,9 @@ public class SearchResourceController implements Initializable {
                 }
             }
 
+            resourceTbl.
+                    +
+
 
 
 
