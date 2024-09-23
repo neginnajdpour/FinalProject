@@ -195,33 +195,21 @@ public class ResourceController implements Initializable {
 
     public void setUser(Resource resource) {
 
-//        nationalIdTxt.setText(String.valueOf(member.getNationalID()));
-//        firstnameTxt.setText(member.getFirstName());
-//        lastnameTxt.setText(member.getLastName());
-//        dateofbirthDate.setValue(member.getDateOfBirth());
-//        phoneTxt.setText(member.getPhoneNumber());
-//
-//        if (member.getGender().name() == "Male") {
-//            maleRdo.setSelected(true);
-//        }
-//        else{
-//            femaleRdo.setSelected(true); }
-//
-//        if (member.isActive()) {
-//            activeChk.setSelected(true);}
-//        else{
-//            activeChk.setSelected(false);
-//        }
-//
-//        emailTxt.setText(member.getEmail());
-//        addressoneTxt.setText(member.getAddressLine1());
-//        addresstwoTxt.setText(member.getAddressLine2());
-//        cityTxt.setText(member.getCity());
-//        stateTxt.setText(member.getState());
-//        postalcodeTxt.setText(member.getPostalcode());
-//        countryTxt.setText(member.getCountry());
-//        photoTxt.setText(member.getPhoto());
-//        joinDate.setValue(member.getJoinDate());
+        titleTxt.setText(resource.getTITLE());
+        subjectTxt.setText(resource.getSUBJECT());
+        quantityTxt.setText(String.valueOf(resource.getQUANTITY()));
+        isbnTxt.setText(resource.getISBN().toString());
+        author1Txt.setText(resource.getAUTHOR1());
+        editionTxt.setText(resource.getEDITION());
+        contentTxt.setText(resource.getCONTENT());
+        publisherTxt.setText(resource.getPUBLISHER());
+        seriesTxt.setText(String.valueOf(resource.getSERIES()));
+        costTxt.setText(String.valueOf(resource.getCOST()));
+        author2Txt.setText(resource.getAUTHOR1());
+        keywordTxt.setText(resource.getKEYWORD());
+//        resourcetypeCmb.setSelectionModel(ResourceType.valueOf(String.valueOf(resource.getRESOURCE_TYPE())));
+//        categoryCmb.getSelectionModel().clearSelection();
+//        languageCmb.getSelectionModel().clearSelection();
 
     }
 
