@@ -193,7 +193,7 @@ public class ResourceController implements Initializable {
         resourceTbl.setItems(observableList);
     }
 
-    public void setUser(Member member) {
+    public void setUser(Resource resource) {
 
 //        nationalIdTxt.setText(String.valueOf(member.getNationalID()));
 //        firstnameTxt.setText(member.getFirstName());
