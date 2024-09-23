@@ -3,14 +3,19 @@ package mft.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import lombok.SneakyThrows;
 import mft.model.bl.ResourceBl;
 import mft.model.entity.*;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -187,5 +192,44 @@ public class ResourceController implements Initializable {
         languageCol.setCellValueFactory(new PropertyValueFactory<>("LANGUAGE"));
         resourceTbl.setItems(observableList);
     }
+
+    public void setUser(Member member) {
+
+//        nationalIdTxt.setText(String.valueOf(member.getNationalID()));
+//        firstnameTxt.setText(member.getFirstName());
+//        lastnameTxt.setText(member.getLastName());
+//        dateofbirthDate.setValue(member.getDateOfBirth());
+//        phoneTxt.setText(member.getPhoneNumber());
+//
+//        if (member.getGender().name() == "Male") {
+//            maleRdo.setSelected(true);
+//        }
+//        else{
+//            femaleRdo.setSelected(true); }
+//
+//        if (member.isActive()) {
+//            activeChk.setSelected(true);}
+//        else{
+//            activeChk.setSelected(false);
+//        }
+//
+//        emailTxt.setText(member.getEmail());
+//        addressoneTxt.setText(member.getAddressLine1());
+//        addresstwoTxt.setText(member.getAddressLine2());
+//        cityTxt.setText(member.getCity());
+//        stateTxt.setText(member.getState());
+//        postalcodeTxt.setText(member.getPostalcode());
+//        countryTxt.setText(member.getCountry());
+//        photoTxt.setText(member.getPhoto());
+//        joinDate.setValue(member.getJoinDate());
+
+    }
+
+
+
+
+
+
+
 
 }

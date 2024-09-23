@@ -7,17 +7,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import mft.model.bl.ResourceBl;
-import mft.model.entity.Member;
-import mft.model.entity.Resource;
-import mft.model.entity.ResourceType;
-import mft.model.entity.SearchCriteria;
+import mft.model.entity.*;
 
 import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class SearchResourceController implements Initializable {
+public class ResourceDirectoryController implements Initializable {
 
     @FXML
     private ComboBox searchCmb;
@@ -32,7 +29,9 @@ public class SearchResourceController implements Initializable {
     private TableView<Resource> resourceTbl;
 
     @FXML
-    private TableColumn<Resource, String> titleCol , authorCol , isbnCol , publisherCol , editionCol , categoryCol , languageCol;
+    private TableColumn<Resource, String> titleCol, authorCol, isbnCol, publisherCol, editionCol, categoryCol, languageCol;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -44,8 +43,7 @@ public class SearchResourceController implements Initializable {
         searchBtn.setOnAction(event -> {
 
             String searchCriteria = searchCmb.getSelectionModel().getSelectedItem().toString();
-            if (searchCriteria == "RESOURCE_ID")
-            {
+            if (searchCriteria == "RESOURCE_ID") {
                 try {
                     refreshResourceTbl(Collections.singletonList(ResourceBl.getResourceById(Integer.parseInt(searchTxt.getText()))));
                 } catch (Exception e) {
@@ -53,8 +51,7 @@ public class SearchResourceController implements Initializable {
                 }
             }
 
-            if (searchCriteria == "ISBN")
-            {
+            if (searchCriteria == "ISBN") {
                 try {
                     refreshResourceTbl(Collections.singletonList(ResourceBl.getResourcesByISBN(Integer.valueOf(searchTxt.getText()))));
                 } catch (Exception e) {
@@ -62,8 +59,7 @@ public class SearchResourceController implements Initializable {
                 }
             }
 
-            if (searchCriteria == "TITLE")
-            {
+            if (searchCriteria == "TITLE") {
                 try {
                     refreshResourceTbl(ResourceBl.getResourceByTitle(searchTxt.getText()));
                 } catch (Exception e) {
@@ -71,8 +67,7 @@ public class SearchResourceController implements Initializable {
                 }
             }
 
-            if (searchCriteria == "AUTHOR")
-            {
+            if (searchCriteria == "AUTHOR") {
                 try {
                     refreshResourceTbl(ResourceBl.getResourcesByAuthor(searchTxt.getText()));
                 } catch (Exception e) {
@@ -80,30 +75,14 @@ public class SearchResourceController implements Initializable {
                 }
             }
 
-            if (searchCriteria == "PUBLISHER")
-            {
+            if (searchCriteria == "PUBLISHER") {
                 try {
                     refreshResourceTbl(ResourceBl.getResourcesByPublisher(searchTxt.getText()));
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
             }
-
-            resourceTbl.
-                    +
-
-
-
-
-
-
-
         });
-
-
-
-
-
 
     }
 
@@ -120,4 +99,5 @@ public class SearchResourceController implements Initializable {
         resourceTbl.setItems(observableList);
 
     }
+
 }

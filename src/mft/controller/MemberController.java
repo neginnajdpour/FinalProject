@@ -145,7 +145,6 @@ public class MemberController implements Initializable {
         });
 
         deleteBtn.setOnAction(event -> {
-
             try {
                 MemberBl.delete(Integer.valueOf(nationalIdTxt.getText()));
                 Alert alert = new  Alert(Alert.AlertType.INFORMATION);
@@ -158,13 +157,7 @@ public class MemberController implements Initializable {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-
         });
-
-
-
-
-
     }
 
     public void setUser(Member member) {
