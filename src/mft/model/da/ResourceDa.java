@@ -1,9 +1,6 @@
 package mft.model.da;
 
-import mft.model.entity.Category;
-import mft.model.entity.Language;
-import mft.model.entity.Resource;
-import mft.model.entity.ResourceType;
+import mft.model.entity.*;
 import mft.model.tools.JdbcProvider;
 
 
@@ -44,7 +41,7 @@ public class ResourceDa implements AutoCloseable {
         preparedStatement.setInt(12, resource.getSERIES());
         preparedStatement.setInt(13, resource.getCOST());
         preparedStatement.setString(14, resource.getAUTHOR2());
-        preparedStatement.setString(15, resource.getSTATUS());
+        preparedStatement.setString(15, resource.getSTATUS().name());
         preparedStatement.setString(16, resource.getKEYWORD());
         preparedStatement.executeUpdate();
 
@@ -52,23 +49,24 @@ public class ResourceDa implements AutoCloseable {
 
     public void update(Resource resource) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("UPDATE RESOURCE SET TITLE = ? , RESOURCE_TYPE = ? , SUBJECT = ? , CATEGORY = ? , QUANTITY = ? , ISBN = ? ,  AUTHOR1 = ? , EDITION = ? , CONTENT = ? ,PUBLISHER = ? , LANGUAGE = ? , SERIES = ? , COST = ? , AUTHOR2 = ? , STATUS = ? , KEYWORD = ? WHERE ISBN = ?");
+        preparedStatement = connection.prepareStatement("UPDATE RESOURCE SET TITLE = ? , RESOURCE_TYPE = ? , SUBJECT = ? , CATEGORY = ? , QUANTITY = ? , ISBN = ? ,  AUTHOR1 = ? , EDITION = ? , CONTENT = ? ,PUBLISHER = ? , LANGUAGE = ? , SERIES = ? , COST = ? , AUTHOR2 = ? , STATUS = ? , KEYWORD = ? WHERE RESOURCE_ID = ?");
         preparedStatement.setString(1,resource.getTITLE());
         preparedStatement.setString(2,resource.getRESOURCE_TYPE().name());
         preparedStatement.setString(3,resource.getSUBJECT());
         preparedStatement.setString(4,resource.getCATEGORY().name());
         preparedStatement.setInt(5,resource.getQUANTITY());
-        preparedStatement.setString(6,resource.getAUTHOR1());
-        preparedStatement.setString(7,resource.getEDITION());
-        preparedStatement.setString(8,resource.getCONTENT());
-        preparedStatement.setString(9,resource.getPUBLISHER());
-        preparedStatement.setString(10, resource.getLANGUAGE().name());
-        preparedStatement.setInt(11, resource.getSERIES());
-        preparedStatement.setInt(12, resource.getCOST());
-        preparedStatement.setString(13, resource.getAUTHOR2());
-        preparedStatement.setString(14, resource.getSTATUS());
-        preparedStatement.setString(15, resource.getKEYWORD());
-        preparedStatement.setInt(16,resource.getISBN());
+        preparedStatement.setInt(6,resource.getISBN());
+        preparedStatement.setString(7,resource.getAUTHOR1());
+        preparedStatement.setString(8,resource.getEDITION());
+        preparedStatement.setString(9,resource.getCONTENT());
+        preparedStatement.setString(10,resource.getPUBLISHER());
+        preparedStatement.setString(11, resource.getLANGUAGE().name());
+        preparedStatement.setInt(12, resource.getSERIES());
+        preparedStatement.setInt(13, resource.getCOST());
+        preparedStatement.setString(14, resource.getAUTHOR2());
+        preparedStatement.setString(15, resource.getSTATUS().toString());
+        preparedStatement.setString(16, resource.getKEYWORD());
+        preparedStatement.setInt(17,resource.getRESOURCE_ID());
         preparedStatement.executeUpdate();
     }
 
@@ -101,7 +99,7 @@ public class ResourceDa implements AutoCloseable {
             resource.setSERIES(resultSet.getInt("SERIES"));
             resource.setCOST(resultSet.getInt("COST"));
             resource.setAUTHOR2(resultSet.getString("AUTHOR2"));
-            resource.setSTATUS(resultSet.getString("STATUS"));
+            resource.setSTATUS(Status.valueOf(resultSet.getString("STATUS")));
             resource.setKEYWORD(resultSet.getString("KEYWORD"));
         }
         return Optional.of(resource);
@@ -130,7 +128,7 @@ public class ResourceDa implements AutoCloseable {
             resource.setSERIES(resultSet.getInt("SERIES"));
             resource.setCOST(resultSet.getInt("COST"));
             resource.setAUTHOR2(resultSet.getString("AUTHOR2"));
-            resource.setSTATUS(resultSet.getString("STATUS"));
+            resource.setSTATUS(Status.valueOf(resultSet.getString("STATUS")));
             resource.setKEYWORD(resultSet.getString("KEYWORD"));
         }
         return Optional.of(resource);
@@ -159,7 +157,7 @@ public class ResourceDa implements AutoCloseable {
             resource.setSERIES(resultSet.getInt("SERIES"));
             resource.setCOST(resultSet.getInt("COST"));
             resource.setAUTHOR2(resultSet.getString("AUTHOR2"));
-            resource.setSTATUS(resultSet.getString("STATUS"));
+            resource.setSTATUS(Status.valueOf(resultSet.getString("STATUS")));
             resource.setKEYWORD(resultSet.getString("KEYWORD"));
             resources.add(resource);
         }
@@ -190,7 +188,7 @@ public class ResourceDa implements AutoCloseable {
             resource.setSERIES(resultSet.getInt("SERIES"));
             resource.setCOST(resultSet.getInt("COST"));
             resource.setAUTHOR2(resultSet.getString("AUTHOR2"));
-            resource.setSTATUS(resultSet.getString("STATUS"));
+            resource.setSTATUS(Status.valueOf(resultSet.getString("STATUS")));
             resource.setKEYWORD(resultSet.getString("KEYWORD"));
             resources.add(resource);
         }
@@ -221,7 +219,7 @@ public class ResourceDa implements AutoCloseable {
             resource.setSERIES(resultSet.getInt("SERIES"));
             resource.setCOST(resultSet.getInt("COST"));
             resource.setAUTHOR2(resultSet.getString("AUTHOR2"));
-            resource.setSTATUS(resultSet.getString("STATUS"));
+            resource.setSTATUS(Status.valueOf(resultSet.getString("STATUS")));
             resource.setKEYWORD(resultSet.getString("KEYWORD"));
             resources.add(resource);
         }
@@ -252,7 +250,7 @@ public class ResourceDa implements AutoCloseable {
             resource.setSERIES(resultSet.getInt("SERIES"));
             resource.setCOST(resultSet.getInt("COST"));
             resource.setAUTHOR2(resultSet.getString("AUTHOR2"));
-            resource.setSTATUS(resultSet.getString("STATUS"));
+            resource.setSTATUS(Status.valueOf(resultSet.getString("STATUS")));
             resource.setKEYWORD(resultSet.getString("KEYWORD"));
             resources.add(resource);
         }
@@ -282,7 +280,7 @@ public class ResourceDa implements AutoCloseable {
             resource.setSERIES(resultSet.getInt("SERIES"));
             resource.setCOST(resultSet.getInt("COST"));
             resource.setAUTHOR2(resultSet.getString("AUTHOR2"));
-            resource.setSTATUS(resultSet.getString("STATUS"));
+            resource.setSTATUS(Status.valueOf(resultSet.getString("STATUS")));
             resource.setKEYWORD(resultSet.getString("KEYWORD"));
             resources.add(resource);
         }
@@ -315,7 +313,7 @@ public class ResourceDa implements AutoCloseable {
                     .SERIES(resultSet.getInt("SERIES"))
                     .COST(resultSet.getInt("COST"))
                     .AUTHOR2(resultSet.getString("AUTHOR2"))
-                    .STATUS(resultSet.getString("STATUS"))
+                    .STATUS(Status.valueOf(resultSet.getString("STATUS")))
                     .KEYWORD(resultSet.getString("KEYWORD"))
                     .build();
 

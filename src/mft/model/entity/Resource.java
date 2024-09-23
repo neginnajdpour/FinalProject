@@ -27,7 +27,7 @@ public class Resource {
     private int SERIES;
     private int COST;
     private String AUTHOR2;
-    private String STATUS;
+    private Status STATUS;
     private String KEYWORD;
 
 

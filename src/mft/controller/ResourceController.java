@@ -138,8 +138,7 @@ public class ResourceController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("You have successfully updated the book !");
                 alert.showAndWait();
-
-                refreshBookTbl(ResourceBl.getAllResources());
+                ((Stage) (updateBtn.getScene().getWindow())).hide();
 
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -153,8 +152,7 @@ public class ResourceController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("You have successfully deleted the book !");
                 alert.showAndWait();
-
-                refreshBookTbl(ResourceBl.getAllResources());
+                ((Stage) (deleteBtn.getScene().getWindow())).hide();
 
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -210,14 +208,8 @@ public class ResourceController implements Initializable {
         resourcetypeCmb.getSelectionModel().select(resource.getRESOURCE_TYPE());
         categoryCmb.getSelectionModel().select(resource.getCATEGORY());
         languageCmb.getSelectionModel().select(resource.getLANGUAGE());
+        statusCmb.getSelectionModel().select(resource.getSTATUS());
 
     }
-
-
-
-
-
-
-
 
 }
