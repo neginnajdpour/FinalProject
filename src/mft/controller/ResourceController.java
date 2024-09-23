@@ -28,7 +28,7 @@ public class ResourceController implements Initializable {
     private ComboBox resourcetypeCmb , categoryCmb, languageCmb , statusCmb;
 
     @FXML
-    private Button saveBtn, updateBtn, deleteBtn, newBtn;
+    private Button saveBtn, updateBtn, deleteBtn, newBtn, closeBtn;
 
     @FXML
     private TableColumn<Resource, Integer> resId;
@@ -176,6 +176,10 @@ public class ResourceController implements Initializable {
             resourcetypeCmb.getSelectionModel().clearSelection();
             categoryCmb.getSelectionModel().clearSelection();
             languageCmb.getSelectionModel().clearSelection();
+        });
+
+        closeBtn.setOnAction(event -> {
+            ((Stage) (deleteBtn.getScene().getWindow())).hide();
         });
 
 
