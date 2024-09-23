@@ -207,9 +207,9 @@ public class ResourceController implements Initializable {
         costTxt.setText(String.valueOf(resource.getCOST()));
         author2Txt.setText(resource.getAUTHOR1());
         keywordTxt.setText(resource.getKEYWORD());
-//        resourcetypeCmb.setSelectionModel(ResourceType.valueOf(String.valueOf(resource.getRESOURCE_TYPE())));
-//        categoryCmb.getSelectionModel().clearSelection();
-//        languageCmb.getSelectionModel().clearSelection();
+        resourcetypeCmb.getSelectionModel().select(resource.getRESOURCE_TYPE());
+        categoryCmb.getSelectionModel().select(resource.getCATEGORY());
+        languageCmb.getSelectionModel().select(resource.getLANGUAGE());
 
     }
 
