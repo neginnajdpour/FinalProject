@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 public class ResourceController implements Initializable {
 
     @FXML
-    private TextField   titleTxt , subjectTxt , quantityTxt , isbnTxt, author1Txt , editionTxt , contentTxt , publisherTxt, seriesTxt, costTxt, author2Txt , keywordTxt  ;
+    private TextField  resourceIdTxt , titleTxt , subjectTxt , quantityTxt , isbnTxt, author1Txt , editionTxt , contentTxt , publisherTxt, seriesTxt, costTxt, author2Txt , keywordTxt  ;
 
     @FXML
     private ComboBox resourcetypeCmb , categoryCmb, languageCmb , statusCmb;
@@ -84,7 +84,7 @@ public class ResourceController implements Initializable {
                         .SERIES(Integer.parseInt(seriesTxt.getText()))
                         .COST(Integer.parseInt(costTxt.getText()))
                         .AUTHOR2(author2Txt.getText())
-                        .STATUS("New")
+                        .STATUS(Status.valueOf(status.name()))
                         .KEYWORD(keywordTxt.getText())
                         .build();
 
@@ -114,6 +114,7 @@ public class ResourceController implements Initializable {
                 Status status = (Status) statusCmb.getSelectionModel().getSelectedItem();
                 Resource book = Resource
                         .builder()
+                        .RESOURCE_ID(Integer.parseInt(resourceIdTxt.getText()))
                         .TITLE(titleTxt.getText())
                         .RESOURCE_TYPE(ResourceType.valueOf(resourceType.name()))
                         .SUBJECT(subjectTxt.getText())
@@ -128,7 +129,7 @@ public class ResourceController implements Initializable {
                         .SERIES(Integer.parseInt(seriesTxt.getText()))
                         .COST(Integer.parseInt(costTxt.getText()))
                         .AUTHOR2(author2Txt.getText())
-                        .STATUS(String.valueOf(Status.valueOf(status.name())))
+                        .STATUS(Status.valueOf(status.name()))
                         .KEYWORD(keywordTxt.getText())
                         .build();
 
@@ -193,6 +194,7 @@ public class ResourceController implements Initializable {
 
     public void setUser(Resource resource) {
 
+        resourceIdTxt.setText(String.valueOf(resource.getRESOURCE_ID()));
         titleTxt.setText(resource.getTITLE());
         subjectTxt.setText(resource.getSUBJECT());
         quantityTxt.setText(String.valueOf(resource.getQUANTITY()));

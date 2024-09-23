@@ -1,6 +1,9 @@
 package mft.test;
 
 import mft.model.bl.ResourceBl;
+import mft.model.entity.Category;
+import mft.model.entity.Resource;
+import mft.model.entity.ResourceType;
 import mft.model.tools.JdbcProvider;
 
 
@@ -48,12 +51,12 @@ public class test {
 //        Resource book = Resource
 //                .builder()
 //                //.RESOURCE_ID(Integer.parseInt("1"))
-//                .ISBN("456")
-//                .RESOURCE_TYPE("Book")
+//                .ISBN(123)
+//                .RESOURCE_TYPE(ResourceType.valueOf("Book"))
 //                .TITLE("titleTxt.getText()")
 //                .EDITION("six")
-//                .AUTHOR("authorTxt.getText()")
-//                .CATEGORY("Category.Classic")
+//                .AUTHOR1("authorTxt.getText()")
+//                .CATEGORY(Category.valueOf("Fiction"))
 //                .PUBLISHER("publisherTxt.getText()")
 //                .LANGUAGE("English")
 //                .QUANTITY(Integer.parseInt("1"))
