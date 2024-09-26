@@ -18,7 +18,7 @@ public class MainPageController implements Initializable {
 
 
     @FXML
-    private MenuItem newMemberMenu, searchMemberMenu , newResourceMenu, searchResourceMenu;
+    private MenuItem newMemberMenu, searchMemberMenu , newResourceMenu, searchResourceMenu,issueBookMenu;
 
     @FXML
     private void handleMemberRegistrationAction(ActionEvent event) throws IOException {
@@ -90,6 +90,21 @@ public class MainPageController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+
+        issueBookMenu.setOnAction(event -> {
+
+            try {
+                Stage stage = new Stage();
+                Scene scene = null;
+                scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mft/view/Borrow.fxml"))));
+                stage.setTitle("Panel");
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
 
     }
 }

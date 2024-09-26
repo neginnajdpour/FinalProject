@@ -18,6 +18,6 @@ public class Borrow {
     private int id;
     private Member member;
     private Resource resource;
-    private LocalDateTime borrowDateTime;
-    private LocalDateTime returnDateTime;
+    private LocalDateTime issueDate;
+    private LocalDateTime dueDate;
 }

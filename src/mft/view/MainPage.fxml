@@ -38,7 +38,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Transaction">
               <items>
-                <MenuItem mnemonicParsing="false" text="Book Issue" />
+                <MenuItem fx:id="issueBookMenu" mnemonicParsing="false" text="Book Issue" />
                   <MenuItem mnemonicParsing="false" text="Book Return" />
               </items>
             </Menu>

@@ -126,7 +126,7 @@
             <TextField fx:id="admissionTxt" GridPane.columnIndex="1" />
          </children>
       </GridPane>
-      <HBox layoutX="587.0" layoutY="447.0" prefHeight="42.0" prefWidth="477.0">
+      <HBox layoutX="345.0" layoutY="447.0" prefHeight="42.0" prefWidth="477.0">
          <children>
             <Button fx:id="saveBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="97.0" text="Save">
                <opaqueInsets>
