@@ -31,8 +31,7 @@ public class BorrowDa implements AutoCloseable {
 
     @Override
     public void close() throws Exception{
-        connection.close();
         preparedStatement.close();
-        resultSet.close();
+        connection.close();
     }
 }

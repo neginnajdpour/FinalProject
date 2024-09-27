@@ -59,7 +59,7 @@ public class BorrowController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText(null);
-                alert.setContentText("You have successfully save the member !");
+                alert.setContentText("You have successfully issued the resource !");
                 alert.showAndWait();
             }
             catch (Exception e) {
