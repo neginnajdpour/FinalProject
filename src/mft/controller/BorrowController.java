@@ -72,7 +72,7 @@ public class BorrowController implements Initializable {
                         .issueDate(curDateTxt.getValue())
                         .dueDate(dueDateTxt.getValue())
                         .build();
-                3
+
                 BorrowBl.save(borrow);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
