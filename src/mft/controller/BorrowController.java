@@ -38,6 +38,7 @@ public class BorrowController implements Initializable {
                 resource = ResourceBl.getResourcesByISBN(Integer.valueOf(resourceIdTxt.getText()))
 
 
+
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
