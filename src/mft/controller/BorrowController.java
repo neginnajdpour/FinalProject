@@ -13,6 +13,7 @@ import mft.model.entity.Resource;
 import java.time.LocalDate;
 
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -38,17 +39,21 @@ public class BorrowController implements Initializable {
 
                 Member member = new Member();
                 member = MemberBl.getMember(Integer.valueOf(nationalIdTxt.getText()));
+                System.out.println(member.toString());
 
                 Resource resource = new Resource();
                 resource = ResourceBl.getResourcesByISBN(Integer.valueOf(resourceIdTxt.getText()));
+                System.out.println(resource.toString());
 
                 Borrow borrow = Borrow
                         .builder()
                         .member(member)
                         .resource(resource)
-                        .issueDate(curDateTxt.getValue().atStartOfDay())
-                        .dueDate(dueDateTxt.getValue().atStartOfDay())
+                        .issueDate(curDateTxt.getValue())
+                        .dueDate(dueDateTxt.getValue())
                         .build();
+
+
 
                 BorrowBl.save(borrow);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -62,22 +67,5 @@ public class BorrowController implements Initializable {
             }
         });
 
-
-//        issueBtn.setOnAction(e -> {
-//
-//            try {
-//
-//
-//
-//
-//                //RadioButton selectedRadioButton = (RadioButton) GenderToggle.getSelectedToggle();
-//
-
-//
-//            } catch (Exception e) {
-//                throw new RuntimeException(e);
-//            }
-//
-//        });
     }
 }

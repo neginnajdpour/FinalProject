@@ -21,11 +21,11 @@ public class BorrowDa implements AutoCloseable {
 
     public void save(Borrow borrow) throws SQLException {
         connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("INSERT INTO Borrow VALUES (?,?,?,?,?)");
+        preparedStatement = connection.prepareStatement("INSERT INTO Borrow(NationalId,ResourceId,issue_date,return_date) VALUES (?,?,?,?)");
         preparedStatement.setInt(1,borrow.getMember().getNationalID());
         preparedStatement.setInt(2,borrow.getResource().getRESOURCE_ID());
-        preparedStatement.setDate(3,Date.valueOf(String.valueOf(borrow.getIssueDate())));
-        preparedStatement.setDate(4,Date.valueOf(String.valueOf(borrow.getDueDate())));
+        preparedStatement.setDate(3,Date.valueOf(borrow.getIssueDate()));
+        preparedStatement.setDate(4,Date.valueOf(borrow.getDueDate()));
         preparedStatement.executeUpdate();
     }
 
