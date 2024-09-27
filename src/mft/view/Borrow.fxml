@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<Pane fx:controller="mft.controller.BorrowController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="892.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="892.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mft.controller.BorrowController">
    <children>
       <GridPane layoutX="51.0" layoutY="51.0" prefHeight="90.0" prefWidth="382.0">
         <columnConstraints>
@@ -29,7 +28,7 @@
          <children>
             <Label text="National ID" />
             <TextField fx:id="nationalIdTxt" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" text="OK" GridPane.columnIndex="2" />
+            <Button fx:id="nationalIdSearchBtn" mnemonicParsing="false" text="OK" GridPane.columnIndex="2" />
          </children>
       </GridPane>
       <GridPane layoutX="51.0" layoutY="201.0" prefHeight="90.0" prefWidth="382.0">
@@ -46,7 +45,7 @@
          <children>
             <Label text="ISBN" />
             <TextField fx:id="isbnTxt" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" text="OK" GridPane.columnIndex="2" />
+            <Button fx:id="isbnSearchBtn" mnemonicParsing="false" text="OK" GridPane.columnIndex="2" />
          </children>
       </GridPane>
       <GridPane layoutX="490.0" layoutY="51.0" prefHeight="103.0" prefWidth="353.0">

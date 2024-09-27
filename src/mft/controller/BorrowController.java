@@ -26,7 +26,7 @@ public class BorrowController implements Initializable {
     private DatePicker curDateTxt , dueDateTxt;
 
     @FXML
-    private Button issueBtn, clearBtn;
+    private Button nationalIdSearchBtn , isbnSearchBtn , issueBtn, clearBtn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
