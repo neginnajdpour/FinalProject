@@ -39,4 +39,12 @@ create table member (
                         Photo NVARCHAR(50)
 );
 
+CREATE TABLE BORROW (
+    BorrowId int primary key ,
+    NationalId int references member(NationalID),
+    ResourceId int references resource(RESOURCE_ID),
+    issue_date datetime,
+    return_date datetime
+);
+
 
