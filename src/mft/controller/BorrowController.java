@@ -34,6 +34,16 @@ public class BorrowController implements Initializable {
 
         curDateTxt.setValue(LocalDate.now());
 
+        nationalIdSearchBtn.setOnAction(event -> {
+
+        });
+
+        isbnSearchBtn.setOnAction(event -> {
+
+        });
+
+
+
         issueBtn.setOnAction(event -> {
             try {
 
