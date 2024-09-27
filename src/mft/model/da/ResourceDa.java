@@ -113,7 +113,7 @@ public class ResourceDa implements AutoCloseable {
         Resource resource = new Resource();
         if(resultSet.next()) {
 
-            resource.setRESOURCE_ID(resultSet.getInt("Resource_Id"));
+            resource.setRESOURCE_ID(resultSet.getInt("RESOURCE_ID"));
             resource.setTITLE(resultSet.getString("TITLE"));
             resource.setRESOURCE_TYPE(ResourceType.valueOf(resultSet.getString("RESOURCE_TYPE")));
             resource.setSUBJECT(resultSet.getString("SUBJECT"));

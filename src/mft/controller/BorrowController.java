@@ -10,6 +10,8 @@ import mft.model.entity.Borrow;
 import mft.model.entity.Gender;
 import mft.model.entity.Member;
 import mft.model.entity.Resource;
+
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 import java.net.URL;
@@ -20,13 +22,18 @@ import java.util.ResourceBundle;
 public class BorrowController implements Initializable {
 
     @FXML
-    private TextField nationalIdTxt , resourceIdTxt;
+    private TextField nationalIdTxt ,isbnTxt , nameTxt , resourceIdTxt , titleTxt ;
 
     @FXML
     private DatePicker curDateTxt , dueDateTxt;
 
     @FXML
     private Button nationalIdSearchBtn , isbnSearchBtn , issueBtn, clearBtn;
+
+    private Member member;
+    private Resource resource;
+    private Borrow borrow;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -35,26 +42,29 @@ public class BorrowController implements Initializable {
         curDateTxt.setValue(LocalDate.now());
 
         nationalIdSearchBtn.setOnAction(event -> {
+            try {
+                member = MemberBl.getMember(Integer.valueOf(nationalIdTxt.getText()));
+                nameTxt.setText(member.getFirstName() + " " + member.getLastName());
 
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         });
 
         isbnSearchBtn.setOnAction(event -> {
-
+            try {
+                resource = ResourceBl.getResourcesByISBN(Integer.valueOf(isbnTxt.getText()));
+                resourceIdTxt.setText(String.valueOf(resource.getRESOURCE_ID()));
+                titleTxt.setText(String.valueOf(resource.getTITLE()));
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         });
 
 
 
         issueBtn.setOnAction(event -> {
             try {
-
-                Member member = new Member();
-                member = MemberBl.getMember(Integer.valueOf(nationalIdTxt.getText()));
-                System.out.println(member.toString());
-
-                Resource resource = new Resource();
-                resource = ResourceBl.getResourcesByISBN(Integer.valueOf(resourceIdTxt.getText()));
-                System.out.println(resource.toString());
-
                 Borrow borrow = Borrow
                         .builder()
                         .member(member)
@@ -62,9 +72,7 @@ public class BorrowController implements Initializable {
                         .issueDate(curDateTxt.getValue())
                         .dueDate(dueDateTxt.getValue())
                         .build();
-
-
-
+                3
                 BorrowBl.save(borrow);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
