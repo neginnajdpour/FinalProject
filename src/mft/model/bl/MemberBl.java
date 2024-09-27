@@ -26,10 +26,10 @@ public class MemberBl{
         }
     }
 
-    public static Member getMember(int memberId) throws Exception {
+    public static Member getMember(Integer NationalID) throws Exception {
         Member member = new Member();
         try(MemberDa memberDa = new MemberDa()){
-            member = memberDa.getMember(memberId).get();
+            member = memberDa.getMember(NationalID).get();
         }
         return member;
     }
