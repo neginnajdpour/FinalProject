@@ -3,12 +3,14 @@ package mft.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import mft.model.bl.BorrowBl;
 import mft.model.bl.MemberBl;
 import mft.model.bl.ResourceBl;
 import mft.model.entity.Borrow;
 import mft.model.entity.Gender;
 import mft.model.entity.Member;
 import mft.model.entity.Resource;
+import java.time.LocalDate;
 
 import java.net.URL;
 import java.util.Date;
@@ -29,8 +31,9 @@ public class BorrowController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
 
-        issueBtn.setOnAction(e -> {
+        curDateTxt.setValue(LocalDate.now());
 
+        issueBtn.setOnAction(event -> {
             try {
 
                 Member member = new Member();
@@ -38,10 +41,6 @@ public class BorrowController implements Initializable {
 
                 Resource resource = new Resource();
                 resource = ResourceBl.getResourcesByISBN(Integer.valueOf(resourceIdTxt.getText()));
-
-
-
-                RadioButton selectedRadioButton = (RadioButton) GenderToggle.getSelectedToggle();
 
                 Borrow borrow = Borrow
                         .builder()
@@ -51,17 +50,34 @@ public class BorrowController implements Initializable {
                         .dueDate(dueDateTxt.getValue().atStartOfDay())
                         .build();
 
-                MemberBl.save(member);
+                BorrowBl.save(borrow);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText(null);
                 alert.setContentText("You have successfully save the member !");
                 alert.showAndWait();
-
-            } catch (Exception e) {
-                throw new RuntimeException(e);
             }
-
+            catch (Exception e) {
+                e.printStackTrace();
+            }
         });
+
+
+//        issueBtn.setOnAction(e -> {
+//
+//            try {
+//
+//
+//
+//
+//                //RadioButton selectedRadioButton = (RadioButton) GenderToggle.getSelectedToggle();
+//
+
+//
+//            } catch (Exception e) {
+//                throw new RuntimeException(e);
+//            }
+//
+//        });
     }
 }
