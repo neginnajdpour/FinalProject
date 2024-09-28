@@ -1,8 +1,11 @@
 package mft.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import mft.model.bl.BorrowBl;
 import mft.model.bl.MemberBl;
 import mft.model.bl.ResourceBl;
@@ -17,6 +20,7 @@ import java.time.LocalDate;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class BorrowController implements Initializable {
@@ -29,6 +33,14 @@ public class BorrowController implements Initializable {
 
     @FXML
     private Button nationalIdSearchBtn , isbnSearchBtn , issueBtn, clearBtn;
+
+    @FXML
+    private TableView<Borrow> borrowTbl;
+
+    @FXML
+    private TableColumn<Borrow,String> memberCol , isbnCol , resourceCol , fromDateCol , dueDateCol;
+
+
 
     private Member member;
     private Resource resource;
@@ -85,5 +97,25 @@ public class BorrowController implements Initializable {
             }
         });
 
+        clearBtn.setOnAction(event -> {
+            nationalIdTxt.clear();
+            isbnTxt.clear();
+            nameTxt.clear();
+            resourceIdTxt.clear();
+            titleTxt.clear();
+            curDateTxt.setValue(null);
+            dueDateTxt.setValue(null);
+        });
+
+    }
+
+    public void refreshBorrowTbl(List<Borrow> borrowList) throws Exception {
+        ObservableList<Resource> observableList = FXCollections.observableList(bookList);
+        isbnCol.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
+        titleCol.setCellValueFactory(new PropertyValueFactory<>("TITLE"));
+        authorCol.setCellValueFactory(new PropertyValueFactory<>("AUTHOR"));
+        editionCol.setCellValueFactory(new PropertyValueFactory<>("EDITION"));
+        languageCol.setCellValueFactory(new PropertyValueFactory<>("LANGUAGE"));
+        resourceTbl.setItems(observableList);
     }
 }
