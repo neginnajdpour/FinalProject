@@ -52,7 +52,7 @@ public class BorrowController implements Initializable {
 
         curDateTxt.setValue(LocalDate.now());
         try {
-            refreshBorrowTbl(BorrowBl.getBorrowed());
+            refreshBorrowTbl();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
