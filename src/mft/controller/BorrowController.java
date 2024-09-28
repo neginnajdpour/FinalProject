@@ -38,7 +38,7 @@ public class BorrowController implements Initializable {
     private TableView<Borrow> borrowTbl;
 
     @FXML
-    private TableColumn<Borrow,String> memberCol , isbnCol , resourceTitleCol , issueDateCol , dueDateCol;
+    private TableColumn<Borrow,String> nationalIdCol , isbnCol , resourceTitleCol , issueDateCol , dueDateCol;
 
 
     private Member member;
@@ -95,7 +95,7 @@ public class BorrowController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("You have successfully issued the resource !");
                 alert.showAndWait();
-                refreshBorrowTbl(BorrowBl.getBorrowed());
+                refreshBorrowTbl();
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -114,9 +114,10 @@ public class BorrowController implements Initializable {
 
     }
 
-    public void refreshBorrowTbl(List<Borrow> borrowList) throws Exception {
+    public void refreshBorrowTbl() throws Exception {
+        List<Borrow> borrowList = BorrowBl.getBorrowed();
         ObservableList<Borrow> observableList = FXCollections.observableList(borrowList);
-//        memberCol.setCellValueFactory(new PropertyValueFactory<>("member"));
+        nationalIdCol.setCellValueFactory(new PropertyValueFactory<>("member"));
         resourceTitleCol.setCellValueFactory(new PropertyValueFactory<>("resource"));
         issueDateCol.setCellValueFactory(new PropertyValueFactory<>("issueDate"));
         dueDateCol.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
