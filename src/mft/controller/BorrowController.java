@@ -41,7 +41,6 @@ public class BorrowController implements Initializable {
     private TableColumn<Borrow,String> memberCol , isbnCol , resourceCol , fromDateCol , dueDateCol;
 
 
-
     private Member member;
     private Resource resource;
     private Borrow borrow;
