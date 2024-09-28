@@ -5,8 +5,6 @@ package mft.model.da;
 import mft.model.bl.MemberBl;
 import mft.model.bl.ResourceBl;
 import mft.model.entity.Borrow;
-import mft.model.entity.Member;
-import mft.model.entity.Resource;
 import mft.model.tools.JdbcProvider;
 
 import java.sql.*;
@@ -35,7 +33,7 @@ public class BorrowDa implements AutoCloseable {
 
     public List<Borrow> getBorrowed() throws Exception {
         connection = JdbcProvider.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("SELECT * FROM Borrow");
+        preparedStatement = connection.prepareStatement("SELECT * FROM Borrow ");
         resultSet = preparedStatement.executeQuery();
         List<Borrow> borrowList = new ArrayList<>();
         while (resultSet.next()) {

@@ -86,9 +86,9 @@
       </HBox>
       <TableView fx:id="borrowTbl" layoutX="51.0" layoutY="387.0" prefHeight="144.0" prefWidth="798.0">
         <columns>
-          <TableColumn fx:id="memberCol" prefWidth="150.0" text="Member Name" />
+          <TableColumn fx:id="nationalIdCol" prefWidth="150.0" text="National ID" />
             <TableColumn fx:id="isbnCol" prefWidth="160.0" text="ISBN" />
-            <TableColumn fx:id="resourceCol" prefWidth="211.0" text="Resource Title" />
+            <TableColumn fx:id="resourceTitleCol" prefWidth="211.0" text="Resource Title" />
             <TableColumn fx:id="issueDateCol" prefWidth="134.0" text="Issue Date" />
             <TableColumn fx:id="dueDateCol" prefWidth="142.0" text="Due Date" />
         </columns>
