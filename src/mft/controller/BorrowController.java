@@ -90,6 +90,7 @@ public class BorrowController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("You have successfully issued the resource !");
                 alert.showAndWait();
+                refreshBorrowTbl(BorrowBl.getBorrowed());
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -109,12 +110,12 @@ public class BorrowController implements Initializable {
     }
 
     public void refreshBorrowTbl(List<Borrow> borrowList) throws Exception {
-        ObservableList<Resource> observableList = FXCollections.observableList(bookList);
-        isbnCol.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
-        titleCol.setCellValueFactory(new PropertyValueFactory<>("TITLE"));
-        authorCol.setCellValueFactory(new PropertyValueFactory<>("AUTHOR"));
-        editionCol.setCellValueFactory(new PropertyValueFactory<>("EDITION"));
-        languageCol.setCellValueFactory(new PropertyValueFactory<>("LANGUAGE"));
-        resourceTbl.setItems(observableList);
+        ObservableList<Borrow> observableList = FXCollections.observableList(borrowList);
+        memberCol.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
+//        titleCol.setCellValueFactory(new PropertyValueFactory<>("TITLE"));
+//        authorCol.setCellValueFactory(new PropertyValueFactory<>("AUTHOR"));
+//        editionCol.setCellValueFactory(new PropertyValueFactory<>("EDITION"));
+//        languageCol.setCellValueFactory(new PropertyValueFactory<>("LANGUAGE"));
+        borrowTbl.setItems(observableList);
     }
 }
