@@ -84,12 +84,12 @@
             <Button fx:id="clearBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="103.0" text="Clear" />
          </children>
       </HBox>
-      <TableView layoutX="51.0" layoutY="387.0" prefHeight="144.0" prefWidth="798.0">
+      <TableView fx:id="borrowTbl" layoutX="51.0" layoutY="387.0" prefHeight="144.0" prefWidth="798.0">
         <columns>
           <TableColumn fx:id="memberCol" prefWidth="150.0" text="Member Name" />
             <TableColumn fx:id="isbnCol" prefWidth="160.0" text="ISBN" />
             <TableColumn fx:id="resourceCol" prefWidth="211.0" text="Resource Title" />
-            <TableColumn fx:id="fromDateCol" prefWidth="134.0" text="From Date" />
+            <TableColumn fx:id="issueDateCol" prefWidth="134.0" text="Issue Date" />
             <TableColumn fx:id="dueDateCol" prefWidth="142.0" text="Due Date" />
         </columns>
       </TableView>
@@ -106,7 +106,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="From Date" GridPane.rowIndex="1" />
+            <Label text="Issue Date" GridPane.rowIndex="1" />
             <DatePicker fx:id="curDateTxt" prefHeight="31.0" prefWidth="231.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Due Date" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <DatePicker fx:id="dueDateTxt" prefHeight="31.0" prefWidth="249.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />

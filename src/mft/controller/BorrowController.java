@@ -38,7 +38,7 @@ public class BorrowController implements Initializable {
     private TableView<Borrow> borrowTbl;
 
     @FXML
-    private TableColumn<Borrow,String> memberCol , isbnCol , resourceCol , fromDateCol , dueDateCol;
+    private TableColumn<Borrow,String> memberCol , isbnCol , resourceCol , issueDateCol , dueDateCol;
 
 
     private Member member;
@@ -51,6 +51,11 @@ public class BorrowController implements Initializable {
 
 
         curDateTxt.setValue(LocalDate.now());
+        try {
+            refreshBorrowTbl(BorrowBl.getBorrowed());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         nationalIdSearchBtn.setOnAction(event -> {
             try {
@@ -111,11 +116,10 @@ public class BorrowController implements Initializable {
 
     public void refreshBorrowTbl(List<Borrow> borrowList) throws Exception {
         ObservableList<Borrow> observableList = FXCollections.observableList(borrowList);
-        memberCol.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
-//        titleCol.setCellValueFactory(new PropertyValueFactory<>("TITLE"));
-//        authorCol.setCellValueFactory(new PropertyValueFactory<>("AUTHOR"));
-//        editionCol.setCellValueFactory(new PropertyValueFactory<>("EDITION"));
-//        languageCol.setCellValueFactory(new PropertyValueFactory<>("LANGUAGE"));
+//        memberCol.setCellValueFactory(new PropertyValueFactory<>("member"));
+//        resourceCol.setCellValueFactory(new PropertyValueFactory<>("resource"));
+        issueDateCol.setCellValueFactory(new PropertyValueFactory<>("issueDate"));
+        dueDateCol.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
         borrowTbl.setItems(observableList);
     }
 }
